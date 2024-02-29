@@ -6,24 +6,30 @@ input, button {
     margin-bottom: 10px;
 }
 
-li img{
-    height: 300px;
-    width: 300px;
-}
+.grid-container{
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 18%);
+    justify-content: center;
+    gap: 20px;
+    background-color: green;
 
-li{
-    display: inline-block;
+}
+ul{
+
 }
 
 .item-container{
+    background-color: red;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.items{
-    display: grid;
-    grid-template-columns: 3;
+.item-container img{
+    height: 300px;
+    width: 300px;
 }
 
 /* buat edit search bar */
