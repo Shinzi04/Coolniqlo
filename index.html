@@ -1,62 +1,55 @@
 <!DOCTYPE html>
 <html ng-app="olshop">
-  <head>
-    <title>Chadpedia</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
 
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <title>Chadpedia</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet" />
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+    rel="stylesheet" />
 
-    <!-- icons -->
-    <script src="https://unpkg.com/feather-icons"></script>
-  </head>
-  <body>
-    <!-- <div ng-controller="Controller">
-      <input type="text" ng-model="searchText" placeholder="Search by tag" />
-      <ul>
-        <li ng-repeat="item in filterItems()">{{ item.name }} ({{ item.tags.join(', ') }})</li>
-      </ul>
-    </div> -->
+  <!-- icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
 
-    <!-- Hero Section start-->
-    <section class="hero" id="home">
-      <main class="content">
-        <h1>Lorem ipsum dolor sit.</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, et.</p>
-        <!-- <a href="#" class="cta">Buy Now</a> -->
-      </main>
-    </section>
-    <nav class="navbar">
-      <div class="navbar-nav">
-        <a href="#home">Man</a>
-        <a href="#about">Women</a>
+<body>
+  <!-- Hero Section start-->
+  <section class="hero" id="home">
+    <main class="content">
+      <h1>Lorem ipsum dolor sit.</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, et.</p>
+    </main>
+  </section>
+  <nav class="navbar">
+    <div class="navbar-nav">
+      <a href="#home">Man</a>
+      <a href="#about">Women</a>
+    </div>
+    <a href="#" class="navbar-logo">COOLNIQLO</a>
+    <div class="navbar-extra">
+      <a href="#" id="search-button"><i data-feather="search"></i></a>
+      <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+    </div>
+  </nav>
+  <div ng-controller="Controller">
+    <input type="text" ng-model="searchText" placeholder="Search by tag" class="search">
+    <div class="grid-container">
+      <div ng-repeat="item in filterItems()">
+        <div class="item-container">
+          <img ng-src="images/{{ item.image }}" alt="{{ item.name }} image">
+          {{item.name}}
+        </div>
       </div>
+    </div>
+  </div>
+  <script>
+    feather.replace();
+  </script>
+  <script src="script.js"></script>
+</body>
 
-      <a href="#" class="navbar-logo">COOLNIQLO</a>
-
-      <div class="navbar-extra">
-        <a href="#" id="search-button"><i data-feather="search"></i></a>
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
-      </div>
-
-      <!-- Search form start -->
-      <!-- <div class="search-form">
-        <input type="search" id="search-box" placeholder="search here..." />
-        <label for="search-box"><i data-feather="search"></i></label>
-      </div> -->
-      <!-- Search form end -->
-    </nav>
-    <!-- Hero Section end-->
-
-    <!-- icons -->
-    <script>
-      feather.replace();
-    </script>
-
-    <script src="script.js"></script>
-  </body>
 </html>
