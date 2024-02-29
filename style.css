@@ -2,7 +2,8 @@ body {
     margin: 20px;
 }
 
-input, button {
+input,
+button {
     margin-bottom: 10px;
 }
 
@@ -14,9 +15,6 @@ input, button {
     justify-content: center;
     gap: 20px;
     background-color: green;
-
-}
-ul{
 
 }
 
@@ -33,6 +31,15 @@ ul{
 }
 
 /* buat edit search bar */
-.search{
-    background-color: red;
+.search {
+    background-color: white;
+    border: 2px solid #ccc;
+    height: 30px;
+    border-radius: 15px;
+    transition: border-color 0.3s;
+    text-indent: 10px;
+}
+
+.search:focus {
+    border-color: black !important;
 }
