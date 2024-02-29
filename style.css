@@ -2,31 +2,41 @@ body {
     margin: 20px;
 }
 
-input, button {
+input,
+button {
     margin-bottom: 10px;
 }
 
-li img{
+li img {
     height: 300px;
     width: 300px;
 }
 
-li{
+li {
     display: inline-block;
 }
 
-.item-container{
+.item-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.items{
+.items {
     display: grid;
     grid-template-columns: 3;
 }
 
 /* buat edit search bar */
-.search{
-    background-color: red;
+.search {
+    background-color: white;
+    border: 2px solid #ccc;
+    height: 30px;
+    border-radius: 15px;
+    transition: border-color 0.3s;
+    text-indent: 10px;
+}
+
+.search:focus {
+    border-color: black !important;
 }
