@@ -7,13 +7,21 @@
   <script src="script.js"></script>
 </head>
 <body>
-    <div ng-controller="Controller">
-        <input type="text" ng-model="searchText" placeholder="Search by tag">
-        <ul>
-          <li ng-repeat="item in filterItems()">
-            {{ item.name }} ({{ item.tags.join(', ') }})
-          </li>
-        </ul>
+    <div ng-controller="Controller">  
+        <input type="text" ng-model="searchText" placeholder="Search by tag" class="search">    
+        
+        <div class="items">
+            <ul>
+                <li ng-repeat="item in filterItems()">
+                  <div class="item-container">
+                      <img ng-src="images/{{ item.image }}" alt="{{ item.name }} image">
+                      {{ item.name }} ({{ item.tags.join(', ') }})
+                  </div>
+                  
+                </li>
+              </ul>
+        </div>
+        
       </div>
       
   </body>

@@ -5,3 +5,28 @@ body {
 input, button {
     margin-bottom: 10px;
 }
+
+li img{
+    height: 300px;
+    width: 300px;
+}
+
+li{
+    display: inline-block;
+}
+
+.item-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.items{
+    display: grid;
+    grid-template-columns: 3;
+}
+
+/* buat edit search bar */
+.search{
+    background-color: red;
+}
