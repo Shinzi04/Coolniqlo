@@ -72,8 +72,8 @@ body {
 }
 
 .navbar .navbar-extra {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 /* .navbar .navbar-extra #search-button {
@@ -86,16 +86,16 @@ body {
 
 /* Navbar Search Form */
 .navbar .search-form {
-    top: 100%;
-    right: 7%;
-    background-color: #0e1111;
-    width: 20rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: 0.3s;
+  top: 100%;
+  right: 7%;
+  background-color: #0e1111;
+  width: 20rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.3s;
 }
 
 .navbar .search-form.active {
@@ -171,6 +171,7 @@ body {
   border-radius: 0.6rem;
   box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
 }
+
 /* Item container and items styles */
 .allItems {
   display: flex;
@@ -233,9 +234,11 @@ body {
   flex-direction: column;
   /* background-color: red; */
 }
+
 .item-name {
   flex: 1;
 }
+
 .item-price {
   flex: 1;
   display: flex;
@@ -252,14 +255,15 @@ body {
   /* background-color: yellow; */
 }
 
-.star-rating li{
-    margin-top: 15px;
-    display: inline;
+.star-rating li {
+  margin-top: 15px;
+  display: inline;
 }
 
 .item-image-container img {
   width: 100%;
 }
+
 /* Item container and items styles */
 
 /* buat edit search bar */
@@ -275,5 +279,3 @@ body {
 .search:focus {
   border-color: black !important;
 }
-
-

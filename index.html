@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
     rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
 
   <!-- icons -->
@@ -33,7 +33,7 @@
     </div>
     <a href="#" class="navbar-logo">COOLNIQLO</a>
     <div class="navbar-extra">
-      <a href="javascript:void(0)" ng-click="toggleSearch()">
+      <a href="javascript:void(0)" ng-click="toggleSearch(); clearSearch()">
         <i data-feather="search" ng-show="!showSearch"></i>
         <i data-feather="x" ng-show="showSearch"></i>
       </a>
@@ -56,15 +56,15 @@
               <div class="item-price">
                 {{item.price| currency:'IDR ':'0'}}
               </div>
-              
-              
+
+
             </div>
             <div class="item-rating">
               <ul class="star-rating">
                 <li ng-repeat="n in [1, 2, 3, 4, 5]">
                   <i ng-class="{'fa-solid fa-star': item.rating >= n, 'fa-regular fa-star': item.rating < n}"></i>
                 </li>
-              </ul>            
+              </ul>
             </div>
           </div>
         </div>

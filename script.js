@@ -99,14 +99,17 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
       image: "celana1.jpg",
     },
   ];
-
+  
   $scope.searchText = "";
-    $scope.searchText = "";
-    $scope.showSearch = false;
+  $scope.showSearch = false;
 
-    $scope.toggleSearch = function () {
-      $scope.showSearch = !$scope.showSearch;
-    };
+  $scope.toggleSearch = function () {
+    $scope.showSearch = !$scope.showSearch;
+  };
+
+  $scope.clearSearch = function () {
+    $scope.searchText = "";
+  };
 
   $scope.filterItems = function () {
     return $scope.items.filter((item) => {
@@ -115,4 +118,5 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
       );
     });
   };
+
 });
