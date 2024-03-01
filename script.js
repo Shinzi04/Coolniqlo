@@ -98,6 +98,27 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
       rating: 3,
       image: "celana1.jpg",
     },
+    {
+      name: "Item 3",
+      tags: ["#new", "#trendy"],
+      price: 150000,
+      rating: 3,
+      image: "celana1.jpg",
+    },
+    {
+      name: "Item 4",
+      tags: ["#old"],
+      price: 150000,
+      rating: 3,
+      image: "celana1.jpg",
+    },
+    {
+      name: "TesterItem",
+      tags: ["#new", "#testeritem"],
+      price: 150000,
+      rating: 3,
+      image: "celana1.jpg",
+    },
   ];
 
   $scope.searchText = "";
@@ -109,10 +130,13 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
     };
 
   $scope.filterItems = function () {
-    return $scope.items.filter((item) => {
+    const filteredItems = $scope.items.filter((item) => {
       return item.tags.some((tag) =>
-        tag.toLowerCase().includes($scope.searchText.toLowerCase())
+      tag.toLowerCase().includes($scope.searchText.toLowerCase())
       );
-    });
+    })
+
+    const topItems = filteredItems.slice(0,15);
+    return topItems;
   };
 });
