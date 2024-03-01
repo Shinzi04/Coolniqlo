@@ -109,7 +109,4 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
       );
     });
   };
-  $scope.setRating = function (newRating) {
-    $scope.rating = newRating;
-  };
 });
