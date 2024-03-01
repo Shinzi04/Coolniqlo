@@ -70,6 +70,11 @@ body {
     /* background-color: #fff; */
 }
 
+.navbar .navbar-extra {
+    display: flex;
+    align-items: center;
+}
+
 /* .navbar .navbar-extra #search-button {
   background-color: #fff;
 } */
@@ -80,7 +85,6 @@ body {
 
 /* Navbar Search Form */
 .navbar .search-form {
-    position: absolute;
     top: 100%;
     right: 7%;
     background-color: #0e1111;
