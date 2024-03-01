@@ -18,6 +18,26 @@ body {
   height: 3000px;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ededee;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a24040;
+}
+
 
 
 .navbar {
@@ -212,8 +232,7 @@ body {
   display: flex;
   overflow: hidden;
   align-items: center;
-  height: 100%;
-  height: 350px;
+
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
@@ -278,4 +297,30 @@ body {
 
 .search:focus {
   border-color: black !important;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 22.5%);
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 30%);
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 45%);
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .grid-container {
+    grid-template-columns: repeat(1, 90%);
+  }
 }
