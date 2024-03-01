@@ -25,6 +25,10 @@ angular.module('olshop', [])
       $scope.showSearch = !$scope.showSearch;
     };
 
+    $scope.clearSearch = function () {
+      $scope.searchText = "";
+    };
+
     $scope.filterItems = function () {
       return $scope.items.filter(item => {
         return item.tags.some(tag => tag.toLowerCase().includes($scope.searchText.toLowerCase()));

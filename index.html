@@ -31,7 +31,7 @@
     </div>
     <a href="#" class="navbar-logo">COOLNIQLO</a>
     <div class="navbar-extra">
-      <a href="javascript:void(0)" ng-click="toggleSearch()">
+      <a href="javascript:void(0)" ng-click="toggleSearch(); clearSearch()">
         <i data-feather="search" ng-show="!showSearch"></i>
         <i data-feather="x" ng-show="showSearch"></i>
       </a>
