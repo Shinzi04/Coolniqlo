@@ -11,6 +11,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
     rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
 
   <!-- icons -->
   <script src="https://unpkg.com/feather-icons"></script>
@@ -41,10 +43,30 @@
   </nav>
   <div>
     <div class="grid-container">
-      <div ng-repeat="item in filterItems()">
+      <div ng-repeat="item in filterItems()" class="allItems">
         <div class="item-container">
-          <img ng-src="images/{{ item.image }}" alt="{{ item.name }} image">
-          {{item.name}}
+          <div class="item-image-container">
+            <img ng-src="images/{{ item.image }}" alt="{{ item.name }} image">
+          </div>
+          <div class="item-desc">
+            <div class="item-property">
+              <div class="item-name">
+                {{item.name}}
+              </div>
+              <div class="item-price">
+                {{item.price| currency:'IDR ':'0'}}
+              </div>
+              
+              
+            </div>
+            <div class="item-rating">
+              <ul class="star-rating">
+                <li ng-repeat="n in [1, 2, 3, 4, 5]">
+                  <i ng-class="{'fa-solid fa-star': item.rating >= n, 'fa-regular fa-star': item.rating < n}"></i>
+                </li>
+              </ul>            
+            </div>
+          </div>
         </div>
       </div>
     </div>
