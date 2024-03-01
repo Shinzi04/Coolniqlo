@@ -71,6 +71,11 @@ body {
   /* background-color: #fff; */
 }
 
+.navbar .navbar-extra {
+    display: flex;
+    align-items: center;
+}
+
 /* .navbar .navbar-extra #search-button {
   background-color: #fff;
 } */
@@ -81,17 +86,16 @@ body {
 
 /* Navbar Search Form */
 .navbar .search-form {
-  position: absolute;
-  top: 100%;
-  right: 7%;
-  background-color: #0e1111;
-  width: 20rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: 0.3s;
+    top: 100%;
+    right: 7%;
+    background-color: #0e1111;
+    width: 20rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
 }
 
 .navbar .search-form.active {

@@ -18,7 +18,7 @@
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
-<body>
+<body ng-controller="Controller">
   <!-- Hero Section start-->
   <section class="hero" id="home">
     <main class="content">
@@ -33,12 +33,15 @@
     </div>
     <a href="#" class="navbar-logo">COOLNIQLO</a>
     <div class="navbar-extra">
-      <a href="#" id="search-button"><i data-feather="search"></i></a>
+      <a href="javascript:void(0)" ng-click="toggleSearch()">
+        <i data-feather="search" ng-show="!showSearch"></i>
+        <i data-feather="x" ng-show="showSearch"></i>
+      </a>
+      <input type="text" ng-model="searchText" placeholder="Search by tag" class="search" ng-show="showSearch">
       <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
     </div>
   </nav>
-  <div ng-controller="Controller">
-    <input type="text" ng-model="searchText" placeholder="Search by tag" class="search">
+  <div>
     <div class="grid-container">
       <div ng-repeat="item in filterItems()" class="allItems">
         <div class="item-container">

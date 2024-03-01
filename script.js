@@ -101,6 +101,12 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
   ];
 
   $scope.searchText = "";
+    $scope.searchText = "";
+    $scope.showSearch = false;
+
+    $scope.toggleSearch = function () {
+      $scope.showSearch = !$scope.showSearch;
+    };
 
   $scope.filterItems = function () {
     return $scope.items.filter((item) => {
