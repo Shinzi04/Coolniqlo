@@ -40,8 +40,8 @@
     <div class="grid-container">
       <div ng-repeat="item in filterItems()">
         <div class="item-container">
-          <img ng-src="images/{{ item.image }}" alt="{{ item.name }} image">
-          {{item.name}}
+          <a href="{{item.page}}"><img ng-src="images/{{ item.image }}" alt="{{ item.name }} image"></a>
+          <span>{{item.name}}</span>
         </div>
       </div>
     </div>

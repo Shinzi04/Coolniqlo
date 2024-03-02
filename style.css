@@ -7,6 +7,8 @@
     text-decoration: none;
 }
 
+
+
 html {
     scroll-behavior: smooth;
 }
@@ -15,7 +17,7 @@ body {
     /* margin: 20px; */
     font-family: 'Poppins', sans-serif;
     color: #0e1111;
-    background-color: #000000;
+    background-color: white;
     height: 3000px;
 }
 
