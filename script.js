@@ -6,7 +6,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       price: 150000,
       rating: 4,
       image: 'celana1.jpg',
-      link: ' ',
+      link: 'coba.html',
     },
     {
       name: 'Sepatu Pantofel',
