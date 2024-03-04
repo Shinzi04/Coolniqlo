@@ -80,7 +80,8 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       image: "kacamatahitam.jpeg",
       page: "nextPage/item10.html",
     },
-  ];
+  ],
+
 
 
   $scope.searchText = '';
@@ -102,4 +103,4 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
     const topItems = filteredItems.slice(0, 15);
     return topItems;
   };
-  });
+});

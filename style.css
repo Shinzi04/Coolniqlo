@@ -249,9 +249,27 @@ body {
 .item-rating .btnBeli:hover {
   color: rgb(0, 0, 0);
   border: 1px solid #0e1111;
+  margin-top: 1rem;
+}
+
+.item-rating .btnBeli {
+  color: rgba(14, 17, 17, 0.7);
+  height: 2.5rem;
+  width: 7.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(14, 17, 17, 0.3);
+  transition: all 0.4s ease;
+}
+
+.item-rating .btnBeli:hover {
+  color: rgb(0, 0, 0);
+  border: 1px solid #0e1111;
 }
 
 .star-rating li {
+  margin-top: 1rem;
   margin-top: 1rem;
   display: inline;
 }
