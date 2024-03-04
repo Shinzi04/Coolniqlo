@@ -1,3 +1,11 @@
+//Toggle class active utk hamburger menu
+const navbarNav = document.querySelector('.navbar-nav');
+
+//ketika humburger menu diklik (ARROW FUNCTION)
+document.querySelector('#hamburger-menu').onclick = () => {
+  navbarNav.classList.toggle('active');
+};
+
 angular.module('olshop', []).controller('Controller', function ($scope) {
   $scope.items = [
     {

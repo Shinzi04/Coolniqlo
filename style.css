@@ -14,13 +14,13 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   color: #0e1111;
+  height: 3000px;
   background-color: #000000;
 }
 
 .navbar {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  justify-content: space-between;
   justify-items: center;
   padding: 1.5rem 7%;
   background-color: rgba(255, 255, 255, 1);
@@ -59,52 +59,33 @@ body {
   transform: scaleX(0.5);
 }
 
-.navbar .navbar-extra a {
-  color: #0e1111;
-  margin: 0 0.5rem;
-  /* background-color: #fff; */
-}
-
 .navbar .navbar-extra {
   display: flex;
   align-items: center;
 }
 
+.navbar .navbar-extra a {
+  color: #0e1111;
+  margin: 0 0.5rem;
+  display: flex;
+}
+
+/* buat edit search bar */
+.search {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid #ccc;
+  height: 1.8rem;
+  border-radius: 15px;
+  transition: border-color 0.3s;
+  text-indent: 10px;
+}
+
+.search:focus {
+  border-color: #0e1111 !important;
+}
+
 #hamburger-menu {
   display: none;
-}
-
-/* Navbar Search Form */
-.navbar .search-form {
-  top: 100%;
-  right: 7%;
-  background-color: #0e1111;
-  width: 20rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: 0.3s;
-}
-
-.navbar .search-form.active {
-  transform: scaleY(1);
-}
-
-.navbar .search-form input {
-  height: 100%;
-  width: 100%;
-  font-size: 1.3rem;
-  color: #0e1111;
-  padding: 1rem;
-}
-
-.navbar .search-form label {
-  cursor: pointer;
-  font-size: 2rem;
-  margin-right: 1.5rem;
-  color: #ffffff;
 }
 
 /* Hero Section  */
@@ -166,13 +147,13 @@ body {
   padding-top: 7rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
-  gap: 15px;
-  row-gap: 80px;
+  gap: 1rem;
+  row-gap: 5rem;
 }
 
 .item-container {
-  width: 300px;
-  height: 400px;
+  width: 19rem;
+  height: 25rem;
   display: flex;
   overflow: hidden;
   border-radius: 10px;
@@ -203,14 +184,12 @@ body {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  /* background-color: blue; */
 }
 
 .item-property {
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* background-color: red; */
 }
 
 .item-name {
@@ -261,20 +240,6 @@ body {
 
 /* Item container and items styles */
 
-/* buat edit search bar */
-.search {
-  background-color: white;
-  border: 2px solid #ccc;
-  height: 1.8;
-  border-radius: 15px;
-  transition: border-color 0.3s;
-  text-indent: 10px;
-}
-
-.search:focus {
-  border-color: #0e1111 !important;
-}
-
 footer {
   background-color: white;
   text-align: center;
@@ -312,4 +277,60 @@ footer .credit {
 footer .credit a {
   color: #0e1111;
   font-weight: 700;
+}
+
+/* Media Query */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+/* tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  #hamburger-menu {
+    display: inline-block;
+    color: #0e1111;
+    cursor: pointer;
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: white;
+    width: 30rem;
+    height: 100vh;
+    transition: 0.4s;
+  }
+
+  .navbar .navbar-nav.active {
+    left: 0;
+  }
+
+  .navbar .navbar-nav a {
+    color: #0e1111;
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-nav a::after {
+    /* Sumbu x=0, y=0, jadi disebelah kiri*/
+    transform-origin: 0 0;
+  }
+  .navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+  }
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
 }
