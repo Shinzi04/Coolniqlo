@@ -350,7 +350,6 @@ footer .credit a {
   }
 
   .navbar .navbar-nav a::after {
-    /* Sumbu x=0, y=0, jadi disebelah kiri*/
     transform-origin: 0 0;
   }
   .navbar .navbar-nav a:hover::after {
@@ -361,6 +360,37 @@ footer .credit a {
 /* Mobile */
 @media (max-width: 450px) {
   html {
-    font-size: 55%;
+    font-size: 95%;
+  }
+
+  .hero {
+    min-height: 200vh;
+  }
+
+  .hero .content {
+    margin-top: -25rem;
+  }
+
+  .hero .content .cta {
+    font-size: 1.3rem;
+    padding: 1.5rem 3.5rem;
+  }
+
+  .hero .content p {
+    font-size: 1.5rem;
+  }
+
+  .grid-container {
+    margin: 0 auto;
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    gap: 1rem;
+    row-gap: 5rem;
+  }
+
+  .item-container {
+    width: 25rem;
+    height: 31rem;
   }
 }
