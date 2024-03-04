@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="olshop" ng-controller="Controller">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ items[12].name }}</title>
+    <link rel="stylesheet" href="buy.css" />    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+    <nav class="navbar">
+    <a href="../index.html" class="navbar-logo">COOLNIQLO</a>
+    </nav>
+
+
+    <div class="bigContainer">
+        <div class="imageBox">
+            <img src="../items/kemeja_pastel/1.jpg" alt="" class="displayImage">
+
+
+            <div class="boxGambarKecil">
+                <img src="../items/kemeja_pastel/1.jpg" alt="" class="miniImage">
+                <img src="../items/kemeja_pastel/2.jpg" alt="" class="miniImage">
+                <img src="../items/kemeja_pastel/3.jpg" alt="" class="miniImage">
+                <img src="../items/kemeja_pastel/4.jpg" alt="" class="miniImage">
+            </div>
+        </div>
+
+        <div class="textBox">
+            <p class="itemName">{{ items[12].name }}</p>
+            <div class="rating">
+                <span class="purchaseHistory">Terjual 8+</span>
+                <span class="fa fa-star" style="font-size:0.9rem"></span>
+                <span class="fa fa-star" style="font-size:0.9rem"></span>
+                <span class="fa fa-star" style="font-size:0.9rem"></span>
+                <span class="fa fa-star" style="font-size:0.9rem"></span>
+                <span class="fa fa-star-o" style="font-size:0.9rem"></span>
+    
+            </div>
+
+            
+            <div>
+                <p class="priceTag">{{items[12].price| currency:'IDR ':'0'}}</p>
+            </div>
+
+            <p class="itemDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!</p>
+            
+            <div class="buttonBox">
+                <button class="cartButton">
+                    + Masukan Keranjang
+                </button>
+
+                <button class="buyButton">
+                    Beli Langsung
+                </button>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="buy.js"></script>
+    <script src="../script.js"></script>
+
+</body>
+</html>
