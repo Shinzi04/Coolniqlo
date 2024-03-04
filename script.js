@@ -1,5 +1,5 @@
 angular.module('olshop', []).controller('Controller', function ($scope) {
-  ($scope.items = [
+  $scope.items = [
     {
       name: 'Celana Panjang Hitam',
       tags: ['#Celana Panjang Hitam'],
@@ -17,16 +17,16 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       page: 'nextPage/item2.html',
     },
     {
-      name: 'Baju Kemeja Putih',
-      tags: ['#Baju Kemeja Putih'],
+      name: 'Kemeja Putih Lengan Pendek',
+      tags: ['#Kemeja Putih Lengan Pendek'],
       price: 125000,
       rating: 5,
       image: 'baju_kemeja_putih_1.jpg',
       page: 'nextPage/item3.html',
     },
     {
-      name: 'Kemeja Kotak Hijau',
-      tags: ['#Kemeja Kotak Hijau'],
+      name: 'Kemeja Flanel Motif Kotak',
+      tags: ['#Kemeja Flanel Motif Kotak'],
       price: 150000,
       rating: 3,
       image: 'kemeja_kotak_hijau.jpg',
@@ -65,8 +65,8 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       page: 'nextPage/item8.html',
     },
     {
-      name: 'Kaus Kaki Hitam',
-      tags: ['Kaus Kaki Hitam'],
+      name: 'Kaus Kaki Hitam Pendek',
+      tags: ['Kaus Kaki Hitam Pendek'],
       price: 18000,
       rating: 5,
       image: 'kauskaki.jpg',
@@ -80,8 +80,57 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       image: 'kacamatahitam.jpeg',
       page: 'nextPage/item10.html',
     },
-  ]),
-    ($scope.searchText = '');
+    {
+      name: 'Mantel Berkerah',
+      tags: ['Mantel Berkerah'],
+      price: 400000,
+      rating: 5,
+      image: 'mantel_berkerah.jpg',
+      page: 'nextPage/item11.html',
+    },
+    {
+      name: 'Tas Bahu',
+      tags: ['Tas Bahu'],
+      price: 140000,
+      rating: 4,
+      image: 'tas_bahu.jpg',
+      page: 'nextPage/item12.html',
+    },
+    {
+      name: 'Kemeja Pastel',
+      tags: ['Kemeja Pastel'],
+      price: 145000,
+      rating: 4,
+      image: 'kemeja_pastel.jpg',
+      page: 'nextPage/item13.html',
+    },
+    {
+      name: 'Rok Panjang',
+      tags: ['Rok Panjang'],
+      price: 200000,
+      rating: 5,
+      image: 'rok_panjang.jpg',
+      page: 'nextPage/item14.html',
+    },
+    {
+      name: 'Kardigan',
+      tags: ['Kardigan'],
+      price: 250000,
+      rating: 5,
+      image: 'kardigan.jpg',
+      page: 'nextPage/item15.html',
+    },
+    {
+      name: 'Tester Item',
+      tags: ['Tester Item'],
+      price: 99999999999,
+      rating: 5,
+      image: 'rickroll.jpg',
+      page: '',
+    },
+  ];
+
+  $scope.searchText = '';
   $scope.showSearch = false;
 
   $scope.toggleSearch = function () {
