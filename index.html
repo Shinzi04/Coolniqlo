@@ -47,7 +47,7 @@
       <div ng-repeat="item in filterItems()" class="allItems">
         <div class="item-container">
           <div class="item-image-container">
-            <a href="{{ item.link }}" target="_blank">
+            <a href="{{ item.page }}">
               <img ng-src="images/{{ item.image }}" alt="{{ item.name }} image" />
             </a>
           </div>
@@ -57,7 +57,7 @@
               <div class="item-price">{{item.price| currency:'IDR ':'0'}}</div>
             </div>
             <div class="item-rating">
-              <a href="{{ item.link }}" target="_blank" class="btnBeli">Beli</a>
+              <a href="{{ item.page }}" class="btnBeli">Beli</a>
               <ul class="star-rating">
                 <li ng-repeat="n in [1, 2, 3, 4, 5]">
                   <i ng-class="{'fa-solid fa-star': item.rating >= n, 'fa-regular fa-star': item.rating < n}"></i>

@@ -14,7 +14,6 @@ html {
 body {
   font-family: 'Poppins', sans-serif;
   color: #0e1111;
-  height: 3000px;
   background-color: #000000;
 }
 
@@ -226,6 +225,23 @@ body {
 .item-rating .btnBeli:hover {
   color: rgb(0, 0, 0);
   border: 1px solid #0e1111;
+  margin-top: 1rem;
+}
+
+.item-rating .btnBeli {
+  color: rgba(14, 17, 17, 0.7);
+  height: 2.5rem;
+  width: 7.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(14, 17, 17, 0.3);
+  transition: all 0.4s ease;
+}
+
+.item-rating .btnBeli:hover {
+  color: rgb(0, 0, 0);
+  border: 1px solid #0e1111;
 }
 
 .star-rating li {
@@ -239,6 +255,20 @@ body {
 }
 
 /* Item container and items styles */
+
+/* buat edit search bar */
+.search {
+  background-color: white;
+  border: 2px solid #ccc;
+  height: 1.8rem;
+  border-radius: 15px;
+  transition: border-color 0.3s;
+  text-indent: 10px;
+}
+
+.search:focus {
+  border-color: #0e1111 !important;
+}
 
 footer {
   background-color: white;

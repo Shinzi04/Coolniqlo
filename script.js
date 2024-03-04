@@ -1,138 +1,87 @@
-//Toggle class active utk hamburger menu
-const navbarNav = document.querySelector('.navbar-nav');
-
-//ketika humburger menu diklik (ARROW FUNCTION)
-document.querySelector('#hamburger-menu').onclick = () => {
-  navbarNav.classList.toggle('active');
-};
-
 angular.module('olshop', []).controller('Controller', function ($scope) {
-  $scope.items = [
+  ($scope.items = [
     {
       name: 'Celana Panjang Hitam',
-      tags: ['Celana Panjang Hitam'],
+      tags: ['#Celana Panjang Hitam'],
       price: 150000,
       rating: 4,
       image: 'celana1.jpg',
-      link: 'coba.html',
+      page: 'nextPage/item1.html',
     },
     {
       name: 'Sepatu Pantofel',
-      tags: ['#sepatu pantofel, #hitam'],
+      tags: ['#Sepatu Pantofel'],
       price: 250000,
       rating: 3,
-      image: 'sepatu_pantofel_1.jpg',
-      link: ' ',
+      image: 'sepatupantofel.jpg',
+      page: 'nextPage/item2.html',
     },
     {
       name: 'Baju Kemeja Putih',
-      tags: ['#baju', '#kemeja putih', ''],
+      tags: ['#Baju Kemeja Putih'],
       price: 125000,
       rating: 5,
       image: 'baju_kemeja_putih_1.jpg',
-      link: ' ',
+      page: 'nextPage/item3.html',
     },
     {
-      name: 'Item 4',
-      tags: ['#old'],
+      name: 'Kemeja Kotak Hijau',
+      tags: ['#Kemeja Kotak Hijau'],
       price: 150000,
       rating: 3,
-      image: 'celana1.jpg',
+      image: 'kemeja_kotak_hijau.jpg',
+      page: 'nextPage/item4.html',
     },
     {
-      name: 'Item 5',
-      tags: ['#new', '#trendy'],
-      price: 150000,
+      name: 'Kaus Putih Polos',
+      tags: ['#Kaus Putih Polos'],
+      price: 88000,
       rating: 3,
-      image: 'celana1.jpg',
+      image: 'kaosputih.jpg',
+      page: 'nextPage/item5.html',
     },
     {
-      name: 'Item 3',
-      tags: ['#new', '#trendy'],
-      price: 150000,
+      name: 'Celana Pendek Hitam',
+      tags: ['Celana Pendek Hitam'],
+      price: 45000,
       rating: 3,
-      image: 'celana1.jpg',
+      image: 'celanapendekhitam.jpg',
+      page: 'nextPage/item6.html',
     },
     {
-      name: 'Item 4',
-      tags: ['#old'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
+      name: 'Celana Jeans Denim',
+      tags: ['Celana Jeans Denim'],
+      price: 200000,
+      rating: 5,
+      image: 'celanajeansdenim.jpg',
+      page: 'nextPage/item7.html',
     },
     {
-      name: 'Item 5',
-      tags: ['#new', '#trendy'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
+      name: 'Dasi Hitam Polos',
+      tags: ['Dasi Hitam Polos'],
+      price: 30000,
+      rating: 4,
+      image: 'dasihitam.jpg',
+      page: 'nextPage/item8.html',
     },
     {
-      name: 'Item 3',
-      tags: ['#new', '#trendy'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
+      name: 'Kaus Kaki Hitam',
+      tags: ['Kaus Kaki Hitam'],
+      price: 18000,
+      rating: 5,
+      image: 'kauskaki.jpg',
+      page: 'nextPage/item9.html',
     },
     {
-      name: 'Item 4',
-      tags: ['#old'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
+      name: 'Kacamata Hitam',
+      tags: ['Kacamata Hitam'],
+      price: 64000,
+      rating: 5,
+      image: 'kacamatahitam.jpeg',
+      page: 'nextPage/item10.html',
     },
-    {
-      name: 'Item 5',
-      tags: ['#new', '#trendy'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
-    },
-    {
-      name: 'Item 3',
-      tags: ['#new', '#trendy'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
-    },
-    {
-      name: 'Item 4',
-      tags: ['#old'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
-    },
-    {
-      name: 'Item 5',
-      tags: ['#new', '#trendy'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
-    },
-    {
-      name: 'Item 3',
-      tags: ['#new', '#trendy'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
-    },
-    {
-      name: 'Item 4',
-      tags: ['#old'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
-    },
-    {
-      name: 'TesterItem',
-      tags: ['#new', '#testeritem'],
-      price: 150000,
-      rating: 3,
-      image: 'celana1.jpg',
-    },
-  ];
-
-  $scope.searchText = '';
+  ]),
+    ($scope.searchText = '');
   $scope.showSearch = false;
 
   $scope.toggleSearch = function () {
@@ -152,3 +101,11 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
     return topItems;
   };
 });
+
+//Toggle class active utk hamburger menu
+const navbarNav = document.querySelector('.navbar-nav');
+
+//ketika humburger menu diklik (ARROW FUNCTION)
+document.querySelector('#hamburger-menu').onclick = () => {
+  navbarNav.classList.toggle('active');
+};
