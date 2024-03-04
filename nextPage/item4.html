@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="olshop" ng-controller="Controller">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ items[3].name }}</title>
     <link rel="stylesheet" href="buy.css" />    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,7 +32,7 @@
         </div>
 
         <div class="textBox">
-            <p class="itemName">Kemeja Flanel Pria Motif Kotak</p>
+            <p class="itemName">{{ items[3].name }}</p>
             <div class="rating">
                 <span class="purchaseHistory">Terjual 9+</span>
                 <span class="fa fa-star" style="font-size:0.9rem"></span>
@@ -42,7 +42,7 @@
                 <span class="fa fa-star-o" style="font-size:0.9rem"></span>
             </div>
 
-            <div ng-app="olshop" ng-controller="Controller">
+            <div>
                 <p class="priceTag">{{items[3].price| currency:'IDR ':'0'}}</p>
             </div>
 
