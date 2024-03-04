@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="olshop" ng-controller="Controller">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{{ items[1].name }}</title>
     <link rel="stylesheet" href="buy.css" />    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,7 +33,7 @@
         </div>
 
         <div class="textBox">
-            <p class="itemName">Sepatu Pantofel Pria Kantor Bahan Kulit </p>
+            <p class="itemName">{{ items[1].name }}</p>
             <div class="rating">
                 <span class="purchaseHistory">Terjual 39+</span>
                 <span class="fa fa-star" style="font-size:0.9rem"></span>
@@ -43,8 +43,8 @@
                 <span class="fa fa-star-o" style="font-size:0.9rem"></span>
             </div>
 
-            <div ng-app="olshop" ng-controller="Controller">
-                <p class="priceTag">{{items[1].price| currency:'IDR ':'0'}}</p>
+            <div>
+                <p class="priceTag">{{ items[1].price| currency:'IDR ':'0' }}</p>
             </div>
 
             <p class="itemDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!</p>
