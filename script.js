@@ -146,7 +146,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       return item.tags.some((tag) => tag.toLowerCase().includes($scope.searchText.toLowerCase()));
     });
 
-    const topItems = filteredItems.slice(0, 15);
+    const topItems = filteredItems.slice(0, 10);
     return topItems;
   };
 });
