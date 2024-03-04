@@ -137,6 +137,14 @@ body {
   justify-content: space-around;
 }
 
+.star-rating li {
+  display: inline;
+}
+
+.penengah-bintang{
+  margin-left: 0.3rem;
+}
+
 footer {
   background-color: #0e1111;
   text-align: center;
