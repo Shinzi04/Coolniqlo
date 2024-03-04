@@ -14,50 +14,20 @@ body {
 .navbar {
   justify-content: center;
   padding: 1.5rem 7%;
-  background-color: rgba(255, 255, 255, 1);
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
+  border-bottom: 1px solid #0e1111;
+  background-color: white;
+  margin: 0 0.5rem;
+  display: flex;
 }
 
 .navbar .navbar-logo {
   font-size: 1.7rem;
   font-weight: 700;
   color: #0e1111;
-}
-
-.navbar .navbar-nav a {
-  color: #0e1111;
-  display: inline-block;
-  font-size: 1.1rem;
-  margin: 0 1rem;
-  padding-top: 0.5rem;
-}
-
-.navbar a:hover {
-  color: #0e1111;
-}
-
-.navbar a::after {
-  padding-bottom: 0.5rem;
-  border-bottom: 0.1rem solid #0e1111;
-  transform: scaleX(0);
-  transition: 0.2s linear;
-}
-
-.navbar a:hover::after {
-  transform: scaleX(0.5);
-}
-
-.navbar {
-  color: #0e1111;
-  margin: 0 0.5rem;
-  /* background-color: #fff; */
-}
-
-.navbar {
-  display: flex;
 }
 
 .displayImage {
@@ -107,9 +77,7 @@ body {
 
 .bigContainer {
   display: flex;
-  justify-content: center;
   margin: 2rem auto;
-
   width: 80%;
 }
 
@@ -167,4 +135,87 @@ body {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
+}
+
+footer {
+  background-color: #0e1111;
+  text-align: center;
+  padding: 1rem 0 1.5rem;
+  margin-top: 3rem;
+  color: white;
+}
+
+footer .socials {
+  padding: 1rem 0;
+}
+
+footer .socials a {
+  color: #ffffff;
+  margin: 1rem;
+}
+
+footer .socials a:hover,
+footer .links a:hover {
+  color: #bbbbbb;
+}
+
+footer .links {
+  margin-bottom: 1.4rem;
+}
+
+footer .links a {
+  color: #ffffff;
+  padding: 0.7rem 1rem;
+}
+
+footer .credit {
+  font-size: 0.8rem;
+}
+
+footer .credit a {
+  color: #e3e3e3;
+  font-weight: 700;
+}
+
+/* Media Query */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+/* tablet */
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  .bigContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bigContainer .imageBox {
+    margin: 0 auto 5rem;
+  }
+
+  .textBox {
+    margin: 0 auto;
+  }
+
+  .buttonBox {
+    text-align: center;
+  }
+
+  .cartButton,
+  .buyButton {
+    display: block;
+    margin: 0.5rem auto;
+  }
+}
+
+/* Mobile */
+@media (max-width: 450px) {
+  html {
+    font-size: 95%;
+  }
 }
