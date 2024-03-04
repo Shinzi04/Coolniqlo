@@ -13,7 +13,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       name: 'Sepatu Pantofel',
       tags: ['#Sepatu Pantofel'],
       price: 250000,
-      rating: 3,
+      rating: 5,
       image: 'sepatupantofel.jpg',
       page: 'nextPage/item2.html',
       history: 'Terjual 30+',
