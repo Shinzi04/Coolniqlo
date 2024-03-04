@@ -81,6 +81,46 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       page: 'nextPage/item10.html',
     },
     {
+      name: 'Mantel Berkerah',
+      tags: ['Mantel Berkerah'],
+      price: 400000,
+      rating: 5,
+      image: 'mantel_berkerah.jpg',
+      page: 'nextPage/item11.html',
+    },
+    {
+      name: 'Tas Bahu',
+      tags: ['Tas Bahu'],
+      price: 140000,
+      rating: 4,
+      image: 'tas_bahu.jpg',
+      page: 'nextPage/item12.html',
+    },
+    {
+      name: 'Kemeja Pastel',
+      tags: ['Kemeja Pastel'],
+      price: 145000,
+      rating: 4,
+      image: 'kemeja_pastel.jpg',
+      page: 'nextPage/item13.html',
+    },
+    {
+      name: 'Rok Panjang',
+      tags: ['Rok Panjang'],
+      price: 200000,
+      rating: 5,
+      image: 'rok_panjang.jpg',
+      page: 'nextPage/item14.html',
+    },
+    {
+      name: 'Kardigan',
+      tags: ['Kardigan'],
+      price: 250000,
+      rating: 5,
+      image: 'kardigan.jpg',
+      page: 'nextPage/item15.html',
+    },
+    {
       name: 'Tester Item',
       tags: ['Tester Item'],
       price: 99999999999,
@@ -106,7 +146,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       return item.tags.some((tag) => tag.toLowerCase().includes($scope.searchText.toLowerCase()));
     });
 
-    const topItems = filteredItems.slice(0, 10);
+    const topItems = filteredItems.slice(0, 15);
     return topItems;
   };
 });
