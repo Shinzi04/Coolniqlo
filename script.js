@@ -7,14 +7,16 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 4,
       image: 'celana1.jpg',
       page: 'nextPage/item1.html',
+      history: 'Terjual 130+',
     },
     {
       name: 'Sepatu Pantofel',
       tags: ['#Sepatu Pantofel'],
       price: 250000,
-      rating: 3,
+      rating: 5,
       image: 'sepatupantofel.jpg',
       page: 'nextPage/item2.html',
+      history: 'Terjual 30+',
     },
     {
       name: 'Kemeja Putih Lengan Pendek',
@@ -23,6 +25,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 5,
       image: 'baju_kemeja_putih_1.jpg',
       page: 'nextPage/item3.html',
+      history: 'Terjual 432+',
     },
     {
       name: 'Kemeja Flanel Motif Kotak',
@@ -31,6 +34,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 3,
       image: 'kemeja_kotak_hijau.jpg',
       page: 'nextPage/item4.html',
+      history: 'Terjual 9+',
     },
     {
       name: 'Kaus Putih Polos',
@@ -39,6 +43,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 3,
       image: 'kaosputih.jpg',
       page: 'nextPage/item5.html',
+      history: 'Terjual 130+',
     },
     {
       name: 'Celana Pendek Hitam',
@@ -47,6 +52,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 3,
       image: 'celanapendekhitam.jpg',
       page: 'nextPage/item6.html',
+      history: 'Terjual 3+',
     },
     {
       name: 'Celana Jeans Denim',
@@ -55,6 +61,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 5,
       image: 'celanajeansdenim.jpg',
       page: 'nextPage/item7.html',
+      history: 'Terjual 146+',
     },
     {
       name: 'Dasi Hitam Polos',
@@ -63,6 +70,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 4,
       image: 'dasihitam.jpg',
       page: 'nextPage/item8.html',
+      history: 'Terjual 34+',
     },
     {
       name: 'Kaus Kaki Hitam Pendek',
@@ -71,6 +79,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 5,
       image: 'kauskaki.jpg',
       page: 'nextPage/item9.html',
+      history: 'Terjual 534+',
     },
     {
       name: 'Kacamata Hitam',
@@ -79,6 +88,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 5,
       image: 'kacamatahitam.jpeg',
       page: 'nextPage/item10.html',
+      history: 'Terjual 76+',
     },
     {
       name: 'Mantel Berkerah',
@@ -87,6 +97,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 5,
       image: 'mantel_berkerah.jpg',
       page: 'nextPage/item11.html',
+      history: 'Terjual 3+',
     },
     {
       name: 'Tas Bahu',
@@ -95,6 +106,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 4,
       image: 'tas_bahu.jpg',
       page: 'nextPage/item12.html',
+      history: 'Terjual 12+',
     },
     {
       name: 'Kemeja Pastel',
@@ -103,6 +115,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 4,
       image: 'kemeja_pastel.jpg',
       page: 'nextPage/item13.html',
+      history: 'Terjual 8+',
     },
     {
       name: 'Rok Panjang',
@@ -111,6 +124,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 5,
       image: 'rok_panjang.jpg',
       page: 'nextPage/item14.html',
+      history: 'Terjual 80+',
     },
     {
       name: 'Kardigan',
@@ -119,6 +133,7 @@ angular.module('olshop', []).controller('Controller', function ($scope) {
       rating: 5,
       image: 'kardigan.jpg',
       page: 'nextPage/item15.html',
+      history: 'Terjual 21+',
     },
     {
       name: 'Tester Item',
