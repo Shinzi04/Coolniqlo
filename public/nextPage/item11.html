@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ items[4].name }}</title>
+    <title>{{ items[10].name }}</title>
     <link rel="stylesheet" href="buy.css" />    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
       rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="../angular-1.8.2/angular.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
@@ -22,26 +22,28 @@
 
     <div class="bigContainer">
         <div class="imageBox">
-            <img src="../items/kaosputih/1.jpg" alt="" class="displayImage">
+            <img src="../assets/items/mantel_berkerah/1.jpg" alt="" class="displayImage">
+
 
             <div class="boxGambarKecil">
-                <img src="../items/kaosputih/1.jpg" alt="" class="miniImage">
-                <img src="../items/kaosputih/2.jpg" alt="" class="miniImage">
-                <img src="../items/kaosputih/3.jpg" alt="" class="miniImage">
-                <img src="../items/kaosputih/4.jpg" alt="" class="miniImage">
-                <img src="../items/kaosputih/5.jpg" alt="" class="miniImage">
+                <img src="../assets/items/mantel_berkerah/1.jpg" alt="" class="miniImage">
+                <img src="../assets/items/mantel_berkerah/2.jpg" alt="" class="miniImage">
+                <img src="../assets/items/mantel_berkerah/3.jpg" alt="" class="miniImage">
+                <img src="../assets/items/mantel_berkerah/4.jpg" alt="" class="miniImage">
             </div>
         </div>
 
         <div class="textBox">
-            <p class="itemName">{{ items[4].name }}</p>
+            <p class="itemName">{{ items[10].name }}</p>
             <div class="rating">
-                <span class="purchaseHistory">{{items[4].history}}</span>
-                <span ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{'fa fa-star': items[4].rating >= n,'fa fa-star-o': items[4].rating < n}" style="font-size:0.9rem" class="penengah-bintang"></span>
+                <span class="purchaseHistory">{{items[10].history}}</span>
+                <span ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{'fa fa-star': items[10].rating >= n,'fa fa-star-o': items[10].rating < n}" style="font-size:0.9rem" class="penengah-bintang"></span>
+    
             </div>
 
+            
             <div>
-                <p class="priceTag">{{items[4].price| currency:'IDR ':'0'}}</p>
+                <p class="priceTag">{{items[10].price| currency:'IDR ':'0'}}</p>
             </div>
 
             <p class="itemDescription">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!</p>
@@ -59,6 +61,7 @@
 
 
     </div>
+
     <footer id="contact">
         <div class="socials">
           <a href="#"><i data-feather="instagram"></i></a>
@@ -76,15 +79,12 @@
           <p>Created by <a href="#home">COOLNIQLO</a>. | &copy; 2024.</p>
         </div>
       </footer>
-    <script>
+      <script>
         feather.replace();
       </script>
-
-
+    
     <script src="buy.js"></script>
     <script src="../script.js"></script>
-
-</script>
 
 </body>
 </html>

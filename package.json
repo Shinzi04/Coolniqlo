@@ -1,0 +1,25 @@
+{
+  "name": "coolniqlo",
+  "version": "1.0.0",
+  "description": "Coolniqlo\r | NIM|Nama| \r | ------------- |:-------------| \r |535220118|Shinzi|\r |535220121|Jonathan Kennedy| \r |535220142|Gabriel Nathanael Irawan|\r |535220161|Felix Ferdinand|",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shinzi04/Coolniqlo.git"
+  },
+  "author": "Shinzi, Jonathan K. Torsandy, Gabriel N. Irawan, Felix Ferdinand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shinzi04/Coolniqlo/issues"
+  },
+  "homepage": "https://github.com/Shinzi04/Coolniqlo#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.3",
+    "nodemon": "^3.1.0"
+  }
+}
