@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ items[1].name }}</title>
+    <title>{{ items[7].name }}</title>
     <link rel="stylesheet" href="buy.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-
-    <!-- icons -->
+    <script src="../angular-1.8.2/angular.min.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
   <body>
@@ -21,25 +19,25 @@
 
     <div class="bigContainer">
       <div class="imageBox">
-        <img src="../items/sepatupantofel/1.jpg" alt="" class="displayImage" />
+        <img src="../assets/items/dasihitam/1.jpg" alt="" class="displayImage" />
 
         <div class="boxGambarKecil">
-          <img src="../items/sepatupantofel/1.jpg" alt="" class="miniImage" />
-          <img src="../items/sepatupantofel/2.jpg" alt="" class="miniImage" />
-          <img src="../items/sepatupantofel/3.jpg" alt="" class="miniImage" />
-          <img src="../items/sepatupantofel/4.png" alt="" class="miniImage" />
+          <img src="../assets/items/dasihitam/1.jpg" alt="" class="miniImage" />
+          <img src="../assets/items/dasihitam/2.jpg" alt="" class="miniImage" />
+          <img src="../assets/items/dasihitam/3.jpg" alt="" class="miniImage" />
+          <img src="../assets/items/dasihitam/4.png" alt="" class="miniImage" />
         </div>
       </div>
 
       <div class="textBox">
-        <p class="itemName">{{ items[1].name }}</p>
+        <p class="itemName">{{ items[7].name }}</p>
         <div class="rating">
-          <span class="purchaseHistory">{{items[1].history}}</span>
-          <span ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{'fa fa-star': items[1].rating >= n,'fa fa-star-o': items[1].rating < n}" style="font-size:0.9rem" class="penengah-bintang"></span>
+            <span class="purchaseHistory">{{items[7].history}}</span>
+            <span ng-repeat="n in [1, 2, 3, 4, 5]" ng-class="{'fa fa-star': items[7].rating >= n,'fa fa-star-o': items[7].rating < n}" style="font-size:0.9rem" class="penengah-bintang"></span>
         </div>
 
         <div>
-          <p class="priceTag">{{ items[1].price| currency:'IDR ':'0' }}</p>
+          <p class="priceTag">{{items[7].price| currency:'IDR ':'0'}}</p>
         </div>
 
         <p class="itemDescription">
@@ -72,7 +70,6 @@
         <p>Created by <a href="#home">COOLNIQLO</a>. | &copy; 2024.</p>
       </div>
     </footer>
-
     <script>
       feather.replace();
     </script>
