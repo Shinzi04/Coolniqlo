@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #0e1111;
   background-color: #000000;
 }
@@ -46,7 +46,7 @@ body {
 }
 
 .navbar .navbar-nav a::after {
-  content: '';
+  content: "";
   display: block;
   padding-bottom: 0.5rem;
   border-bottom: 0.1rem solid #0e1111;
@@ -92,7 +92,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background-image: url('assets/bg/Hero.jpg');
+  background-image: url("assets/bg/Hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -315,6 +315,7 @@ footer .credit a {
     font-size: 75%;
   }
 }
+
 /* tablet */
 @media (max-width: 768px) {
   html {
@@ -352,6 +353,7 @@ footer .credit a {
   .navbar .navbar-nav a::after {
     transform-origin: 0 0;
   }
+
   .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
   }
