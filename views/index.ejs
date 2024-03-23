@@ -11,9 +11,9 @@
         <a href="#product" class="cta">Beli Sekarang</a>
       </main>
     </section>
-
-    <!-- NAVBAR -->
+    <!-- nav -->
     <%- include('layouts/nav.ejs') %>
+
     <div class="grid-container" id="product">
       <div ng-repeat="item in filterItems()" class="allItems">
         <div class="item-container">
@@ -39,14 +39,12 @@
         </div>
       </div>
     </div>
-
-    <!-- Footer-->
+    <!-- footer -->
     <%- include('layouts/footer.ejs') %>
 
     <script>
       feather.replace();
     </script>
-
     <script src="script.js"></script>
   </body>
 </html>

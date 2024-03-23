@@ -315,6 +315,7 @@ footer .credit a {
     font-size: 75%;
   }
 }
+
 /* tablet */
 @media (max-width: 768px) {
   html {
@@ -352,6 +353,7 @@ footer .credit a {
   .navbar .navbar-nav a::after {
     transform-origin: 0 0;
   }
+
   .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
   }
