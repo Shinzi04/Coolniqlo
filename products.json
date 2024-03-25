@@ -1,5 +1,6 @@
-{
-  "item1": {
+[
+  {
+    "id": "cleana-panjang-hitam",
     "name": "Celana Panjang Hitam",
     "history": "Terjual 130+",
     "rating": 4,
@@ -14,7 +15,8 @@
       "../assets/items/celanapanjanghitam/5.jpeg"
     ]
   },
-  "item2": {
+  {
+    "id": "sepatu-pantofel",
     "name": "Sepatu Pantofel",
     "history": "Terjual 30+",
     "rating": 5,
@@ -28,7 +30,8 @@
       "../assets/items/sepatupantofel/4.png"
     ]
   },
-  "item3": {
+  {
+    "id": "kemeja-putih-lengan-pendek",
     "name": "Kemeja Putih Lengan Pendek",
     "history": "Terjual 432+",
     "rating": 5,
@@ -43,7 +46,8 @@
       "../assets/items/bajukemejaputih/5.jpg"
     ]
   },
-  "item4": {
+  {
+    "id": "kemeja-flanel-motif-kotak",
     "name": "Kemeja Flanel Motif Kotak",
     "history": "Terjual 9+",
     "rating": 3,
@@ -57,7 +61,8 @@
       "../assets/items/kemejakotak/4.jpg"
     ]
   },
-  "item5": {
+  {
+    "id": "kaus-potih-polos",
     "name": "Kaus Putih Polos",
     "history": "Terjual 130+",
     "rating": 3,
@@ -72,7 +77,8 @@
       "../assets/items/kaosputih/5.jpg"
     ]
   },
-  "item6": {
+  {
+    "id": "cleana-pendek-hitam",
     "name": "Celana Pendek Hitam",
     "history": "Terjual 3+",
     "rating": 3,
@@ -86,7 +92,8 @@
       "../assets/items/celanapendekhitam/4.jpg"
     ]
   },
-  "item7": {
+  {
+    "id": "cleana-jeans-denim",
     "name": "Celana Jeans Denim",
     "history": "Terjual 146+",
     "rating": 5,
@@ -100,7 +107,8 @@
       "../assets/items/celanajeansdenim/4.jpg"
     ]
   },
-  "item8": {
+  {
+    "id": "dasi-hitam-polos",
     "name": "Dasi Hitam Polos",
     "history": "Terjual 34+",
     "rating": 4,
@@ -114,7 +122,23 @@
       "../assets/items/dasihitam/4.jpg"
     ]
   },
-  "item9": {
+  {
+    "id": "sepatu_pantofel",
+    "name": "Sepatu Pantofel",
+    "history": "Terjual 30+",
+    "rating": 5,
+    "price": 250000,
+    "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
+    "bigImage": "../assets/items/sepatupantofel/1.jpg",
+    "smallImages": [
+      "../assets/items/sepatupantofel/1.jpg",
+      "../assets/items/sepatupantofel/2.jpg",
+      "../assets/items/sepatupantofel/3.jpg",
+      "../assets/items/sepatupantofel/4.png"
+    ]
+  },
+  {
+    "id": "kaus-kaki-hitam-pendek",
     "name": "Kaus Kaki Hitam Pendek",
     "history": "Terjual 534+",
     "rating": 5,
@@ -127,7 +151,8 @@
       "../assets/items/kaoskakihitam/3.jpg"
     ]
   },
-  "item10": {
+  {
+    "id": "kacamata-hitam",
     "name": "Kacamata Hitam",
     "history": "Terjual 76+",
     "rating": 5,
@@ -141,7 +166,8 @@
       "../assets/items/kacamatahitam/4.jpeg"
     ]
   },
-  "item11": {
+  {
+    "id": "mantel-berkerah",
     "name": "Mantel Berkerah",
     "history": "Terjual 3+",
     "rating": 5,
@@ -155,7 +181,8 @@
       "../assets/items/mantel_berkerah/4.jpg"
     ]
   },
-  "item12": {
+  {
+    "id": "tas-bahu",
     "name": "Tas Bahu",
     "history": "Terjual 12+",
     "rating": 4,
@@ -168,7 +195,8 @@
       "../assets/items/tas_bahu/3.jpg"
     ]
   },
-  "item13": {
+  {
+    "id": "kemeja-pastel",
     "name": "Kemeja Pastel",
     "history": "Terjual 8+",
     "rating": 4,
@@ -182,7 +210,8 @@
       "../assets/items/kemeja_pastel/4.jpg"
     ]
   },
-  "item14": {
+  {
+    "id": "rok-panjang",
     "name": "Rok Panjang",
     "history": "Terjual 80+",
     "rating": 5,
@@ -195,7 +224,8 @@
       "../assets/items/rok_panjang/3.jpg"
     ]
   },
-  "item15": {
+  {
+    "id": "kardigan",
     "name": "Kardigan",
     "history": "Terjual 21+",
     "rating": 5,
@@ -210,4 +240,4 @@
       "../assets/items/kardigan/5.jpg"
     ]
   }
-}
+]
