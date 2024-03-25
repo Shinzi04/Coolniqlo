@@ -6,7 +6,7 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
       price: 150000,
       rating: 4,
       image: "celana1.jpg",
-      page: "/detail/item1",
+      page: "/detail/celana-panjang-hitam",
     },
     {
       name: "Sepatu Pantofel",
@@ -14,7 +14,7 @@ angular.module("olshop", []).controller("Controller", function ($scope) {
       price: 250000,
       rating: 5,
       image: "sepatupantofel.jpg",
-      page: "/detail/item2",
+      page: "/detail/sepatu-pantofel",
     },
     {
       name: "Kemeja Putih Lengan Pendek",
