@@ -9,6 +9,9 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
@@ -18,6 +21,7 @@ body {
   top: 0;
   left: 0;
   right: 0;
+  z-index: 999;
   border-bottom: 1px solid #0e1111;
   background-color: white;
   margin: 0 0.5rem;
@@ -77,8 +81,9 @@ body {
 
 .bigContainer {
   display: flex;
-  margin: 2rem auto;
+  margin: 3rem auto;
   width: 80%;
+  position: relative;
 }
 
 .buttonBox {
@@ -141,7 +146,7 @@ body {
   display: inline;
 }
 
-.penengah-bintang{
+.penengah-bintang {
   margin-left: 0.3rem;
 }
 
@@ -149,7 +154,7 @@ footer {
   background-color: #0e1111;
   text-align: center;
   padding: 1rem 0 1.5rem;
-  margin-top: 3rem;
+  margin-top: auto;
   color: white;
 }
 
@@ -190,6 +195,39 @@ footer .credit a {
   html {
     font-size: 75%;
   }
+  .bigContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bigContainer .imageBox {
+    margin: 0 auto 5rem;
+  }
+  .displayImage {
+    width: 33rem;
+    height: 33rem;
+  }
+
+  .boxGambarKecil {
+    margin-top: 0.8rem;
+    width: 33rem;
+  }
+
+  .miniImage {
+    width: 6rem;
+  }
+
+  .textBox .itemName {
+    font-size: 2rem;
+  }
+
+  .purchaseHistory {
+    font-size: 1rem;
+  }
+
+  .itemDescription {
+    font-size: 1.2rem;
+  }
 }
 /* tablet */
 @media (max-width: 768px) {
@@ -218,6 +256,25 @@ footer .credit a {
   .buyButton {
     display: block;
     margin: 0.5rem auto;
+  }
+  .displayImage {
+    width: 25rem;
+    height: 25rem;
+  }
+
+  .boxGambarKecil {
+    width: 25rem;
+  }
+  .miniImage {
+    width: 4.75rem;
+  }
+
+  .textBox .itemName {
+    font-size: 1.5rem;
+  }
+
+  .itemDescription {
+    font-size: 1rem;
   }
 }
 

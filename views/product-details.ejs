@@ -10,7 +10,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <script src="../angular-1.8.2/angular.min.js"></script>
   <!-- icons -->
   <script src="https://unpkg.com/feather-icons"></script>
 </head>
@@ -31,24 +30,18 @@
     </div>
     <div class="textBox">
       <!-- nama -->
-      <p class="itemName">
-        <%= productData.name %>
-      </p>
+      <p class="itemName"><%= productData.name %></p>
       <!-- rating -->
       <div class="rating" ng-app="olshop" ng-controller="Controller">
-        <span class="purchaseHistory"><%= productData.history %></span>
+        <span class="purchaseHistory">Terjual <%= productData.sold %></span>
         <% for (let n = 1; n <= 5; n++) { %><span class="penengah-bintang" style="font-size: 0.9rem"><% if (n <= productData.rating) { %><i class="fa fa-star"></i><% } else { %><i class="fa fa-star-o"></i><% } %></span><% } %>
       </div>
       <!-- harga -->
       <div>
-        <p class="priceTag">
-          <%= 'IDR ' + productData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %>
-        </p>
+        <p class="priceTag"><%= 'IDR ' + productData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></p>
       </div>
       <!-- deskripsi -->
-      <p class="itemDescription">
-        <%= productData.description %>
-      </p>
+      <p class="itemDescription"><%= productData.description %></p>
       <!-- tombol -->
       <div class="buttonBox">
         <button class="cartButton">+ Masukan Keranjang</button>
@@ -72,6 +65,7 @@
       <p>Created by <a href="/#home">COOLNIQLO</a>. | &copy; 2024.</p>
     </div>
   </footer>
+
   <script>
     feather.replace();
   </script>

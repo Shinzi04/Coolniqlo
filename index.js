@@ -6,6 +6,8 @@ dotenv.config();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const port = process.env.PORT || 5000;
+const searchItems = require("./custom_modules/search");
+const internal = require("stream"); //
 
 mongoose.connect(process.env.MONGO_URL).then(
   () => console.log(`Database connected ${process.env.MONGO_URL}`),
@@ -20,8 +22,31 @@ app.use("/api/products", require("./routes/api/productListRoutes"));
 app.set("view engine", "ejs");
 
 // route untuk homepage awal
-app.get("/", (req, res) => {
-  res.render("index");
+app.get("/", async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.render("index", { products });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// route untuk query search
+app.get("/search", async (req, res) => {
+  try {
+    const query = req.query.q;
+    let filteredItems = [];
+    if (!query) {
+      filteredItems = await Product.find();
+    } else {
+      filteredItems = await Product.find({
+        name: { $regex: query, $options: "i" },
+      });
+    }
+    res.render("index", { products: filteredItems, query });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 // route untuk masing-masing detail product
@@ -34,7 +59,7 @@ app.get("/detail/:productID", async (req, res) => {
     } else {
       res.status(404).send("Product not found");
     }
-  } catch (err) {
+  } catch (error) {
     res.status(500).send("Internal Server Error");
   }
 });

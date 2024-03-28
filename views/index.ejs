@@ -1,52 +1,67 @@
 <!DOCTYPE html>
-<html ng-app="olshop">
+<html>
+  <%- include('layouts/header.ejs') %>
 
-<%- include('layouts/header.ejs') %>
+  <body>
+    <!-- Hero Section start-->
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>COOLNIQLO FASHION</h1>
+        <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
+        <a href="#product" class="cta">Beli Sekarang</a>
+      </main>
+    </section>
+    <!-- nav -->
+    <%- include('layouts/nav.ejs') %>
 
-<body ng-controller="Controller">
-  <!-- Hero Section start-->
-  <section class="hero" id="home">
-    <main class="content">
-      <h1>COOLNIQLO FASHION</h1>
-      <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
-      <a href="#product" class="cta">Beli Sekarang</a>
-    </main>
-  </section>
-  <!-- nav -->
-  <%- include('layouts/nav.ejs') %>
-
-  <div class="grid-container" id="product">
-    <div ng-repeat="item in filterItems()" class="allItems">
-      <div class="item-container">
-        <div class="item-image-container">
-          <a href="{{ item.page }}">
-            <img ng-src="assets/images/{{ item.image }}" alt="{{ item.name }} image" />
-          </a>
-        </div>
-        <div class="item-desc">
-          <div class="item-property">
-            <div class="item-name">{{item.name}}</div>
-            <div class="item-price">{{item.price| currency:'IDR ':'0'}}</div>
+    <div class="grid-container" id="product">
+        <% products.forEach(product => { %>
+          <div class="item-container">
+            <div class="item-image-container">
+              <!-- gambar dengan link menuju halaman -->
+              <a href="/detail/<%= product.id %>">
+                <img src="<%= product.bigImage %>" alt="<%= product.name %>">
+              </a> 
+            </div>
+            <div class="item-desc">
+              <div class="item-property">
+                <!-- nama barang -->
+                <div class="item-name"><%= product.name %></div>
+                <!-- harga barang yang diformat -->
+                <div class="item-price">
+                  <%= new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price) %>
+                </div>
+                  
+              </div>
+              <div class="item-rating">
+                <!-- tombol beli -->
+                <a href="/detail/<%= product.id %>" class="btnBeli">Beli</a>
+                <!-- tampilan bintang sesuai rating -->
+                <ul class="star-rating">
+                  <!-- tampilan dengan angka -->
+                  <li><%= product.rating %></li>
+                  <li><i class="fa fa-star"></i></li>
+                  <!-- Tampilan bintang -->
+                  <!-- <% for (let n = 1; n <= 5; n++) { %>
+                    <% if (n <= product.rating) { %>
+                        <li><i class="fa fa-star"></i></li>
+                    <% } else { %>
+                        <li><i class="fa fa-star-o"></i></li>
+                    <% } %>  
+                  <% } %> -->
+                  
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="item-rating">
-            <a href="{{ item.page }}" class="btnBeli">Beli</a>
-            <ul class="star-rating">
-              <li ng-repeat="n in [1, 2, 3, 4, 5]">
-                <i ng-class="{'fa-solid fa-star': item.rating >= n, 'fa-regular fa-star': item.rating < n}"></i>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+        <% }) %>
     </div>
-  </div>
-  <!-- footer -->
-  <%- include('layouts/footer.ejs') %>
+    <!-- footer -->
+    <%- include('layouts/footer.ejs') %>
 
-  <script>
-    feather.replace();
-  </script>
-  <script src="script.js"></script>
-</body>
-
+    <script>
+      feather.replace();
+    </script>
+    <script src="script.js"></script>
+  </body>
 </html>
