@@ -6,13 +6,13 @@
     "rating": 4,
     "price": 150000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/celanapanjanghitam/1.jpg",
+    "bigImage": "/../assets/items/celanapanjanghitam/1.jpg",
     "smallImages": [
-      "../assets/items/celanapanjanghitam/1.jpg",
-      "../assets/items/celanapanjanghitam/2.jpg",
-      "../assets/items/celanapanjanghitam/3.jpg",
-      "../assets/items/celanapanjanghitam/4.jpeg",
-      "../assets/items/celanapanjanghitam/5.jpeg"
+      "/../assets/items/celanapanjanghitam/1.jpg",
+      "/../assets/items/celanapanjanghitam/2.jpg",
+      "/../assets/items/celanapanjanghitam/3.jpg",
+      "/../assets/items/celanapanjanghitam/4.jpeg",
+      "/../assets/items/celanapanjanghitam/5.jpeg"
     ]
   },
   {
@@ -22,12 +22,12 @@
     "rating": 5,
     "price": 250000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/sepatupantofel/1.jpg",
+    "bigImage": "/../assets/items/sepatupantofel/1.jpg",
     "smallImages": [
-      "../assets/items/sepatupantofel/1.jpg",
-      "../assets/items/sepatupantofel/2.jpg",
-      "../assets/items/sepatupantofel/3.jpg",
-      "../assets/items/sepatupantofel/4.png"
+      "/../assets/items/sepatupantofel/1.jpg",
+      "/../assets/items/sepatupantofel/2.jpg",
+      "/../assets/items/sepatupantofel/3.jpg",
+      "/../assets/items/sepatupantofel/4.png"
     ]
   },
   {
@@ -37,13 +37,13 @@
     "rating": 5,
     "price": 125000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/bajukemejaputih/1.jpg",
+    "bigImage": "/../assets/items/bajukemejaputih/1.jpg",
     "smallImages": [
-      "../assets/items/bajukemejaputih/1.jpg",
-      "../assets/items/bajukemejaputih/2.jpg",
-      "../assets/items/bajukemejaputih/3.jpg",
-      "../assets/items/bajukemejaputih/4.jpg",
-      "../assets/items/bajukemejaputih/5.jpg"
+      "/../assets/items/bajukemejaputih/1.jpg",
+      "/../assets/items/bajukemejaputih/2.jpg",
+      "/../assets/items/bajukemejaputih/3.jpg",
+      "/../assets/items/bajukemejaputih/4.jpg",
+      "/../assets/items/bajukemejaputih/5.jpg"
     ]
   },
   {
@@ -53,12 +53,12 @@
     "rating": 3,
     "price": 150000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/kemejakotak/1.jpg",
+    "bigImage": "/../assets/items/kemejakotak/1.jpg",
     "smallImages": [
-      "../assets/items/kemejakotak/1.jpg",
-      "../assets/items/kemejakotak/2.jpg",
-      "../assets/items/kemejakotak/3.jpg",
-      "../assets/items/kemejakotak/4.jpg"
+      "/../assets/items/kemejakotak/1.jpg",
+      "/../assets/items/kemejakotak/2.jpg",
+      "/../assets/items/kemejakotak/3.jpg",
+      "/../assets/items/kemejakotak/4.jpg"
     ]
   },
   {
@@ -68,13 +68,13 @@
     "rating": 3,
     "price": 88000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/kaosputih/1.jpg",
+    "bigImage": "/../assets/items/kaosputih/1.jpg",
     "smallImages": [
-      "../assets/items/kaosputih/1.jpg",
-      "../assets/items/kaosputih/2.jpg",
-      "../assets/items/kaosputih/3.jpg",
-      "../assets/items/kaosputih/4.jpg",
-      "../assets/items/kaosputih/5.jpg"
+      "/../assets/items/kaosputih/1.jpg",
+      "/../assets/items/kaosputih/2.jpg",
+      "/../assets/items/kaosputih/3.jpg",
+      "/../assets/items/kaosputih/4.jpg",
+      "/../assets/items/kaosputih/5.jpg"
     ]
   },
   {
@@ -84,12 +84,12 @@
     "rating": 3,
     "price": 45000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/celanapendekhitam/1.jpg",
+    "bigImage": "/../assets/items/celanapendekhitam/1.jpg",
     "smallImages": [
-      "../assets/items/celanapendekhitam/1.jpg",
-      "../assets/items/celanapendekhitam/2.jpg",
-      "../assets/items/celanapendekhitam/3.jpg",
-      "../assets/items/celanapendekhitam/4.jpg"
+      "/../assets/items/celanapendekhitam/1.jpg",
+      "/../assets/items/celanapendekhitam/2.jpg",
+      "/../assets/items/celanapendekhitam/3.jpg",
+      "/../assets/items/celanapendekhitam/4.jpg"
     ]
   },
   {
@@ -99,12 +99,12 @@
     "rating": 5,
     "price": 200000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/celanajeansdenim/1.jpg",
+    "bigImage": "/../assets/items/celanajeansdenim/1.jpg",
     "smallImages": [
-      "../assets/items/celanajeansdenim/1.jpg",
-      "../assets/items/celanajeansdenim/2.jpg",
-      "../assets/items/celanajeansdenim/3.jpg",
-      "../assets/items/celanajeansdenim/4.jpg"
+      "/../assets/items/celanajeansdenim/1.jpg",
+      "/../assets/items/celanajeansdenim/2.jpg",
+      "/../assets/items/celanajeansdenim/3.jpg",
+      "/../assets/items/celanajeansdenim/4.jpg"
     ]
   },
   {
@@ -114,12 +114,12 @@
     "rating": 4,
     "price": 30000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/dasihitam/1.jpg",
+    "bigImage": "/../assets/items/dasihitam/1.jpg",
     "smallImages": [
-      "../assets/items/dasihitam/1.jpg",
-      "../assets/items/dasihitam/2.jpg",
-      "../assets/items/dasihitam/3.jpg",
-      "../assets/items/dasihitam/4.jpg"
+      "/../assets/items/dasihitam/1.jpg",
+      "/../assets/items/dasihitam/2.jpg",
+      "/../assets/items/dasihitam/3.jpg",
+      "/../assets/items/dasihitam/4.jpg"
     ]
   },
   {
@@ -129,12 +129,12 @@
     "rating": 5,
     "price": 250000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/sepatupantofel/1.jpg",
+    "bigImage": "/../assets/items/sepatupantofel/1.jpg",
     "smallImages": [
-      "../assets/items/sepatupantofel/1.jpg",
-      "../assets/items/sepatupantofel/2.jpg",
-      "../assets/items/sepatupantofel/3.jpg",
-      "../assets/items/sepatupantofel/4.png"
+      "/../assets/items/sepatupantofel/1.jpg",
+      "/../assets/items/sepatupantofel/2.jpg",
+      "/../assets/items/sepatupantofel/3.jpg",
+      "/../assets/items/sepatupantofel/4.png"
     ]
   },
   {
@@ -144,11 +144,11 @@
     "rating": 5,
     "price": 18000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/kaoskakihitam/1.jpg",
+    "bigImage": "/../assets/items/kaoskakihitam/1.jpg",
     "smallImages": [
-      "../assets/items/kaoskakihitam/1.jpg",
-      "../assets/items/kaoskakihitam/2.jpg",
-      "../assets/items/kaoskakihitam/3.jpg"
+      "/../assets/items/kaoskakihitam/1.jpg",
+      "/../assets/items/kaoskakihitam/2.jpg",
+      "/../assets/items/kaoskakihitam/3.jpg"
     ]
   },
   {
@@ -158,12 +158,12 @@
     "rating": 5,
     "price": 64000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/kacamatahitam/1.jpeg",
+    "bigImage": "/../assets/items/kacamatahitam/1.jpeg",
     "smallImages": [
-      "../assets/items/kacamatahitam/1.jpeg",
-      "../assets/items/kacamatahitam/2.jpeg",
-      "../assets/items/kacamatahitam/3.jpeg",
-      "../assets/items/kacamatahitam/4.jpeg"
+      "/../assets/items/kacamatahitam/1.jpeg",
+      "/../assets/items/kacamatahitam/2.jpeg",
+      "/../assets/items/kacamatahitam/3.jpeg",
+      "/../assets/items/kacamatahitam/4.jpeg"
     ]
   },
   {
@@ -173,12 +173,12 @@
     "rating": 5,
     "price": 400000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/mantel_berkerah/1.jpg",
+    "bigImage": "/../assets/items/mantel_berkerah/1.jpg",
     "smallImages": [
-      "../assets/items/mantel_berkerah/1.jpg",
-      "../assets/items/mantel_berkerah/2.jpg",
-      "../assets/items/mantel_berkerah/3.jpg",
-      "../assets/items/mantel_berkerah/4.jpg"
+      "/../assets/items/mantel_berkerah/1.jpg",
+      "/../assets/items/mantel_berkerah/2.jpg",
+      "/../assets/items/mantel_berkerah/3.jpg",
+      "/../assets/items/mantel_berkerah/4.jpg"
     ]
   },
   {
@@ -188,11 +188,11 @@
     "rating": 4,
     "price": 140000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/tas_bahu/1.jpg",
+    "bigImage": "/../assets/items/tas_bahu/1.jpg",
     "smallImages": [
-      "../assets/items/tas_bahu/1.jpg",
-      "../assets/items/tas_bahu/2.jpg",
-      "../assets/items/tas_bahu/3.jpg"
+      "/../assets/items/tas_bahu/1.jpg",
+      "/../assets/items/tas_bahu/2.jpg",
+      "/../assets/items/tas_bahu/3.jpg"
     ]
   },
   {
@@ -202,12 +202,12 @@
     "rating": 4,
     "price": 145000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/kemeja_pastel/1.jpg",
+    "bigImage": "/../assets/items/kemeja_pastel/1.jpg",
     "smallImages": [
-      "../assets/items/kemeja_pastel/1.jpg",
-      "../assets/items/kemeja_pastel/2.jpg",
-      "../assets/items/kemeja_pastel/3.jpg",
-      "../assets/items/kemeja_pastel/4.jpg"
+      "/../assets/items/kemeja_pastel/1.jpg",
+      "/../assets/items/kemeja_pastel/2.jpg",
+      "/../assets/items/kemeja_pastel/3.jpg",
+      "/../assets/items/kemeja_pastel/4.jpg"
     ]
   },
   {
@@ -217,11 +217,11 @@
     "rating": 5,
     "price": 200000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/rok_panjang/1.jpg",
+    "bigImage": "/../assets/items/rok_panjang/1.jpg",
     "smallImages": [
-      "../assets/items/rok_panjang/1.jpg",
-      "../assets/items/rok_panjang/2.jpg",
-      "../assets/items/rok_panjang/3.jpg"
+      "/../assets/items/rok_panjang/1.jpg",
+      "/../assets/items/rok_panjang/2.jpg",
+      "/../assets/items/rok_panjang/3.jpg"
     ]
   },
   {
@@ -231,13 +231,13 @@
     "rating": 5,
     "price": 250000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
-    "bigImage": "../assets/items/kardigan/1.jpg",
+    "bigImage": "/../assets/items/kardigan/1.jpg",
     "smallImages": [
-      "../assets/items/kardigan/1.jpg",
-      "../assets/items/kardigan/2.jpg",
-      "../assets/items/kardigan/3.jpg",
-      "../assets/items/kardigan/4.jpg",
-      "../assets/items/kardigan/5.jpg"
+      "/../assets/items/kardigan/1.jpg",
+      "/../assets/items/kardigan/2.jpg",
+      "/../assets/items/kardigan/3.jpg",
+      "/../assets/items/kardigan/4.jpg",
+      "/../assets/items/kardigan/5.jpg"
     ]
   }
 ]

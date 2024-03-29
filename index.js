@@ -33,8 +33,12 @@ app.get("/detail/:productID", (req, res) => {
   if (productData) {
     res.render("product-details", { productData });
   } else {
-    res.status(404).send("Product not found");
+    res.render('notFound');
   }
+});
+
+app.get('*', (req, res) => {
+  res.render('notFound');
 });
 
 app.listen(port, () => {
