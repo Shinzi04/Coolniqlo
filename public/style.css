@@ -71,9 +71,10 @@ body {
 
 /* buat edit search bar */
 .search {
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   border: 2px solid #ccc;
   height: 1.8rem;
+  width: 10rem;
   border-radius: 15px;
   transition: border-color 0.3s;
   text-indent: 10px;
@@ -83,6 +84,25 @@ body {
   border-color: #0e1111 !important;
 }
 
+.submitBtn {
+  background-color: #0e1111;
+  color: white;
+  width: 4.5rem;
+  height: 1.8rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.submitBtn:hover {
+  background-color: rgba(14, 17, 17, 0.8);
+}
+
+.noSearch {
+  display: none;
+}
+
+/* buat edit search bar */
 #hamburger-menu {
   display: none;
 }
@@ -135,24 +155,20 @@ body {
 }
 
 /* Item container and items styles */
-.allItems {
-  display: flex;
-  justify-content: center;
-}
-
 .grid-container {
   width: 95%;
   margin: 0 auto;
   padding-top: 7rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  justify-items: center;
   gap: 1rem;
   row-gap: 5rem;
 }
 
 .item-container {
-  width: 19rem;
-  height: 25rem;
+  width: 17rem;
+  height: 23rem;
   display: flex;
   overflow: hidden;
   border-radius: 10px;
@@ -256,20 +272,6 @@ body {
 
 /* Item container and items styles */
 
-/* buat edit search bar */
-.search {
-  background-color: white;
-  border: 2px solid #ccc;
-  height: 1.8rem;
-  border-radius: 15px;
-  transition: border-color 0.3s;
-  text-indent: 10px;
-}
-
-.search:focus {
-  border-color: #0e1111 !important;
-}
-
 footer {
   background-color: white;
   text-align: center;
@@ -314,6 +316,11 @@ footer .credit a {
   html {
     font-size: 75%;
   }
+
+  .item-container {
+    width: 20rem;
+    height: 26rem;
+  }
 }
 
 /* tablet */
@@ -356,6 +363,47 @@ footer .credit a {
 
   .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
+  }
+
+  .item-container {
+    width: 18rem;
+    height: 24rem;
+  }
+
+  .navbar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .navbar-logo {
+    display: none;
+  }
+
+  .navbar .navbar-extra {
+    width: 40rem;
+    justify-content: start;
+  }
+
+  #searchBar {
+    display: inline;
+  }
+
+  #searchToggle {
+    display: none;
+  }
+
+  .search {
+    height: 2.5rem;
+    width: 25rem;
+    margin-left: 4rem;
+    border-radius: 7px 0 0 7px;
+  }
+
+  .submitBtn {
+    border-radius: 0 7px 7px 0;
+    margin-left: -0.4rem;
+    width: 6.5rem;
+    height: 2.5rem;
+    font-size: 1.12rem;
   }
 }
 
