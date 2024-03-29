@@ -1,32 +1,62 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const ejs = require('ejs');
-const fs = require('fs');
-const searchItems = require('./custom_modules/search');
-const internal = require('stream');
-const items = JSON.parse(fs.readFileSync('products.json', 'utf8'));
-const port = 3000;
+const ejs = require("ejs");
+const dotenv = require("dotenv");
+dotenv.config();
+const mongoose = require("mongoose");
+const morgan = require("morgan");
+const port = process.env.PORT || 5000;
+const searchItems = require("./custom_modules/search");
+const internal = require("stream"); //
 
-app.set('view engine', 'ejs');
+mongoose.connect(process.env.MONGO_URL).then(
+  () => console.log(`Database connected ${process.env.MONGO_URL}`),
+  (err) => console.log(err)
+);
+const Product = require("./models/productList");
 
-app.use(express.static('public'));
+app.use(express.static("public"));
+app.use(morgan("dev"));
+app.use(express.json());
+app.use("/api/products", require("./routes/api/productListRoutes"));
+app.set("view engine", "ejs");
 
-app.get('/', (req, res) => {
-  res.render('index' , {products:items.slice(0,15)});
+// route untuk homepage awal
+app.get("/", async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.render("index", { products });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
 });
 
-app.get('/search' , (req,res) =>{
-  const query = req.query.q;
-  if(!query){
-    res.render('index', {products:items.slice(0,15)});
-    return;
+// route untuk query search
+app.get("/search", async (req, res) => {
+  try {
+    const query = req.query.q;
+    let filteredItems = [];
+    if (!query) {
+      filteredItems = await Product.find();
+    } else {
+      filteredItems = await Product.find({
+        name: { $regex: query, $options: "i" },
+      });
+    }
+    res.render("index", { products: filteredItems, query });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
   }
+});
+
 
   const filteredItems = searchItems(items,query).slice(0,15);
   res.render('index', {products:filteredItems})
 
 })
 
+
+// route untuk masing-masing detail product
 app.get("/detail/:productID", (req, res) => {
   const productID = req.params.productID;
   const productData = items.find(product => product.id === productID);
@@ -35,6 +65,7 @@ app.get("/detail/:productID", (req, res) => {
   } else {
     res.render('notFound');
   }
+
 });
 
 app.get('*', (req, res) => {
@@ -42,5 +73,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Listening at http://localhost:${port}!`);
 });
