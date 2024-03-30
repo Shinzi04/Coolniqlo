@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= productData.name %></title>
-    <link rel="stylesheet" href="../buy.css" />
+    <link rel="stylesheet" href="/../buy.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet" />
@@ -13,62 +13,62 @@
     <script src="https://unpkg.com/feather-icons"></script>
   </head>
 
-  <body>
-    <nav class="navbar">
-      <a href="/" class="navbar-logo">COOLNIQLO</a>
-    </nav>
-    <div class="bigContainer">
-      <!-- gambar -->
-      <div class="imageBox">
-        <img src="<%= productData.bigImage %>" alt="" class="displayImage" />
-        <div class="boxGambarKecil">
-          <% productData.smallImages.forEach(function(image) { %>
-          <img src="<%= image %>" alt="" class="miniImage" />
-          <% }); %>
-        </div>
-      </div>
-      <div class="textBox">
-        <!-- nama -->
-        <p class="itemName"><%= productData.name %></p>
-        <!-- rating -->
-        <div class="rating" ng-app="olshop" ng-controller="Controller">
-          <span class="purchaseHistory"><%= productData.history %></span>
-          <% for (let n = 1; n <= 5; n++) { %><span class="penengah-bintang" style="font-size: 0.9rem"><% if (n <= productData.rating) { %><i class="fa fa-star"></i><% } else { %><i class="fa fa-star-o"></i><% } %></span><% } %>
-        </div>
-        <!-- harga -->
-        <div>
-          <p class="priceTag"><%= 'IDR ' + productData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></p>
-        </div>
-        <!-- deskripsi -->
-        <p class="itemDescription"><%= productData.description %></p>
-        <!-- tombol -->
-        <div class="buttonBox">
-          <button class="cartButton">+ Masukan Keranjang</button>
-          <button class="buyButton">Beli Langsung</button>
-        </div>
+<body>
+  <nav class="navbar">
+    <a href="/" class="navbar-logo">COOLNIQLO</a>
+  </nav>
+  <div class="bigContainer">
+    <!-- gambar -->
+    <div class="imageBox">
+      <img src="<%= productData.bigImage %>" alt="" class="displayImage" />
+      <div class="boxGambarKecil">
+        <% productData.smallImages.forEach(function(image) { %>
+        <img src="<%= image %>" alt="" class="miniImage" />
+        <% }); %>
       </div>
     </div>
-    <!-- footer -->
-    <footer id="contact">
-      <div class="socials">
-        <a href="#"><i data-feather="instagram"></i></a>
-        <a href="#"><i data-feather="twitter"></i></a>
-        <a href="https://github.com/Shinzi04/Coolniqlo" target="_blank"><i data-feather="github"></i></a>
+    <div class="textBox">
+      <!-- nama -->
+      <p class="itemName"><%= productData.name %></p>
+      <!-- rating -->
+      <div class="rating" ng-app="olshop" ng-controller="Controller">
+        <span class="purchaseHistory">Terjual <%= productData.sold %></span>
+        <% for (let n = 1; n <= 5; n++) { %><span class="penengah-bintang" style="font-size: 0.9rem"><% if (n <= productData.rating) { %><i class="fa fa-star"></i><% } else { %><i class="fa fa-star-o"></i><% } %></span><% } %>
       </div>
-      <div class="links">
-        <a href="/#home">Home</a>
-        <a href="/#product">Product</a>
-        <a href="#contact">Contact</a>
+      <!-- harga -->
+      <div>
+        <p class="priceTag"><%= 'IDR ' + productData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></p>
       </div>
-      <div class="credit">
-        <p>Created by <a href="/#home">COOLNIQLO</a>. | &copy; 2024.</p>
+      <!-- deskripsi -->
+      <p class="itemDescription"><%= productData.description %></p>
+      <!-- tombol -->
+      <div class="buttonBox">
+        <button class="cartButton">+ Masukan Keranjang</button>
+        <button class="buyButton">Beli Langsung</button>
       </div>
-    </footer>
+    </div>
+  </div>
+  <!-- footer -->
+  <footer id="contact">
+    <div class="socials">
+      <a href="#"><i data-feather="instagram"></i></a>
+      <a href="#"><i data-feather="twitter"></i></a>
+      <a href="https://github.com/Shinzi04/Coolniqlo" target="_blank"><i data-feather="github"></i></a>
+    </div>
+    <div class="links">
+      <a href="/#home">Home</a>
+      <a href="/#product">Product</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="credit">
+      <p>Created by <a href="/#home">COOLNIQLO</a>. | &copy; 2024.</p>
+    </div>
+  </footer>
 
     <script>
       feather.replace();
     </script>
-    <script src="../buy.js"></script>
-    <script src="../script.js"></script>
+    <script src="/../buy.js"></script>
+    <script src="/../script.js"></script>
   </body>
 </html>
