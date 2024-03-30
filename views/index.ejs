@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html>
-  <%- include('layouts/header.ejs') %>
+<html lang="en">
+<!-- head -->
+<%- include('layouts/header.ejs') %>
 
-  <body>
-    <!-- Hero Section start-->
-    <section class="hero" id="home">
-      <main class="content">
-        <h1>COOLNIQLO FASHION</h1>
-        <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
-        <a href="#product" class="cta">Beli Sekarang</a>
-      </main>
-    </section>
-    <!-- nav -->
-    <%- include('layouts/nav.ejs') %>
+<body>
+  <!-- Hero Section start-->
+  <section class="hero" id="home">
+    <main class="content">
+      <h1>COOLNIQLO FASHION</h1>
+      <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
+      <a href="#product" class="cta">Beli Sekarang</a>
+    </main>
+  </section>
+  <!-- nav -->
+  <%- include('layouts/nav.ejs') %>
 
     <div class="grid-container" id="product">
       <% products.forEach(product => { %>
