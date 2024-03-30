@@ -13,13 +13,6 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
 }
-/* .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: rgba(39, 39, 39, 0.3);
-} */
 
 .nav {
   position: fixed;
