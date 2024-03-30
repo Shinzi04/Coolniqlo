@@ -44,7 +44,9 @@ app.get("/", async (req, res) => {
 // route untuk query search
 app.get("/search", async (req, res) => {
   try {
-    const query = req.query.q;
+    let query = req.query.q || "";
+    // menghilangkan karakter khusus
+    query = query.replace(/[^\w\s]/gi, "");
     let filteredItems = [];
     if (!query) {
       filteredItems = await Product.find();
@@ -53,7 +55,12 @@ app.get("/search", async (req, res) => {
         name: { $regex: query, $options: "i" },
       });
     }
-    res.render("index", { products: filteredItems, query, title: "Coolniqlo", style: "style.css" });
+    res.render("index", {
+      products: filteredItems,
+      query,
+      title: "Coolniqlo",
+      style: "style.css",
+    });
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
