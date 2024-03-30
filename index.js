@@ -53,7 +53,7 @@ app.get("/search", async (req, res) => {
         name: { $regex: query, $options: "i" },
       });
     }
-    res.render("index", { products: filteredItems, query });
+    res.render("index", { products: filteredItems, query, title: "Coolniqlo", style: "style.css" });
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
