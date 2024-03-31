@@ -28,20 +28,23 @@
     <div class="container">
       <div class="form-box">
         <!------------------- login form -------------------------->
-        <div class="login-container" id="login">
+        <% if (messages.error) { %>
+          <div id="error-message"><%= messages.error %></div>
+        <% } %>
+        <form class="login-container" id="login" action="/login" method="POST">
           <div class="top">
             <header>Login</header>
           </div>
           <div class="input-box">
-            <input type="text" class="input-field" placeholder="Username or Email" />
+            <input type="email" class="input-field" placeholder="Email" name="email" id="email" required/>
             <i class="bx bx-user"></i>
           </div>
           <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" />
+            <input type="password" class="input-field" placeholder="Password" name="password" id="password" required/>
             <i class="bx bx-lock-alt"></i>
           </div>
           <div class="input-box">
-            <input type="submit" class="submit" value="Sign In" />
+            <button type="submit" class="submit" name="signIn" id="signIn" value="1">Sign In</button>
           </div>
           <div class="two-col">
             <div class="one">
@@ -53,32 +56,32 @@
             </div>
           </div>
           <span class="bottom">Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
-        </div>
+        </form>
         <!------------------- registration form -------------------------->
-        <div class="register-container" id="register">
+        <form class="register-container" id="register" action="/login" method="POST">
           <div class="top">
             <header>Sign Up</header>
           </div>
           <div class="two-forms">
             <div class="input-box">
-              <input type="text" class="input-field" placeholder="Firstname" />
+              <input type="text" class="input-field" placeholder="Firstname" name="firstName" id="firstName" required/>
               <i class="bx bx-user"></i>
             </div>
             <div class="input-box">
-              <input type="text" class="input-field" placeholder="Lastname" />
+              <input type="text" class="input-field" placeholder="Lastname" name="lastName" id="lastName"/>
               <i class="bx bx-user"></i>
             </div>
           </div>
           <div class="input-box">
-            <input type="text" class="input-field" placeholder="Email" />
+            <input type="email" class="input-field" placeholder="Email" name="email" id="email" required/>
             <i class="bx bx-envelope"></i>
           </div>
           <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" />
+            <input type="password" class="input-field" placeholder="Password" name="password" id="password" required/>
             <i class="bx bx-lock-alt"></i>
           </div>
           <div class="input-box">
-            <input type="submit" class="submit" value="Register" />
+            <button type="submit" class="submit" name="signUp" id="signUp" value="0">Register</button>
           </div>
           <div class="two-col">
             <div class="one">
@@ -90,7 +93,7 @@
             </div>
           </div>
           <span class="bottom">Have an account? <a href="#" onclick="login()">Login</a></span>
-        </div>
+        </form>
       </div>
     </div>
 
@@ -99,7 +102,17 @@
       var b = document.getElementById('registerBtn');
       var x = document.getElementById('login');
       var y = document.getElementById('register');
+     
+      // fungsi untuk menghilangkan pop-up error message di halaman sign in (seperti invalid password / no user with that email)
+      // , ketika berpindah ke bagian sign up maupun sign in
+      function clearErrorMessage() {
+      var errorMessage = document.getElementById('error-message');
+      if (errorMessage) {
+        errorMessage.innerHTML = ''; 
+        }
+      }
       function login() {
+        clearErrorMessage();
         x.style.left = '0.1px';
         y.style.right = '-80rem';
         a.className += ' white-btn';
@@ -108,6 +121,7 @@
         y.style.opacity = 0;
       }
       function register() {
+        clearErrorMessage();
         x.style.left = '-80rem';
         y.style.right = '0.1px';
         a.className = 'btn';
