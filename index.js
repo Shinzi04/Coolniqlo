@@ -10,7 +10,7 @@ dotenv.config();
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const port = process.env.PORT || 5000;
-const searchItems = require("./custom_modules/search");
+// const searchItems = require("./custom_modules/search");
 const internal = require("stream");
 
 mongoose.connect(process.env.MONGO_URL).then(
@@ -66,32 +66,39 @@ app.get("/", async (req, res) => {
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
+  
 });
 
-// route untuk query search
-app.get("/search", async (req, res) => {
-  try {
-    let query = req.query.q || "";
-    // menghilangkan karakter khusus
-    query = query.replace(/[^\w\s]/gi, "");
-    let filteredItems = [];
-    if (!query) {
-      filteredItems = await Product.find();
-    } else {
-      filteredItems = await Product.find({
-        name: { $regex: query, $options: "i" },
-      });
-    }
-    res.render("index", {
-      products: filteredItems,
-      query,
-      title: "Coolniqlo",
-      style: "style.css",
-    });
-  } catch (error) {
+app.get("/items", async(req,res) =>{
+  try{
+    const products = await Product.find();
+    res.json(products)
+  }catch{
+    console.error(`Error fetching products:`,error);
     res.status(500).send("Internal Server Error");
   }
-});
+
+})
+// route untuk query search
+// app.get("/search", async (req, res) => {
+//   try {
+    
+//     let query = req.query.q || "";
+//     console.log(query)
+//     query = query.replace(/[^\w\s]/gi, ""); // Remove special characters
+//     let filteredItems = [];
+//     if (!query) {
+//       filteredItems = await Product.find();
+//     } else {
+//       filteredItems = await Product.find({ name: { $regex: query, $options: "i" } });
+//     }
+    
+//     // Send filtered products as JSON response
+//     res.json({ products: filteredItems });
+//   } catch (error) {
+//     res.status(500).send("Internal Server Error");
+//   }
+// });
 
 // route untuk masing-masing detail product
 app.get("/detail/:productID",  async (req, res) => {

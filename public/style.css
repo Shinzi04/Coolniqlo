@@ -153,7 +153,25 @@ body {
 .hero .content .cta:hover {
   opacity: 0.8;
 }
+/* Sort Container */
+.sort-container{
+  background-color: yellow;
+  margin: 0 auto;
+}
 
+.sort-container ul{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.sort-container li{
+  border-style:solid;
+  border-width: medium;
+  border-color: lightgreen;
+}
 /* Item container and items styles */
 .grid-container {
   width: 95%;
