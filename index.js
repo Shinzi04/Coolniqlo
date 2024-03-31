@@ -49,7 +49,7 @@ app.use("/api/products", require("./routes/api/productListRoutes"));
 app.set("view engine", "ejs");
 
 // route untuk homepage awal
-app.get("/", checkAuthenticated, async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const products = await Product.find();
     res.render("index", { products });
@@ -59,7 +59,7 @@ app.get("/", checkAuthenticated, async (req, res) => {
 });
 
 // route untuk query search
-app.get("/search", checkAuthenticated, async (req, res) => {
+app.get("/search", async (req, res) => {
   try {
     const query = req.query.q;
     let filteredItems = [];
@@ -77,7 +77,7 @@ app.get("/search", checkAuthenticated, async (req, res) => {
 });
 
 // route untuk masing-masing detail product
-app.get("/detail/:productID", checkAuthenticated,  async (req, res) => {
+app.get("/detail/:productID",  async (req, res) => {
   try {
     const productID = req.params.productID;
     const productData = await Product.findOne({ id: productID });
@@ -93,37 +93,39 @@ app.get("/detail/:productID", checkAuthenticated,  async (req, res) => {
 
 // route untuk ke page login dan dicek apakah sudah login atau belum
 // kalau sudah login tidak bisa kembali ke page login
-app.get("/login", checkNotAuthenticated, (req, res) => {
-  res.render("login");
-});
-
-// 
-app.post("/login",checkNotAuthenticated, passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/login",
-  failureFlash: true
-}));
+app.get('/login',checkNotAuthenticated,(req,res)=>{
+  res.render('login');
+})
 
 // route untuk ke page register dan dicek apakah sudah pernah login atau belum
 // kalau sudah login tidak akan bisa kembali lagi ke page register
-app.get("/register", checkNotAuthenticated,  (req, res) => {
-  res.render("register");
-});
+app.post("/login",checkNotAuthenticated, async (req, res) => {
+  if (req.body.signIn == "1") {
+    // Proses login
+    passport.authenticate("local", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+      failureFlash: true
+    })(req, res);
 
-app.post("/register", checkNotAuthenticated, async (req, res) => {
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    users.push({
-      id: Date.now().toString(),
-      name: req.body.name,
-      email: req.body.email,
-      password: hashedPassword,
-    });
-    res.redirect("/login");
-  } catch {
-    res.redirect("/register");
+  } else if (req.body.signUp == "0") {
+    // Proses registrasi
+    try {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      users.push({
+        id: Date.now().toString(),
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: hashedPassword,
+      });
+      res.redirect("/login");
+    } catch {
+      res.redirect("/login");
+    }
+  } else {
+    res.status(400).send("Bad Request");
   }
-  console.log(users);
 });
 
 // route untuk logout

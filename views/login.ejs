@@ -1,31 +1,134 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="loginRegis.css" />
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- font poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
-    <title>LOGIN</title>
+    <title>Login & Registration</title>
   </head>
   <body>
-    <h1>LOGIN</h1>
-    <% if (messages.error) { %>
-          <%= messages.error %>
-      <% } %>
-    <form action="/login" method="POST">
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
-<a href="/register">Register</a>
+    <nav class="nav">
+      <div class="nav-logo">
+        <p>COOLNIQLO</p>
+      </div>
+      <div class="nav-button">
+        <button class="btn white-btn" id="loginBtn" onclick="login()">Login</button>
+        <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+      </div>
+    </nav>
+    <!----------------------------- Form box ----------------------------------->
+    <div class="container">
+      <div class="form-box">
+        <!------------------- login form -------------------------->
+        <% if (messages.error) { %>
+          <div id="error-message"><%= messages.error %></div>
+        <% } %>
+        <form class="login-container" id="login" action="/login" method="POST">
+          <div class="top">
+            <header>Login</header>
+          </div>
+          <div class="input-box">
+            <input type="email" class="input-field" placeholder="Email" name="email" id="email" required/>
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="input-box">
+            <input type="password" class="input-field" placeholder="Password" name="password" id="password" required/>
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <button type="submit" class="submit" name="signIn" id="signIn" value="1">Sign In</button>
+          </div>
+          <div class="two-col">
+            <div class="one">
+              <input type="checkbox" id="login-check" />
+              <label for="login-check"> Remember Me</label>
+            </div>
+            <div class="two">
+              <label><a href="#">Forgot password?</a></label>
+            </div>
+          </div>
+          <span class="bottom">Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+        </form>
+        <!------------------- registration form -------------------------->
+        <form class="register-container" id="register" action="/login" method="POST">
+          <div class="top">
+            <header>Sign Up</header>
+          </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <input type="text" class="input-field" placeholder="Firstname" name="firstName" id="firstName" required/>
+              <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+              <input type="text" class="input-field" placeholder="Lastname" name="lastName" id="lastName"/>
+              <i class="bx bx-user"></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <input type="email" class="input-field" placeholder="Email" name="email" id="email" required/>
+            <i class="bx bx-envelope"></i>
+          </div>
+          <div class="input-box">
+            <input type="password" class="input-field" placeholder="Password" name="password" id="password" required/>
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <button type="submit" class="submit" name="signUp" id="signUp" value="0">Register</button>
+          </div>
+          <div class="two-col">
+            <div class="one">
+              <input type="checkbox" id="register-check" />
+              <label for="register-check"> Remember Me</label>
+            </div>
+            <div class="two">
+              <label><a href="#">Terms & conditions</a></label>
+            </div>
+          </div>
+          <span class="bottom">Have an account? <a href="#" onclick="login()">Login</a></span>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      var a = document.getElementById('loginBtn');
+      var b = document.getElementById('registerBtn');
+      var x = document.getElementById('login');
+      var y = document.getElementById('register');
+     
+      // fungsi untuk menghilangkan pop-up error message di halaman sign in (seperti invalid password / no user with that email)
+      // , ketika berpindah ke bagian sign up maupun sign in
+      function clearErrorMessage() {
+      var errorMessage = document.getElementById('error-message');
+      if (errorMessage) {
+        errorMessage.innerHTML = ''; 
+        }
+      }
+      function login() {
+        clearErrorMessage();
+        x.style.left = '0.1px';
+        y.style.right = '-80rem';
+        a.className += ' white-btn';
+        b.className = 'btn';
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+      }
+      function register() {
+        clearErrorMessage();
+        x.style.left = '-80rem';
+        y.style.right = '0.1px';
+        a.className = 'btn';
+        b.className += ' white-btn';
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+      }
+    </script>
   </body>
 </html>

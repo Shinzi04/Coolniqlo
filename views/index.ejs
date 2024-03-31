@@ -18,46 +18,43 @@
     <%- include('layouts/nav.ejs') %>
 
     <div class="grid-container" id="product">
-        <% products.forEach(product => { %>
-          <div class="item-container">
-            <div class="item-image-container">
-              <!-- gambar dengan link menuju halaman -->
-              <a href="/detail/<%= product.id %>">
-                <img src="<%= product.bigImage %>" alt="<%= product.name %>">
-              </a> 
-            </div>
-            <div class="item-desc">
-              <div class="item-property">
-                <!-- nama barang -->
-                <div class="item-name"><%= product.name %></div>
-                <!-- harga barang yang diformat -->
-                <div class="item-price">
-                  <%= new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price) %>
-                </div>
-                  
-              </div>
-              <div class="item-rating">
-                <!-- tombol beli -->
-                <a href="/detail/<%= product.id %>" class="btnBeli">Beli</a>
-                <!-- tampilan bintang sesuai rating -->
-                <ul class="star-rating">
-                  <!-- tampilan dengan angka -->
-                  <li><%= product.rating %></li>
-                  <li><i class="fa fa-star"></i></li>
-                  <!-- Tampilan bintang -->
-                  <!-- <% for (let n = 1; n <= 5; n++) { %>
+      <% products.forEach(product => { %>
+      <div class="item-container">
+        <div class="item-image-container">
+          <!-- gambar dengan link menuju halaman -->
+          <a href="/detail/<%= product.id %>">
+            <img src="<%= product.bigImage %>" alt="<%= product.name %>" />
+          </a>
+        </div>
+        <div class="item-desc">
+          <div class="item-property">
+            <!-- nama barang -->
+            <div class="item-name"><%= product.name %></div>
+            <!-- harga barang yang diformat -->
+            <div class="item-price"><%= new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price) %></div>
+          </div>
+          <div class="item-rating">
+            <!-- tombol beli -->
+            <a href="/detail/<%= product.id %>" class="btnBeli">Beli</a>
+            <!-- tampilan bintang sesuai rating -->
+            <ul class="star-rating">
+              <!-- tampilan dengan angka -->
+              <li><%= product.rating %></li>
+              <li><i class="fa fa-star"></i></li>
+              <!-- Tampilan bintang -->
+              <!-- <% for (let n = 1; n <= 5; n++) { %>
                     <% if (n <= product.rating) { %>
                         <li><i class="fa fa-star"></i></li>
                     <% } else { %>
                         <li><i class="fa fa-star-o"></i></li>
                     <% } %>  
                   <% } %> -->
-                  
-                </ul>
-              </div>
-            </div>
+            </ul>
           </div>
-        <% }) %>
+        </div>
+      </div>
+
+      <% }) %>
     </div>
     <!-- footer -->
     <%- include('layouts/footer.ejs') %>
