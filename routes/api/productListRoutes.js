@@ -72,7 +72,7 @@ router.post(
       // mengurut array path smallImages secara ascending
       smallImagePaths.sort();
 
-      await Product.save({
+      const product = new Product({
         id: productId,
         name: req.body.name,
         price: req.body.price,
@@ -80,6 +80,7 @@ router.post(
         bigImage: `/../assets/Items/${productId}/${bigImage.originalname}`,
         smallImages: smallImagePaths,
       });
+      product.save();
       res.redirect("/admin/dashboard");
     } catch (error) {
       res.status(500).send("Internal Server Error");
