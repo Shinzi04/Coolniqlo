@@ -13,9 +13,6 @@
           pria dan wanita berkualitas tinggi dengan harga terjangkau.
         </p>
         <a href="#product" class="cta">Beli Sekarang</a>
-        <form action="/logout?_method_logout=DELETE" method="POST">
-          <button type="submit">Log Out</button>
-        </form>
       </main>
     </section>
     <!-- nav -->
@@ -25,7 +22,7 @@
         <li><button onclick="sortBy_Desc('price')">Price (Descending)</button></li>
         <li><button onclick="sortBy_Asc('rating')">Rating (Ascending)</button></li>
         <li><button onclick="sortByRange('rating',2,3)">Rating 2 - 3</button></li>
-        <li>Lorem, ipsum dolor.</li>
+        <li><button onclick="sortBy_Desc('sold')">Sold (Descending)</button></li>
       </ul>
     </div>
     <div class="grid-container" id="grid-container">
@@ -39,7 +36,7 @@
     <script>
       feather.replace();
     </script>
-    <script src="script.js"></script>
-    <script src="searchAndSort.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/searchAndSort.js"></script>
   </body>
 </html>

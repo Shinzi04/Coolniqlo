@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const methodOverride = require("method-override");
 const port = process.env.PORT || 5000;
-// const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 const initializePassport = require("./passport-config");
 const passport = require("passport");
 const users = [];
@@ -64,7 +64,7 @@ app.use((req, res, next) => {
 app.get("/", async (req, res) => {
   try {
     let products = await Product.find();
-    res.render("index", { products, title: "Coolniqlo", style: "style.css" });
+    res.render("index", { products, title: "Coolniqlo", style: "css/style.css" });
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
@@ -81,26 +81,6 @@ app.get("/items", async(req,res) =>{
   }
 
 })
-// route untuk query search
-// app.get("/search", async (req, res) => {
-//   try {
-    
-//     let query = req.query.q || "";
-//     console.log(query)
-//     query = query.replace(/[^\w\s]/gi, ""); // Remove special characters
-//     let filteredItems = [];
-//     if (!query) {
-//       filteredItems = await Product.find();
-//     } else {
-//       filteredItems = await Product.find({ name: { $regex: query, $options: "i" } });
-//     }
-    
-//     // Send filtered products as JSON response
-//     res.json({ products: filteredItems });
-//   } catch (error) {
-//     res.status(500).send("Internal Server Error");
-//   }
-// });
 
 // route untuk masing-masing detail product
 app.get("/detail/:productID", async (req, res) => {
@@ -111,12 +91,12 @@ app.get("/detail/:productID", async (req, res) => {
       res.render("product-details", {
         productData,
         title: productData.name + " - Coolniqlo",
-        style: "../buy.css",
+        style: "../css/buy.css",
       });
     } else {
       res.status(404).render("notFound", {
         title: "Not Found 404 - Coolniqlo",
-        style: "/../notFound.css",
+        style: "/../css/notFound.css",
       });
     }
   } catch (error) {
@@ -190,7 +170,7 @@ function checkNotAuthenticated(req, res, next) {
 app.get("*", (req, res) => {
   res.status(404).render("notFound", {
     title: "404 Not Found - Coolniqlo",
-    style: "/../notFound.css",
+    style: "/../css/notFound.css",
   });
 });
 
