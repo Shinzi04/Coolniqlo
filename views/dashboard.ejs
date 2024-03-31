@@ -53,12 +53,15 @@
           <%= image %><br>
           <% }); %>
         </td>
+
         <td>
           <button onclick="toggleEditForm('<%= product.id %>')">Edit</button>
           <button onclick="deleteProduct('<%= product._id %>')">Delete</button>
         </td>
+
         <td><a href="/detail/<%= product.id %>" target="_blank"><%= product.name %></a></td>
       </tr>
+
       <!-- form edit dengan toggle -->
       <tr id="editForm<%= product.id %>" style="display: none;">
         <td colspan="6">
@@ -79,10 +82,18 @@
           </form>
         </td>
       </tr>
+
       <% }); %>
     </tbody>
   </table>
   <% } %>
+  <!-- pagination -->
+  <div class="pagination">
+    <% for(let i = 1; i <= totalPages; i++) { %>
+    <a href="/admin/dashboard?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+    <% } %>
+  </div>
+
   <script>
     let openFormId = null;
     // toggle edit form dan hanya 1 edit form yang terbuka

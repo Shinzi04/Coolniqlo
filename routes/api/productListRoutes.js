@@ -5,11 +5,17 @@ const Product = require("../../models/productList");
 // method get (READ)
 router.get("/", async (req, res) => {
   try {
-    const products = await Product.find();
+    const page = parseInt(req.query.page) || 1;
+    const limit = 5;
+    const skip = (page - 1) * limit;
+    const products = await Product.find().skip(skip).limit(limit);
+    const totalProducts = await Product.countDocuments();
     res.render("dashboard", {
       products,
       title: "Manage Products - Coolniqlo",
       style: "../dashboard.css",
+      currentPage: page,
+      totalPages: Math.ceil(totalProducts / limit),
     });
   } catch (error) {
     res.status(500).send("Internal Server Error");
