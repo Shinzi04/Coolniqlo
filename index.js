@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const port = process.env.PORT || 5000;
 const searchItems = require("./custom_modules/search");
-const internal = require("stream"); //
+const internal = require("stream");
 
 mongoose.connect(process.env.MONGO_URL).then(
   () => console.log(`Database connected ${process.env.MONGO_URL}`),
@@ -48,11 +48,21 @@ app.use(express.json());
 app.use("/api/products", require("./routes/api/productListRoutes"));
 app.set("view engine", "ejs");
 
+// hapus trailing slash
+app.use((req, res, next) => {
+  if (req.path.slice(-1) === "/" && req.path.length > 1) {
+    const safePath = req.path.slice(0, -1).replace(/\/+/g, "/");
+    res.redirect(301, safePath);
+  } else {
+    next();
+  }
+});
+
 // route untuk homepage awal
 app.get("/", async (req, res) => {
   try {
     const products = await Product.find();
-    res.render("index", { products });
+    res.render("index", { products, title: "Coolniqlo", style: "style.css" });
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
@@ -61,7 +71,9 @@ app.get("/", async (req, res) => {
 // route untuk query search
 app.get("/search", async (req, res) => {
   try {
-    const query = req.query.q;
+    let query = req.query.q || "";
+    // menghilangkan karakter khusus
+    query = query.replace(/[^\w\s]/gi, "");
     let filteredItems = [];
     if (!query) {
       filteredItems = await Product.find();
@@ -70,7 +82,12 @@ app.get("/search", async (req, res) => {
         name: { $regex: query, $options: "i" },
       });
     }
-    res.render("index", { products: filteredItems, query });
+    res.render("index", {
+      products: filteredItems,
+      query,
+      title: "Coolniqlo",
+      style: "style.css",
+    });
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
@@ -82,9 +99,16 @@ app.get("/detail/:productID",  async (req, res) => {
     const productID = req.params.productID;
     const productData = await Product.findOne({ id: productID });
     if (productData) {
-      res.render("product-details", { productData });
+      res.render("product-details", {
+        productData,
+        title: productData.name + " - Coolniqlo",
+        style: "../buy.css",
+      });
     } else {
-      res.render("notFound");
+      res.status(404).render("notFound", {
+        title: "Not Found 404 - Coolniqlo",
+        style: "/../notFound.css",
+      });
     }
   } catch (error) {
     res.status(500).send("Internal Server Error");                                                                           
@@ -156,8 +180,12 @@ function checkNotAuthenticated(req,res,next){
 
 // route untuk pindah ke page notFound bila url tidak ditemukan
 app.get("*", (req, res) => {
-  res.render("notFound");
+  res.status(404).render("notFound", {
+    title: "404 Not Found - Coolniqlo",
+    style: "/../notFound.css",
+  });
 });
+
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}!`);
