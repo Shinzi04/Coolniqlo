@@ -64,36 +64,23 @@ app.use((req, res, next) => {
 app.get("/", async (req, res) => {
   try {
     let products = await Product.find();
-    res.render("index", { products, title: "Coolniqlo", style: "style.css" });
+    res.render("index", { products, title: "Coolniqlo", style: "css/style.css" });
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
+  
 });
 
-// route untuk query search
-app.get("/search", async (req, res) => {
-  try {
-    let query = req.query.q || "";
-    // menghilangkan karakter khusus
-    query = query.replace(/[^\w\s]/gi, "");
-    let filteredItems = [];
-    if (!query) {
-      filteredItems = await Product.find();
-    } else {
-      filteredItems = await Product.find({
-        name: { $regex: query, $options: "i" },
-      });
-    }
-    res.render("index", {
-      products: filteredItems,
-      query,
-      title: "Coolniqlo",
-      style: "style.css",
-    });
-  } catch (error) {
+app.get("/items", async(req,res) =>{
+  try{
+    const products = await Product.find();
+    res.json(products)
+  }catch{
+    console.error(`Error fetching products:`,error);
     res.status(500).send("Internal Server Error");
   }
-});
+
+})
 
 // route untuk masing-masing detail product
 app.get("/detail/:productID", async (req, res) => {
@@ -104,12 +91,12 @@ app.get("/detail/:productID", async (req, res) => {
       res.render("product-details", {
         productData,
         title: productData.name + " - Coolniqlo",
-        style: "../buy.css",
+        style: "../css/buy.css",
       });
     } else {
       res.status(404).render("notFound", {
         title: "Not Found 404 - Coolniqlo",
-        style: "/../notFound.css",
+        style: "/../css/notFound.css",
       });
     }
   } catch (error) {
@@ -183,7 +170,7 @@ function checkNotAuthenticated(req, res, next) {
 app.get("*", (req, res) => {
   res.status(404).render("notFound", {
     title: "404 Not Found - Coolniqlo",
-    style: "/../notFound.css",
+    style: "/../css/notFound.css",
   });
 });
 
