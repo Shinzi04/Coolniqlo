@@ -8,7 +8,7 @@
 }
 body {
   font-family: 'Poppins', sans-serif;
-  background: url('bg.jpg');
+  background: url('assets/bg/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -72,6 +72,14 @@ body {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(2.8px);
 }
+
+.error-message {
+  color: rgb(209, 3, 3);
+  text-align: center;
+  margin-top: 1.1rem;
+  font-weight: bold;
+}
+
 .login-container {
   position: absolute;
   left: 0;
