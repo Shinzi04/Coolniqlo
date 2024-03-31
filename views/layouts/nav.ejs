@@ -8,17 +8,21 @@
   </div>
   <a href="/" class="navbar-logo">COOLNIQLO</a>
   <div class="navbar-extra">
-    <a href="javascript:void(0)" id="searchToggle">
-      <i data-feather="x" id="searchIcon" style="display: none" href="javascript:void(0)"></i>
-      <i data-feather="search" id="closeIcon"></i>
-    </a>
-    <div id="searchBar">
-      <input type="text" id="searchInput" name="q" placeholder="Search..." oninput="searchProducts(this.value)" />
-      <button type="button" id="clearButton" class="submitBtn" onclick="clearSearch()">Clear</button>
+    <div class="xSearch">
+      <a href="javascript:void(0)" id="searchToggle">
+        <i data-feather="x" id="searchIcon" style="display: none" href="javascript:void(0)"></i>
+        <i data-feather="search" id="closeIcon"></i>
+      </a>
+
+      <div id="searchBar" class="noSearch">
+        <form action="/search" method="GET" class="formSearch">
+          <input type="text" name="q" placeholder="Search..." class="search" />
+          <button type="submit" class="submitBtn">Search</button>
+        </form>
+      </div>
     </div>
-    <!-- <div id="searchBar" class="noSearch">
-      <input type="text" id="searchInput" name="q" placeholder="Search..." class="search" />
-      
-    </div> -->
+    <form action="/logout?_method_logout=DELETE" method="POST" class="logout">
+      <button type="submit">Logout</button>
+    </form>
   </div>
 </nav>

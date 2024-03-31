@@ -1,45 +1,60 @@
 const { Router } = require("express");
 const router = Router();
-const ProductList = require("../../models/productList");
+const Product = require("../../models/productList");
 
-// method get
+// method get (READ)
 router.get("/", async (req, res) => {
   try {
-    const items = await ProductList.find();
-    res.status(200).json(items);
+    const products = await Product.find();
+    res.render("dashboard", {
+      products,
+      title: "Manage Products - Coolniqlo",
+      style: "../dashboard.css",
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send("Internal Server Error");
   }
 });
 
-// method post
-router.post("/", async (req, res) => {
+// method post (CREATE)
+router.post("/add", async (req, res) => {
   try {
-    const newProductList = new ProductList(req.body);
-    const savedProductList = await newProductList.save();
-    if (!savedProductList) {
-      res.status(500).json({ message: "Internal server error" });
+    const existingProduct = await Product.findOne({ id: req.body.id });
+    if (existingProduct) {
+      return res.status(400).send("Product with this ID already exists");
     }
-    res.status(200).json(savedProductList);
+    const product = new Product(req.body);
+    await product.save();
+    res.redirect("/admin/dashboard");
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send("Internal Server Error");
   }
 });
 
-// method put
-router.put("/:id", async (req, res) => {
+// method put (UPDATE)
+router.put("/edit/:id", async (req, res) => {
   try {
-    const updatedProductList = await ProductList.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedProductList) {
-      res.status(404).json({ message: "Not found" });
-    }
-    res.status(200).json(updatedProductList);
+    await Product.findByIdAndUpdate(req.params.id, {
+      id: req.body.id,
+      name: req.body.name,
+      price: req.body.price,
+      description: req.body.description,
+      bigImage: req.body.bigImage,
+      smallImages: req.body.smallImages.split("\n"),
+    });
+    res.redirect("/admin/dashboard");
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// method delete (DELETE)
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Product.findByIdAndDelete(req.params.id);
+    res.sendStatus(200);
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
   }
 });
 

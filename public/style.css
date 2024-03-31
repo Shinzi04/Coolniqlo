@@ -21,8 +21,8 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-  padding: 1.5rem 7%;
-  background-color: rgba(255, 255, 255, 1);
+  padding: 1.5rem 0;
+  background-color: rgb(255, 255, 255);
   position: sticky;
   top: 0;
   left: 0;
@@ -61,11 +61,22 @@ body {
 .navbar .navbar-extra {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .navbar .navbar-extra a {
   color: #0e1111;
   margin: 0 0.5rem;
+  display: flex;
+}
+
+.xSearch {
+  display: flex;
+  align-items: center;
+}
+
+.formSearch {
   display: flex;
 }
 
@@ -92,6 +103,7 @@ body {
   border-radius: 2rem;
   cursor: pointer;
   font-size: 0.8rem;
+  margin-left: 0.3rem;
 }
 
 .submitBtn:hover {
@@ -102,7 +114,21 @@ body {
   display: none;
 }
 
-/* buat edit search bar */
+.logout button {
+  font-size: 1.1rem;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 7px;
+  width: 6rem;
+  height: 2rem;
+  color: #0e1111;
+}
+
+.logout button:hover {
+  opacity: 0.8;
+}
+
 #hamburger-menu {
   display: none;
 }
@@ -389,7 +415,7 @@ footer .credit a {
   }
 
   .navbar {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 4fr;
   }
 
   .navbar-logo {
@@ -397,12 +423,16 @@ footer .credit a {
   }
 
   .navbar .navbar-extra {
-    width: 40rem;
-    justify-content: start;
+    gap: 3rem;
+  }
+
+  #hamburger-menu {
+    justify-self: start;
+    margin-right: 2rem;
   }
 
   #searchBar {
-    display: inline;
+    display: inline-block;
   }
 
   #searchToggle {
@@ -411,11 +441,9 @@ footer .credit a {
 
   .search {
     height: 2.5rem;
-    width: 25rem;
-    margin-left: 4rem;
+    width: 28rem;
     border-radius: 7px 0 0 7px;
   }
-
   .submitBtn {
     border-radius: 0 7px 7px 0;
     margin-left: -0.4rem;
@@ -428,11 +456,15 @@ footer .credit a {
 /* Mobile */
 @media (max-width: 450px) {
   html {
-    font-size: 95%;
+    font-size: 55%;
+  }
+
+  .search {
+    width: 17rem;
   }
 
   .hero {
-    min-height: 200vh;
+    min-height: 100vh;
   }
 
   .hero .content {
