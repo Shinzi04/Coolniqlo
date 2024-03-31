@@ -8,7 +8,7 @@
   <button onclick="toggleAddForm()">Add Product</button>
   <div id="addForm" style="display: none;">
     <h2>Add Product</h2>
-    <form action="/admin/dashboard/add" method="post" onsubmit="return confirm('Are you sure you want to add this product?')">
+    <form action="/admin/dashboard/add" method="post" onsubmit="return cleanUpId('productID', 'post')" enctype="multipart/form-data">
       <label for="productID">ID:</label>
       <input type="text" id="productID" name="id" required><br>
       <label for="productName">Name:</label>
@@ -18,9 +18,9 @@
       <label for="productDescription">Description:</label>
       <textarea id="productDescription" name="description" required></textarea><br>
       <label for="productBigImage">Big Image:</label>
-      <input type="text" id="productBigImage" name="bigImage" required><br>
+      <input type="file" id="productBigImage" name="bigImage" required accept="image/*"><br>
       <label for="productSmallImages">Small Images:</label>
-      <textarea id="productSmallImages" name="smallImages" required></textarea><br>
+      <input type="file" id="productSmallImages" name="smallImages" multiple required accept="image/*"><br>
       <button type="submit">Add</button>
     </form>
   </div>
@@ -54,6 +54,7 @@
           <% }); %>
         </td>
 
+        <!-- tombol action untuk edit dan delete -->
         <td>
           <button onclick="toggleEditForm('<%= product.id %>')">Edit</button>
           <button onclick="deleteProduct('<%= product._id %>')">Delete</button>
@@ -65,7 +66,7 @@
       <!-- form edit dengan toggle -->
       <tr id="editForm<%= product.id %>" style="display: none;">
         <td colspan="6">
-          <form id="editForm<%= product.id %>" action="/admin/dashboard/edit/<%= product._id %>?_method=put" method="post" onsubmit="return confirm('Are you sure you want to save changes?')">
+          <form id="editForm<%= product.id %>" action="/admin/dashboard/edit/<%= product._id %>?_method=put" method="post" onsubmit="return cleanUpId('editID', 'put')">
             <label for="editID">ID:</label>
             <input type="text" id="editID" name="id" value="<%= product.id %>" required><br>
             <label for="editName">Name:</label>
@@ -87,6 +88,7 @@
     </tbody>
   </table>
   <% } %>
+
   <!-- pagination -->
   <div class="pagination">
     <% for(let i = 1; i <= totalPages; i++) { %>
@@ -96,6 +98,7 @@
 
   <script>
     let openFormId = null;
+
     // toggle edit form dan hanya 1 edit form yang terbuka
     function toggleEditForm(productId) {
       const editForm = document.getElementById(`editForm${productId}`);
@@ -116,11 +119,25 @@
 
     // toggle untuk add form
     function toggleAddForm() {
-      const addForm = document.getElementById('addForm');
-      if (addForm.style.display === 'none') {
-        addForm.style.display = 'block';
+      const addForm = document.getElementById("addForm");
+      if (addForm.style.display === "none") {
+        addForm.style.display = "block";
       } else {
-        addForm.style.display = 'none';
+        addForm.style.display = "none";
+      }
+    }
+
+    // clean id produk dari karakter khusus dan spasi kecuali - dan _
+    function cleanUpId(id, method) {
+      const productIdInput = document.getElementById(id);
+      productIdInput.value = productIdInput.value
+        .toLowerCase()
+        .replace(/\s/g, "")
+        .replace(/[^a-zA-Z0-9-_]/g, "");
+      if (method === "post") {
+        return confirm("Are you sure you want to add this product?");
+      } else if (method === "put") {
+        return confirm("Are you sure you want to save changes?");
       }
     }
 
@@ -128,17 +145,17 @@
     function deleteProduct(productId) {
       if (confirm("Are you sure you want to delete this product?")) {
         fetch(`/admin/dashboard/delete/${productId}`, {
-            method: 'DELETE'
+            method: "DELETE",
           })
-          .then(response => {
+          .then((response) => {
             if (response.ok) {
               window.location.reload();
             } else {
-              throw new Error('Failed to delete product');
+              throw new Error("Failed to delete product");
             }
           })
-          .catch(error => {
-            alert('Failed to delete product. Please try again.');
+          .catch((error) => {
+            alert("Failed to delete product. Please try again.");
           });
       }
     }
