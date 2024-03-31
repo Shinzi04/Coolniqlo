@@ -1,68 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- head -->
-<%- include('layouts/header.ejs') %>
+  <!-- head -->
+  <%- include('layouts/header.ejs') %>
 
-<body>
-  <!-- Hero Section start-->
-  <section class="hero" id="home">
-    <main class="content">
-      <h1>COOLNIQLO FASHION</h1>
-      <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
-      <a href="#product" class="cta">Beli Sekarang</a>
-        <form action="/logout?_method_logout=DELETE" method="POST">
-          <button type="submit">Log Out</button>
-        </form>
-    </main>
-  </section>
-  <!-- nav -->
-  <%- include('layouts/nav.ejs') %>
-
-    <div class="grid-container" id="product">
-      <% products.forEach(product => { %>
-      <div class="item-container">
-        <div class="item-image-container">
-          <!-- gambar dengan link menuju halaman -->
-          <a href="/detail/<%= product.id %>">
-            <img src="<%= product.bigImage %>" alt="<%= product.name %>" />
-          </a>
-        </div>
-        <div class="item-desc">
-          <div class="item-property">
-            <!-- nama barang -->
-            <div class="item-name"><%= product.name %></div>
-            <!-- harga barang yang diformat -->
-            <div class="item-price"><%= new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price) %></div>
-          </div>
-          <div class="item-rating">
-            <!-- tombol beli -->
-            <a href="/detail/<%= product.id %>" class="btnBeli">Beli</a>
-            <!-- tampilan bintang sesuai rating -->
-            <ul class="star-rating">
-              <!-- tampilan dengan angka -->
-              <li><%= product.rating %></li>
-              <li><i class="fa fa-star"></i></li>
-              <!-- Tampilan bintang -->
-              <!-- <% for (let n = 1; n <= 5; n++) { %>
-                    <% if (n <= product.rating) { %>
-                        <li><i class="fa fa-star"></i></li>
-                    <% } else { %>
-                        <li><i class="fa fa-star-o"></i></li>
-                    <% } %>  
-                  <% } %> -->
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <% }) %>
+  <body>
+    <!-- Hero Section start-->
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>COOLNIQLO FASHION</h1>
+        <p>
+          Toko fashion online terpercaya yang menawarkan berbagai macam pakaian
+          pria dan wanita berkualitas tinggi dengan harga terjangkau.
+        </p>
+        <a href="#product" class="cta">Beli Sekarang</a>
+      </main>
+    </section>
+    <!-- nav -->
+    <%- include('layouts/nav.ejs') %>
+    <div class="sort-container">
+      <ul>
+        <li><button onclick="sortBy_Desc('price')">Price (Descending)</button></li>
+        <li><button onclick="sortBy_Asc('rating')">Rating (Ascending)</button></li>
+        <li><button onclick="sortByRange('rating',2,3)">Rating 2 - 3</button></li>
+        <li><button onclick="sortBy_Desc('sold')">Sold (Descending)</button></li>
+      </ul>
     </div>
+    <div class="grid-container" id="grid-container">
+      <!-- item loaded here from searchItem.js -->
+    </div>
+
+    <!--  -->
     <!-- footer -->
     <%- include('layouts/footer.ejs') %>
 
     <script>
       feather.replace();
     </script>
-    <script src="script.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/searchAndSort.js"></script>
   </body>
 </html>
