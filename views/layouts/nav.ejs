@@ -5,6 +5,9 @@
     <a href="#home">Home</a>
     <a href="#grid-container">Product</a>
     <a href="#contact">Contact</a>
+    <% if (emailN === "admin@gmail.com") { %>
+    <a href="/admin/dashboard">Dashboard</a>
+    <% } %>
   </div>
   <a href="/" class="navbar-logo">COOLNIQLO</a>
   <div class="navbar-extra">
@@ -20,12 +23,12 @@
       </div>
       <div>
         <% if (emailN != null) { %>
-          <form action="/logout?_method=DELETE" method="POST" class="logout">
-            <button type="submit">Logout</button>
-          </form>
+        <form action="/logout?_method=DELETE" method="POST" class="logout">
+          <button type="submit">Logout</button>
+        </form>
         <% } else { %>
-          <a href="/login" class="logout">Sign In</a>
+        <a href="/login" class="logout">Sign In</a>
         <% } %>
       </div>
-      
+
 </nav>
