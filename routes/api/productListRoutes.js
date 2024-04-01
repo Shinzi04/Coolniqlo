@@ -4,6 +4,11 @@ const Product = require('../../models/productList');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const Account = require('../../models/account');
+const passport = require('passport');
+
+router.use(passport.initialize());
+router.use(passport.session());
 
 // konfigurasi multer untuk handling file yang di upload
 const storage = multer.diskStorage({
@@ -24,7 +29,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // method get (READ) untuk mendapatkan list produk
-router.get('/', async (req, res) => {
+router.get('/', isAdmin, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 5;
@@ -118,5 +123,13 @@ router.delete('/delete/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+function isAdmin(req, res, next) {
+  const user = req.session.email;
+  if (user === 'admin@gmail.com') {
+    return next();
+  }
+  res.redirect('/notFound');
+}
 
 module.exports = router;

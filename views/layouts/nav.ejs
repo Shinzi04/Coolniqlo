@@ -14,11 +14,9 @@
         <i data-feather="search" id="closeIcon"></i>
       </a>
 
-      <div id="searchBar" class="noSearch">
-        <form action="/search" method="GET" class="formSearch">
-          <input type="text" name="q" placeholder="Search..." class="search" />
-          <button type="submit" class="submitBtn">Search</button>
-        </form>
+      <div id="searchBar">
+        <input type="text" class="search" id="searchInput" name="q" placeholder="Search..." oninput="searchProducts(this.value)" />
+          <button type="submit" class="submitBtn" onclick="clearSearch()">Clear</button>
       </div>
     </div>
     <form action="/logout?_method_logout=DELETE" method="POST" class="logout">
