@@ -2,10 +2,6 @@ const { Router } = require("express");
 const router = Router();
 const Product = require("../../models/productList");
 const Account = require("../../models/account");
-const passport = require('passport');
-
-router.use(passport.initialize());
-router.use(passport.session());
 
 // method get (READ)
 router.get("/", isAdmin,async (req, res) => {
@@ -69,7 +65,7 @@ function isAdmin(req, res, next) {
   if (user === "admin@gmail.com") {
     return next();
   }
-  res.redirect("/login");
+  res.redirect("/notFound");
 }
 
 module.exports = router;
