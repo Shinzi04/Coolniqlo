@@ -59,9 +59,10 @@
     </div>
     <!-- footer -->
     <%- include('layouts/footer.ejs') %>
-
     <script>
       feather.replace();
+      const email = document.getElementById('email').textContent;
+      console.log(email)
     </script>
     <script src="script.js"></script>
   </body>

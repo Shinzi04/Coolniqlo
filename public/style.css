@@ -269,7 +269,13 @@ body {
   width: 100%;
   display: block;
 }
-
+.sampah{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2;
+  height: 2;
+}
 /* Item container and items styles */
 
 footer {

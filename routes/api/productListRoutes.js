@@ -1,9 +1,14 @@
 const { Router } = require("express");
 const router = Router();
 const Product = require("../../models/productList");
+const Account = require("../../models/account");
+const passport = require('passport');
+
+router.use(passport.initialize());
+router.use(passport.session());
 
 // method get (READ)
-router.get("/", async (req, res) => {
+router.get("/", isAdmin,async (req, res) => {
   try {
     const products = await Product.find();
     res.render("dashboard", {
@@ -57,5 +62,14 @@ router.delete("/delete/:id", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+
+function isAdmin(req, res, next) {
+  const user = req.session.email;
+  if (user === "admin@gmail.com") {
+    return next();
+  }
+  res.redirect("/login");
+}
 
 module.exports = router;

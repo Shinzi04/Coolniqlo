@@ -24,12 +24,33 @@ mongoose.connect(process.env.MONGO_URL).then(
   (err) => console.log(err)
 );
 const Product = require("./models/productList");
-
-initializePassport(
-  passport,
-  (email) => users.find((user) => user.email === email),
-  (id) => users.find((user) => user.id === id)
-);
+const Password = require("./models/account")
+// initializePassport (
+//   passport,
+//   (email) => users.find((user) => user.email === email),
+//   (id) => users.find((user) => user.id === id)
+// );
+// initializePassport(
+//   passport,
+//   async (email) => {
+//     try {
+//       const user = await Password.findOne({ email: req.body.email });
+//       return user; // Mengembalikan pengguna jika ditemukan
+//     } catch (error) {
+//       console.error('error email');
+//       return null; // Mengembalikan null jika terjadi kesalahan
+//     }
+//   },
+//   async (id) => {
+//     try {
+//       const user = await Password.findOne({id: req.body.id});
+//       return user; // Mengembalikan pengguna berdasarkan ID jika ditemukan
+//     } catch (error) {
+//       console.error('error id');
+//       return null; // Mengembalikan null jika terjadi kesalahan
+//     }
+//   }
+// );
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -47,6 +68,8 @@ app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(methodOverride("_method"));
 app.use("/admin/dashboard", require("./routes/api/productListRoutes"));
+app.use('/login', require('./routes/api/accountsRoutes'));
+
 
 app.set("view engine", "ejs");
 
@@ -119,39 +142,42 @@ app.get("/detail/:productID", async (req, res) => {
 
 // route untuk ke page login dan dicek apakah sudah login atau belum
 // kalau sudah login tidak bisa kembali ke page login
-app.get("/login", checkNotAuthenticated, (req, res) => {
-  res.render("login");
-});
+// app.get("/login", checkNotAuthenticated, (req, res) => {
+//   res.render("login");
+// });
 
 // route untuk ke page register dan dicek apakah sudah pernah login atau belum
 // kalau sudah login tidak akan bisa kembali lagi ke page register
-app.post("/login", checkNotAuthenticated, async (req, res) => {
-  if (req.body.signIn == "1") {
-    // Proses login
-    passport.authenticate("local", {
-      successRedirect: "/",
-      failureRedirect: "/login",
-      failureFlash: true,
-    })(req, res);
-  } else if (req.body.signUp == "0") {
-    // Proses registrasi
-    try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      users.push({
-        id: Date.now().toString(),
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        password: hashedPassword,
-      });
-      res.redirect("/login");
-    } catch {
-      res.redirect("/login");
-    }
-  } else {
-    res.status(400).send("Bad Request");
-  }
-});
+// app.post("/login", checkNotAuthenticated, async (req, res) => {
+//   if (req.body.signIn == "1") {
+//     // Proses login
+//     passport.authenticate("local", {
+//       successRedirect: "/",
+//       failureRedirect: "/login",
+//       failureFlash: true,
+//     })(req, res);
+//   } else if (req.body.signUp == "0") {
+//     // Proses registrasi
+//     try {
+//       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+//       users.push({
+//         id: Date.now().toString(),
+//         firstName: req.body.firstName,
+//         lastName: req.body.lastName,
+//         email: req.body.email,
+//         password: hashedPassword,
+//       });
+//       console.log(users);
+//       res.redirect("/login");
+//     } catch {
+//       res.redirect("/login");
+//     }
+//   } else {
+//     res.status(400).send("Bad Request");
+//   }
+// });
+
+
 
 // route untuk logout
 app.delete("/logout", (req, res, next) => {
@@ -168,7 +194,7 @@ function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect("/login");
+  res.redirect("/admin/dashboard");
 }
 
 // fungsi untuk mengecek apakah user sudah login atau belum, jika sudah, maka akan redirect ke homepage
