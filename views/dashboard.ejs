@@ -8,7 +8,7 @@
   <button onclick="toggleAddForm()">Add Product</button>
   <div id="addForm" style="display: none;">
     <h2>Add Product</h2>
-    <form action="/admin/dashboard/add" method="post" onsubmit="return cleanUpId('productID', 'post')" enctype="multipart/form-data">
+    <form action="/admin/dashboard/add" method="post" enctype="multipart/form-data" onsubmit="return cleanUpId('productID', 'post')">
       <input type="hidden" name="currentPage" value="<%= currentPage %>">
       <label for="productID">ID:</label>
       <input type="text" id="productID" name="id" required><br>
@@ -67,7 +67,7 @@
       <!-- form edit dengan toggle -->
       <tr id="editForm<%= product.id %>" style="display: none;">
         <td colspan="6">
-          <form id="editForm<%= product.id %>" action="/admin/dashboard/edit/<%= product._id %>?_method=put" method="post" onsubmit="return cleanUpId('editID', 'put')">
+          <form id="editForm<%= product.id %>" action="/admin/dashboard/edit/<%= product._id %>?_method=put" method="post" enctype="multipart/form-data" onsubmit=" return cleanUpId('editID', 'put' )">
             <input type="hidden" name="currentPage" value="<%= currentPage %>">
             <label for="editID">ID:</label>
             <input type="text" id="editID" name="id" value="<%= product.id %>" required><br>
@@ -78,9 +78,9 @@
             <label for="editDescription">Description:</label>
             <textarea id="editDescription" name="description" required><%= product.description %></textarea><br>
             <label for="editBigImage">Big Image:</label>
-            <input type="text" id="editBigImage" name="bigImage" value="<%= product.bigImage %>" required><br>
+            <input type="file" id="editBigImage" name="bigImage"><br>
             <label for="editSmallImages">Small Images:</label>
-            <textarea id="editSmallImages" name="smallImages" required><%= product.smallImages.join('\n') %></textarea><br>
+            <input type="file" id="editSmallImages" name="smallImages" multiple><br>
             <button type="submit">Save</button>
           </form>
         </td>
