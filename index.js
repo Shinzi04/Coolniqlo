@@ -31,19 +31,19 @@ const Password = require('./models/account');
 //   (id) => users.find((user) => user.id === id)
 // );
 
-initializePassport (
-  passport,
-  async (email) => {
-    // Menggunakan req.body.email untuk mencari pengguna dalam database
-    const user = await Account.findOne({ email: email });
-    return user; // Mengembalikan hasil pencarian dari database
-  },
-  async (id) => {
-    // Menggunakan req.body.email untuk mencari pengguna dalam database
-    const user = await Account.findById(id);
-    return user; // Mengembalikan hasil pencarian dari database
-  }
-);
+// initializePassport (
+//   passport,
+//   async (email) => {
+//     // Menggunakan req.body.email untuk mencari pengguna dalam database
+//     const user = await Account.findOne({ email: email });
+//     return user; // Mengembalikan hasil pencarian dari database
+//   },
+//   async (id) => {
+//     // Menggunakan req.body.email untuk mencari pengguna dalam database
+//     const user = await Account.findById(id);
+//     return user; // Mengembalikan hasil pencarian dari database
+//   }
+// );
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
