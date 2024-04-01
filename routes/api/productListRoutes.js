@@ -1,10 +1,10 @@
-const { Router } = require("express");
+const { Router } = require('express');
 const router = Router();
-const Product = require("../../models/productList");
-const fs = require("fs");
-const path = require("path");
-const multer = require("multer");
-const Account = require("../../models/account");
+const Product = require('../../models/productList');
+const fs = require('fs');
+const path = require('path');
+const multer = require('multer');
+const Account = require('../../models/account');
 
 // konfigurasi multer untuk handling file yang di upload
 const storage = multer.diskStorage({
@@ -27,32 +27,32 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // method get (READ) untuk mendapatkan list produk
-router.get("/", isAdmin, async (req, res) => {
+router.get('/', isAdmin, async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 5;
     const skip = (page - 1) * limit;
     const products = await Product.find().skip(skip).limit(limit);
     const totalProducts = await Product.countDocuments();
-    res.render("dashboard", {
+    res.render('dashboard', {
       products,
-      title: "Manage Products - Coolniqlo",
-      style: "../../css/dashboard.css",
+      title: 'Manage Products - Coolniqlo',
+      style: '../../css/dashboard.css',
       currentPage: page,
       totalPages: Math.ceil(totalProducts / limit),
     });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send('Internal Server Error');
   }
 });
 
 // method post (CREATE) untuk menambahkan produk
 router.post(
-  "/add",
+  '/add',
   upload.fields([
-    { name: "bigImage", maxCount: 1 },
-    { name: "smallImages", maxCount: 8 },
+    { name: 'bigImage', maxCount: 1 },
+    { name: 'smallImages', maxCount: 8 },
   ]),
   async (req, res) => {
     try {
@@ -60,11 +60,11 @@ router.post(
 
       // product ID harus unik
       if (await Product.findOne({ id: productId })) {
-        return res.status(400).send("Product with this ID already exists");
+        return res.status(400).send('Product with this ID already exists');
       }
 
-      const bigImage = req.files["bigImage"][0];
-      const smallImages = req.files["smallImages"];
+      const bigImage = req.files['bigImage'][0];
+      const smallImages = req.files['smallImages'];
 
       // membuat array path smallImages
       const smallImagePaths = await Promise.all(
@@ -92,38 +92,32 @@ router.post(
       res.redirect(`/admin/dashboard?page=${currentPage}`);
     } catch (error) {
       console.log(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send('Internal Server Error');
     }
   }
 );
 
 // method put (UPDATE) untuk perbarui produk
 router.put(
-  "/edit/:id",
+  '/edit/:id',
   upload.fields([
-    { name: "bigImage", maxCount: 1 },
-    { name: "smallImages", maxCount: 8 },
+    { name: 'bigImage', maxCount: 1 },
+    { name: 'smallImages', maxCount: 8 },
   ]),
   async (req, res) => {
     try {
       const product = await Product.findById(req.params.id);
 
       //  delete gambar sebelumnya jika upload gambar
-      if (
-        (req.files && req.files.bigImage) ||
-        (req.files && req.files.smallImages)
-      ) {
+      if ((req.files && req.files.bigImage) || (req.files && req.files.smallImages)) {
         const deleteImage = (filePath) => {
           try {
-            const fullPath = path.join(
-              __dirname,
-              `../../public/uploads/${filePath}`
-            );
+            const fullPath = path.join(__dirname, `../../public/uploads/${filePath}`);
             if (fs.existsSync(fullPath)) {
               fs.unlinkSync(fullPath);
             }
           } catch (error) {
-            console.error("Error deleting image:", error);
+            console.error('Error deleting image:', error);
           }
         };
 
@@ -139,14 +133,8 @@ router.put(
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
-        bigImage:
-          req.files && req.files.bigImage
-            ? `../uploads/${req.files.bigImage[0].filename}`
-            : product.bigImage,
-        smallImages:
-          req.files && req.files.smallImages
-            ? req.files.smallImages.map((file) => `../uploads/${file.filename}`)
-            : product.smallImages,
+        bigImage: req.files && req.files.bigImage ? `../uploads/${req.files.bigImage[0].filename}` : product.bigImage,
+        smallImages: req.files && req.files.smallImages ? req.files.smallImages.map((file) => `../uploads/${file.filename}`) : product.smallImages,
       });
 
       // redirect ke halaman dashboard setelah edit/update
@@ -154,13 +142,13 @@ router.put(
       res.redirect(`/admin/dashboard?page=${currentPage}`);
     } catch (error) {
       console.log(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send('Internal Server Error');
     }
   }
 );
 
 // method delete (DELETE)
-router.delete("/delete/:id", async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     await Product.findByIdAndDelete(req.params.id);
@@ -168,15 +156,12 @@ router.delete("/delete/:id", async (req, res) => {
     // fungsi delete gambar berdasarkan filepath dari path image produk
     const deleteImage = (filePath) => {
       try {
-        const fullPath = path.join(
-          __dirname,
-          `../../public/uploads/${filePath}`
-        );
+        const fullPath = path.join(__dirname, `../../public/uploads/${filePath}`);
         if (fs.existsSync(fullPath)) {
           fs.unlinkSync(fullPath);
         }
       } catch (error) {
-        console.log("Error deleting image:", error);
+        console.log('Error deleting image:', error);
       }
     };
 
@@ -189,16 +174,16 @@ router.delete("/delete/:id", async (req, res) => {
     res.sendStatus(200);
   } catch (error) {
     console.log(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send('Internal Server Error');
   }
 });
 
 function isAdmin(req, res, next) {
   const user = req.session.email;
-  if (user === "admin@gmail.com") {
+  if (user === 'admin@gmail.com') {
     return next();
   }
-  res.redirect("/notFound");
+  res.redirect('/notFound');
 }
 
 module.exports = router;

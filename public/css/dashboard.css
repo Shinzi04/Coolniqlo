@@ -23,22 +23,34 @@ nav {
 }
 
 .pagination {
-  margin-top: 20px;
+  margin: 1.5rem 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .pagination a {
-  padding: 8px 16px;
-  text-decoration: none;
-  color: black;
+  display: inline-block;
+  color: #0e1111;
+  border: 1px solid #0e1111;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0.5rem;
+  transition: 0.3s ease-in-out;
 }
 
 .pagination a.active {
-  background-color: #007bff;
+  background-color: #0e1111;
   color: white;
 }
 
 .pagination a:hover:not(.active) {
-  background-color: #ddd;
+  background-color: #0e1111;
+  color: white;
 }
 
 .addProduct {

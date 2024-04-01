@@ -4,30 +4,33 @@
   <%- include('layouts/header.ejs') %>
 
   <body>
+    <div class="userName">
+      <p>Hello, <%= firstName %> <%= lastName %></p>
+    </div>
     <!-- Hero Section start-->
     <section class="hero" id="home">
       <main class="content">
         <h1>COOLNIQLO FASHION</h1>
-        <p>
-          Toko fashion online terpercaya yang menawarkan berbagai macam pakaian
-          pria dan wanita berkualitas tinggi dengan harga terjangkau.
-        </p>
-        <a href="#product" class="cta">Beli Sekarang</a>
-        <div>
-          <%= firstName %> <%= lastName %>
-        </div>
+        <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
+        <a href="#nav" class="cta">Beli Sekarang</a>
       </main>
     </section>
     <!-- nav -->
-    <%- include('layouts/nav.ejs', {emailN:email}) %>
-    <div class="sort-container">
+    <%- include('layouts/nav.ejs') %>
+    <div class="sort-container" id="sort">
+      <button class="scrollLeft"><i data-feather="chevrons-left" class="iconLeft" onclick="scrollSlider('left')"></i></button>
       <ul>
         <li><button onclick="sortBy_Desc('price')">Price (Descending)</button></li>
         <li><button onclick="sortBy_Asc('rating')">Rating (Ascending)</button></li>
         <li><button onclick="sortByRange('rating',2,3)">Rating 2 - 3</button></li>
         <li><button onclick="sortBy_Desc('sold')">Sold (Descending)</button></li>
+        <li><button onclick="sortByRange('rating',2,3)">Rating 2 - 3</button></li>
+        <li><button onclick="sortBy_Desc('sold')">Sold (Descending)</button></li>
+        <li><button onclick="sortBy_Desc('sold')">Sold (Descending)</button></li>
       </ul>
+      <button class="scrollRight"><i data-feather="chevrons-right" class="iconRight" onclick="scrollSlider('right')"></i></button>
     </div>
+
     <div class="grid-container" id="grid-container">
       <!-- item loaded here from searchItem.js -->
     </div>
@@ -39,6 +42,5 @@
     </script>
     <script src="../script/script.js"></script>
     <script src="../script/searchAndSort.js"></script>
-
   </body>
 </html>
