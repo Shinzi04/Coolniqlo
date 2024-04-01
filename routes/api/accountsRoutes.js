@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const Product = require("../../models/productList");
 
 //method get
-accRouter.get('/', async (req, res) => {  try {
+accRouter.get('/', isLogin,async (req, res) => {  try {
     const account = await Account.find();
     res.render("login", {
       account,
@@ -20,7 +20,7 @@ accRouter.get('/', async (req, res) => {  try {
 })
 
 //method post
-accRouter.post('/register', async (req, res) => {
+accRouter.post('/register',isLogin, async (req, res) => {
     try {
         const existingAcc = await Account.findOne({ email: req.body.email });
         if (existingAcc){
@@ -35,7 +35,7 @@ accRouter.post('/register', async (req, res) => {
     }
 })
 
-accRouter.post('/enter', async (req,res) =>{
+accRouter.post('/enter',isLogin, async (req,res) =>{
     try {
         const check = await Account.findOne({ email: req.body.email });
         if(!check){
@@ -58,5 +58,12 @@ accRouter.post('/enter', async (req,res) =>{
     }
 });
 
+function isLogin(req, res, next) {
+    const user = req.session.email;
+    if (user != null) {
+    res.redirect('/');
+    }
+    return next();
+  }
 
 module.exports = accRouter;
