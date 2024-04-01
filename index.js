@@ -30,27 +30,20 @@ const Password = require('./models/account');
 //   (email) => users.find((user) => user.email === email),
 //   (id) => users.find((user) => user.id === id)
 // );
-// initializePassport(
-//   passport,
-//   async (email) => {
-//     try {
-//       const user = await Password.findOne({ email: req.body.email });
-//       return user; // Mengembalikan pengguna jika ditemukan
-//     } catch (error) {
-//       console.error('error email');
-//       return null; // Mengembalikan null jika terjadi kesalahan
-//     }
-//   },
-//   async (id) => {
-//     try {
-//       const user = await Password.findOne({id: req.body.id});
-//       return user; // Mengembalikan pengguna berdasarkan ID jika ditemukan
-//     } catch (error) {
-//       console.error('error id');
-//       return null; // Mengembalikan null jika terjadi kesalahan
-//     }
-//   }
-// );
+
+initializePassport (
+  passport,
+  async (email) => {
+    // Menggunakan req.body.email untuk mencari pengguna dalam database
+    const user = await Account.findOne({ email: email });
+    return user; // Mengembalikan hasil pencarian dari database
+  },
+  async (id) => {
+    // Menggunakan req.body.email untuk mencari pengguna dalam database
+    const user = await Account.findById(id);
+    return user; // Mengembalikan hasil pencarian dari database
+  }
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -83,10 +76,11 @@ app.use((req, res, next) => {
 });
 
 // route untuk homepage awal
-app.get('/', async (req, res) => {
+app.get("/",async (req, res) => {
   try {
     let products = await Product.find();
-    res.render('index', { firstName: '', lastName: '', products, title: 'Coolniqlo', style: 'css/style.css' });
+    // console.log("bisa")
+    res.render("index", {email:req.session.email,firstName :req.session.firstName,lastName:req.session.lastName, products, title: "Coolniqlo", style: "css/style.css" });
   } catch (error) {
     res.status(500).send('Internal Server Error');
   }
@@ -200,7 +194,7 @@ function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/admin/dashboard');
+  res.redirect("/login");
 }
 
 // fungsi untuk mengecek apakah user sudah login atau belum, jika sudah, maka akan redirect ke homepage

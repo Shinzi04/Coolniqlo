@@ -19,8 +19,8 @@
       </main>
     </section>
     <!-- nav -->
-    <%- include('layouts/nav.ejs') %>
-    <div class="sort-container" id="product">
+    <%- include('layouts/nav.ejs', {emailN:email}) %>
+    <div class="sort-container">
       <ul>
         <li><button onclick="sortBy_Desc('price')">Price (Descending)</button></li>
         <li><button onclick="sortBy_Asc('rating')">Rating (Ascending)</button></li>

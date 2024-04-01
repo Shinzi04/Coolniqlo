@@ -5,10 +5,6 @@ const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
 const Account = require("../../models/account");
-const passport = require("passport");
-
-router.use(passport.initialize());
-router.use(passport.session());
 
 // konfigurasi multer untuk handling file yang di upload
 const storage = multer.diskStorage({
