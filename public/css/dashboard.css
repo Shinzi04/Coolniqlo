@@ -1,3 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #0e1111;
+  background-color: #f4f4f2;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #0e1111;
+  margin-bottom: 1rem;
+}
+
 .pagination {
   margin-top: 20px;
 }
@@ -15,4 +39,168 @@
 
 .pagination a:hover:not(.active) {
   background-color: #ddd;
+}
+
+.addProduct {
+  width: 9rem;
+  height: 2rem;
+  margin-left: 3rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #0e1111;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.addProduct:hover {
+  opacity: 0.8;
+}
+
+.container {
+  width: 95%;
+  margin: 1rem auto;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+#addForm,
+.editForm,
+.editFormContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 1);
+  width: 30rem;
+  padding: 2rem 2rem 0.7rem;
+  border: 1px solid #0e1111;
+  border-radius: 10px;
+}
+
+#addForm h2,
+.editFormContainer h2 {
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
+
+#addForm form,
+.editFormContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+#addForm div,
+.editFormContainer div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+#addForm form label,
+.editFormContainer form label {
+  font-weight: 600;
+}
+
+#addForm form input,
+.editFormContainer form input,
+textarea {
+  width: 100%;
+  border: 1px solid #0e1111;
+  height: 1.5rem;
+  border-radius: 4px;
+}
+
+#addForm .buttonBottom,
+.editFormContainer .buttonBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+#addForm button,
+.editFormContainer button.cancelEdit {
+  width: 7rem;
+  height: 2rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #0e1111;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#addForm button.cancelAdd:hover,
+.editFormContainer button.cancelEdit:hover {
+  opacity: 0.7;
+}
+
+#addForm button.cancelAdd,
+.editFormContainer button.cancelEdit {
+  color: #0e1111;
+  background-color: white;
+  border: 1px solid #0e1111;
+}
+
+table {
+  background-color: #f7f7f4;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #0e1111;
+  color: white;
+  height: 2.5rem;
+  padding: 1rem 1rem;
+}
+
+table th,
+table td {
+  padding: 1rem 0.2rem;
+}
+
+tr:nth-child(4n + 1) {
+  background-color: #ededeb;
+}
+
+.tdBtn button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background-color: #0e1111;
+  color: white;
+  height: 1.5rem;
+  width: 4rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
+.tdBtn button.deleteBtn {
+  border: 1px solid #d11a2a;
+  background-color: #d11a2a;
+}
+
+.tdBtn button:hover,
+.saveBtn:hover {
+  opacity: 0.77;
+}
+
+.linkProduct {
+  color: #0e1111;
+}
+.linkProduct:hover {
+  text-decoration: underline;
+}
+
+.saveBtn {
+  width: 7rem;
+  height: 2rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: white;
+  background-color: #0e1111;
+  border-radius: 5px;
+  cursor: pointer;
 }

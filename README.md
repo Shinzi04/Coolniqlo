@@ -7,9 +7,15 @@ npm start run
 ## Data
 - Import data **products.json** ke MongoDB untuk menggunakan data produk 
   atau dengan menambahkan langsung pada Dashboard Admin.
+- Import data **admin.json** ke MongoDB untuk memasukan admin dan user/customer ke
+  aplikasi
 - Gambar produk ada di public/assets/Items
 - Backup data produk ada di folder backup-data 
-## Dashboard Admin
+## Akun
+- admin@gmail.com dengan password admin123
+- tester@gmail.com dengan password tester
+## Dashboard admin
+- Dashboard (*/admin/dashboard*) **hanya** dapat diakses oleh admin
 - Gambar yang dimasukkan akan disimpan di public/uploads
 - Saat penambahan gambar produk *bigImage*, penambahan *smallImages* harus upload gambar
   yang sama dengan *bigImage* satu kali agar *bigImage* dapat dipilih saat detail produk
