@@ -46,7 +46,7 @@ accRouter.post('/enter', async (req,res) =>{
         if (isPasswordMatch){
             let products = await Product.find();
             req.session.email = req.body.email;
-            return res.render('',{ products, title: "Coolniqlo", style: "./../style.css" });
+            return res.render('',{firstName: check.firstName,lastName:check.lastName,title: "Coolniqlo", style: "../css/style.css" });
         }
         else{
             return res.render('login', { info: "Wrong Password" });
@@ -55,5 +55,6 @@ accRouter.post('/enter', async (req,res) =>{
         
     }
 });
+
 
 module.exports = accRouter;
