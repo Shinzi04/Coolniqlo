@@ -81,7 +81,9 @@ router.post(
         smallImages: smallImagePaths,
       });
       product.save();
-      res.redirect("/admin/dashboard");
+      // redirect ke halaman dashboard setelah create
+      const currentPage = req.body.currentPage || 1;
+      res.redirect(`/admin/dashboard?page=${currentPage}`);
     } catch (error) {
       res.status(500).send("Internal Server Error");
     }
@@ -99,7 +101,9 @@ router.put("/edit/:id", async (req, res) => {
       bigImage: req.body.bigImage,
       smallImages: req.body.smallImages.split("\n"),
     });
-    res.redirect("/admin/dashboard");
+    // redirect ke halaman dashboard setelah update
+    const currentPage = req.body.currentPage || 1;
+    res.redirect(`/admin/dashboard?page=${currentPage}`);
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }

@@ -9,6 +9,7 @@
   <div id="addForm" style="display: none;">
     <h2>Add Product</h2>
     <form action="/admin/dashboard/add" method="post" onsubmit="return cleanUpId('productID', 'post')" enctype="multipart/form-data">
+      <input type="hidden" name="currentPage" value="<%= currentPage %>">
       <label for="productID">ID:</label>
       <input type="text" id="productID" name="id" required><br>
       <label for="productName">Name:</label>
@@ -67,6 +68,7 @@
       <tr id="editForm<%= product.id %>" style="display: none;">
         <td colspan="6">
           <form id="editForm<%= product.id %>" action="/admin/dashboard/edit/<%= product._id %>?_method=put" method="post" onsubmit="return cleanUpId('editID', 'put')">
+            <input type="hidden" name="currentPage" value="<%= currentPage %>">
             <label for="editID">ID:</label>
             <input type="text" id="editID" name="id" value="<%= product.id %>" required><br>
             <label for="editName">Name:</label>
