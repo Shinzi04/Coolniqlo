@@ -39,7 +39,7 @@ router.get('/', isAdmin, async (req, res) => {
     res.render('dashboard', {
       products,
       title: 'Manage Products - Coolniqlo',
-      style: '../dashboard.css',
+      style: '../../css/dashboard.css',
       currentPage: page,
       totalPages: Math.ceil(totalProducts / limit),
     });

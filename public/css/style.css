@@ -21,13 +21,13 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
-  padding: 1.5rem 0;
+  padding: 1.5rem 0.7rem;
   background-color: rgb(255, 255, 255);
   position: sticky;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 99;
   border-bottom: 1px solid #0e1111;
 }
 
@@ -89,6 +89,7 @@ body {
   border-radius: 15px;
   transition: border-color 0.3s;
   text-indent: 10px;
+  margin-left: 0.3rem;
 }
 
 .search:focus {
@@ -133,6 +134,20 @@ body {
   display: none;
 }
 
+.userName {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: white;
+  border: 1px solid white;
+  background-color: rgba(14, 17, 17, 0.7);
+  margin: 0 0 1rem 1rem;
+  padding: 1rem 5rem;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 100;
+}
+
 /* Hero Section  */
 .hero {
   min-height: 100vh;
@@ -171,7 +186,7 @@ body {
   padding: 1rem 3rem;
   font-size: 1rem;
   color: #ffffff;
-  background-color: #0e1111;
+  background-color: rgb(14, 17, 17);
   border-radius: 0.6rem;
   box-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
 }
@@ -179,25 +194,88 @@ body {
 .hero .content .cta:hover {
   opacity: 0.8;
 }
+
 /* Sort Container */
-.sort-container{
-  background-color: yellow;
-  margin: 0 auto;
+.sort-container {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  overflow: hidden;
+  border-bottom: 1px solid white;
 }
 
-.sort-container ul{
+.sort-container button {
+  background-color: transparent;
+}
+
+.sort-container .scrollLeft,
+.sort-container .scrollRight {
+  color: white;
+  cursor: pointer;
+}
+.iconLeft,
+.iconRight {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.sort-container .scrollLeft {
+  position: absolute;
+  left: 2rem;
+  margin-top: 0.3rem;
+}
+
+.sort-container .scrollRight {
+  position: absolute;
+  right: 0;
+  margin-right: 1.8rem;
+  margin-top: 0.33rem;
+}
+
+.sort-container ul {
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
   list-style-type: none;
+  transition: transform 0.5s ease;
+}
+.sort-container ul li button {
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 1rem;
+  color: white;
+  width: 13rem;
+  height: 3rem;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 0.5rem;
+  overflow: hidden;
+  position: relative;
 }
 
-.sort-container li{
-  border-style:solid;
-  border-width: medium;
-  border-color: lightgreen;
+.sort-container ul li button:hover {
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 2px 4px 0px, rgba(255, 255, 255, 0.52) 0px 2px 16px 0px;
 }
+
+.sort-container ul li button::after {
+  background: #fff;
+  content: '';
+  height: 155px;
+  left: -75px;
+  opacity: 0.2;
+  position: absolute;
+  top: -50px;
+  transform: rotate(35deg);
+  transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+  width: 50px;
+  z-index: -10;
+}
+
+.sort-container ul li button:hover:after {
+  left: 120%;
+  transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
 /* Item container and items styles */
 .grid-container {
   width: 95%;
@@ -313,7 +391,7 @@ body {
   width: 100%;
   display: block;
 }
-.sampah{
+.sampah {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -371,6 +449,14 @@ footer .credit a {
     width: 20rem;
     height: 26rem;
   }
+  .sort-container ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .sort-container ul li {
+    margin: 1rem auto;
+  }
 }
 
 /* tablet */
@@ -383,6 +469,10 @@ footer .credit a {
     display: inline-block;
     color: #0e1111;
     cursor: pointer;
+  }
+
+  .navbar {
+    grid-template-columns: 1fr 4fr;
   }
 
   .navbar .navbar-nav {
@@ -447,7 +537,7 @@ footer .credit a {
 
   .search {
     height: 2.5rem;
-    width: 28rem;
+    width: 20rem;
     border-radius: 7px 0 0 7px;
   }
   .submitBtn {
@@ -457,6 +547,15 @@ footer .credit a {
     height: 2.5rem;
     font-size: 1.12rem;
   }
+
+  /* .sort-container ul {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .sort-container ul li {
+    margin: 1rem auto;
+  } */
 }
 
 /* Mobile */
