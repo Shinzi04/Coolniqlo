@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #0e1111;
   background-color: #f4f4f2;
 }
@@ -215,4 +215,18 @@ tr:nth-child(4n + 1) {
   background-color: #0e1111;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.backBtn {
+  padding: 0 1rem; 
+  margin-left: 3rem;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #0e1111;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.backBtn:hover {
+  opacity: 0.8;
 }
