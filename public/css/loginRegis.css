@@ -159,22 +159,18 @@ header {
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
 }
-.two-col {
-  display: flex;
-  justify-content: space-between;
-  color: #fff;
-  font-size: small;
-  margin-top: 10px;
+
+.forgotPass {
+  margin-top: 0.5rem;
+  text-align: end;
 }
-.two-col .one {
-  display: flex;
-  gap: 5px;
-}
-.two label a {
+
+.forgotPass label a {
   text-decoration: none;
   color: #fff;
+  font-size: small;
 }
-.two label a:hover {
+.forgotPass label a:hover {
   text-decoration: underline;
 }
 

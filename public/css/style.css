@@ -89,7 +89,6 @@ body {
   border-radius: 15px;
   transition: border-color 0.3s;
   text-indent: 10px;
-  margin-left: 0.3rem;
 }
 
 .search:focus {
@@ -115,37 +114,134 @@ body {
   display: none;
 }
 
-.logout button {
-  font-size: 1.1rem;
-  background-color: transparent;
-  cursor: pointer;
-  border: 1px solid;
+.loginBtn {
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  color: #ffffff !important;
+  background-color: rgb(14, 17, 17);
   border-radius: 7px;
-  width: 6rem;
-  height: 2rem;
-  color: #0e1111;
-}
-
-.logout button:hover {
-  opacity: 0.8;
 }
 
 #hamburger-menu {
   display: none;
 }
 
-.userName {
+.userSection {
   position: fixed;
   bottom: 0;
   left: 0;
+  z-index: 100;
+}
+
+.iconUserContainer {
+  width: 5rem;
+  height: 5rem;
   color: white;
   border: 1px solid white;
   background-color: rgba(14, 17, 17, 0.7);
-  margin: 0 0 1rem 1rem;
-  padding: 1rem 5rem;
-  border-radius: 10px;
+  margin: 0 0 1.5rem 1.5rem;
+  border-radius: 50px;
   text-align: center;
-  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.iconUserContainer .iconUser {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.iconUserContainer:hover {
+  color: #0e1111;
+  border: 1px solid #0e1111;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.iconUserContainer:hover .iconUser {
+  color: #0e1111;
+  transition: 0.3s;
+}
+
+.displayBlock {
+  display: block !important;
+}
+
+.closeBtnDown {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3rem;
+  height: 3rem;
+  color: white;
+  border: 1px solid white;
+  background-color: rgba(14, 17, 17, 1);
+  border-radius: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closeBtnDown:hover {
+  color: #0e1111;
+  border: 1px solid #0e1111;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.userPopup {
+  display: none;
+  position: absolute;
+  z-index: 101;
+  bottom: 1rem;
+  left: 2rem;
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  background-color: #0e1111;
+  color: white;
+  border: 1px solid white;
+}
+
+.userName {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.userBtnBot {
+  display: flex;
+}
+
+.userBtnBot button {
+  font-size: 1.1rem;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 7px;
+  width: 7rem;
+  height: 2.3rem;
+  color: #0e1111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userBtnBot button:hover {
+  opacity: 0.8;
+}
+
+.userBtnBot .editBtn {
+  margin-right: 1rem;
+}
+
+.log-out,
+.edit {
+  margin-right: 0.5rem;
 }
 
 /* Hero Section  */
@@ -274,6 +370,11 @@ body {
 .sort-container ul li button:hover:after {
   left: 120%;
   transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.selected {
+  background-color: rgba(255, 255, 255, 1) !important;
+  color: #0e1111 !important;
 }
 
 /* Item container and items styles */
@@ -437,6 +538,47 @@ footer .credit {
 footer .credit a {
   color: #0e1111;
   font-weight: 700;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Media Query */
