@@ -62,6 +62,7 @@ app.use(morgan("dev"));
 app.use(methodOverride("_method"));
 app.use("/admin/dashboard", require("./routes/api/productListRoutes"));
 app.use("/login", require("./routes/api/accountsRoutes"));
+app.use('/verificationPage',require('./routes/api/verficationRouter'))
 
 app.set("view engine", "ejs");
 
@@ -78,6 +79,8 @@ app.use((req, res, next) => {
 // route untuk homepage awal
 app.get("/", async (req, res) => {
   try {
+    req.session.emailStore = '';
+
     let products = await Product.find();
     // console.log("bisa")
     res.render("index", {
@@ -88,6 +91,7 @@ app.get("/", async (req, res) => {
       title: "Coolniqlo",
       style: "css/style.css",
     });
+    
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
@@ -95,6 +99,7 @@ app.get("/", async (req, res) => {
 
 // route untuk query search
 app.get("/search", async (req, res) => {
+  req.session.emailStore = '';
   try {
     let query = req.query.q || "";
     // menghilangkan karakter khusus
@@ -118,6 +123,7 @@ app.get("/search", async (req, res) => {
   }
 });
 app.get("/items", async (req, res) => {
+  req.session.emailStore = '';
   try {
     const products = await Product.find();
     res.json(products);
@@ -129,6 +135,7 @@ app.get("/items", async (req, res) => {
 
 // route untuk masing-masing detail product
 app.get("/detail/:productID", async (req, res) => {
+  req.session.emailStore = '';
   try {
     let productID = req.params.productID;
     let productData = await Product.findOne({ id: productID });
@@ -149,45 +156,9 @@ app.get("/detail/:productID", async (req, res) => {
   }
 });
 
-// route untuk ke page login dan dicek apakah sudah login atau belum
-// kalau sudah login tidak bisa kembali ke page login
-// app.get("/login", checkNotAuthenticated, (req, res) => {
-//   res.render("login");
-// });
-
-// route untuk ke page register dan dicek apakah sudah pernah login atau belum
-// kalau sudah login tidak akan bisa kembali lagi ke page register
-// app.post("/login", checkNotAuthenticated, async (req, res) => {
-//   if (req.body.signIn == "1") {
-//     // Proses login
-//     passport.authenticate("local", {
-//       successRedirect: "/",
-//       failureRedirect: "/login",
-//       failureFlash: true,
-//     })(req, res);
-//   } else if (req.body.signUp == "0") {
-//     // Proses registrasi
-//     try {
-//       const hashedPassword = await bcrypt.hash(req.body.password, 10);
-//       users.push({
-//         id: Date.now().toString(),
-//         firstName: req.body.firstName,
-//         lastName: req.body.lastName,
-//         email: req.body.email,
-//         password: hashedPassword,
-//       });
-//       console.log(users);
-//       res.redirect("/login");
-//     } catch {
-//       res.redirect("/login");
-//     }
-//   } else {
-//     res.status(400).send("Bad Request");
-//   }
-// });
-
 // route untuk logout
 app.delete("/logout", (req, res, next) => {
+  req.session.emailStore = '';
   req.logOut(function (err) {
     if (err) {
       return next(err);
@@ -212,8 +183,10 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 
+
 // route untuk pindah ke page notFound bila url tidak ditemukan
 app.get("*", (req, res) => {
+  req.session.emailStore = '';
   res.status(404).render("notFound", {
     title: "404 Not Found - Coolniqlo",
     style: "/../css/notFound.css",
