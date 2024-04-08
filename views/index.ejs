@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- head -->
-<%- include('layouts/header.ejs') %>
+  <!-- head -->
+  <%- include('layouts/header.ejs') %>
 
-<body>
-  <% if (email != null) { %>
-  <div class="userName">
-    <p>Hello, <%= firstName %> <%= lastName %></p>
-  </div>
-  <% } %>
-  <!-- Hero Section start-->
-  <section class="hero" id="home">
-    <main class="content">
-      <h1>COOLNIQLO FASHION</h1>
-      <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
-      <a href="#nav" class="cta">Beli Sekarang</a>
-    </main>
-  </section>
-  <!-- nav -->
-  <%- include('layouts/nav.ejs',{emailN:email}) %>
-  <div class="sort-container" id="sort">
-    <button class="scrollLeft"><i data-feather="chevrons-left" class="iconLeft" onclick="scrollSlider('left')"></i></button>
-    <ul>
-      <li><button onclick="sortBy_Desc('price')">Price (Descending)</button></li>
-      <li><button onclick="sortBy_Asc('rating')">Rating (Ascending)</button></li>
-      <li><button onclick="sortByRange('rating',2,3)">Rating 2 - 3</button></li>
-      <li><button onclick="sortBy_Desc('sold')">Sold (Descending)</button></li>
-    </ul>
-    <button class="scrollRight"><i data-feather="chevrons-right" class="iconRight" onclick="scrollSlider('right')"></i></button>
-  </div>
+  <body>
+    <!-- Hero Section start-->
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>COOLNIQLO FASHION</h1>
+        <p>Toko fashion online terpercaya yang menawarkan berbagai macam pakaian pria dan wanita berkualitas tinggi dengan harga terjangkau.</p>
+        <a href="#nav" class="cta">Beli Sekarang</a>
+      </main>
+    </section>
+    <!-- nav -->
+    <%- include('layouts/nav.ejs',{emailN:email}) %>
+    <div class="sort-container" id="sort">
+      <button class="scrollLeft"><i data-feather="chevrons-left" class="iconLeft" onclick="scrollSlider('left')"></i></button>
+      <ul>
+        <li><button onclick="selectButton(this, 'price')">Price (Descending)</button></li>
+        <li><button onclick="selectButton(this, 'rating')">Rating (Ascending)</button></li>
+        <li><button onclick="selectButton(this, 'ratingRange')">Rating 2 - 3</button></li>
+        <li><button onclick="selectButton(this, 'sold')">Sold (Descending)</button></li>
+      </ul>
+      <button class="scrollRight"><i data-feather="chevrons-right" class="iconRight" onclick="scrollSlider('right')"></i></button>
+    </div>
 
-  <div class="grid-container" id="grid-container">
-    <!-- item loaded here from searchItem.js -->
-  </div>
-  <!--  -->
-  <!-- footer -->
-  <%- include('layouts/footer.ejs') %>
-  <script>
-    feather.replace();
-  </script>
-  <script src="../script/script.js"></script>
-  <script src="../script/searchAndSort.js"></script>
-</body>
+    <div class="grid-container" id="grid-container">
+      <!-- item loaded here from searchItem.js -->
+    </div>
 
+    <!-- user Section Button -->
+    <% if (email != null) { %>
+    <div class="userSection">
+      <div class="iconUserContainer">
+        <i data-feather="user" class="iconUser"></i>
+      </div>
+      <div class="userPopup">
+        <span class="closeBtnDown"><i data-feather="chevron-down"></i></span>
+        <div class="userName">
+          <p>Welcome, <%= firstName %> <%= lastName %></p>
+        </div>
+        <div class="signInContainer">
+          <% if (email != null) { %>
+          <form action="/logout?_method=DELETE" method="POST" class="userBtnBot">
+            <button type="submit" class="editBtn"><i data-feather="edit" class="edit"></i>Edit</button>
+            <button type="submit"><i data-feather="log-out" class="log-out"></i>Logout</button>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+    <!--  footer -->
+    <%- include('layouts/footer.ejs') %>
+    <script>
+      feather.replace();
+    </script>
+    <script src="../script/script.js"></script>
+    <script src="../script/searchAndSort.js"></script>
+  </body>
 </html>

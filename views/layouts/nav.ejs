@@ -16,19 +16,16 @@
         <i data-feather="x" id="searchIcon" style="display: none" href="javascript:void(0)"></i>
         <i data-feather="search" id="closeIcon"></i>
       </a>
+    </div>
 
-      <div id="searchBar" class="formSearch">
-        <input type="text" class="search" id="searchInput" name="q" placeholder="Search..." oninput="searchProducts(this.value)" />
-        <button type="submit" class="submitBtn" onclick="clearSearch()">Clear</button>
-      </div>
-      <div>
-        <% if (emailN != null) { %>
-        <form action="/logout?_method=DELETE" method="POST" class="logout">
-          <button type="submit">Logout</button>
-        </form>
-        <% } else { %>
-        <a href="/login" class="logout">Sign In</a>
-        <% } %>
-      </div>
-
+    <div id="searchBar" class="formSearch noSearch">
+      <input type="text" class="search" id="searchInput" name="q" placeholder="Search..." oninput="searchProducts(this.value)" />
+      <button type="submit" class="submitBtn" onclick="clearSearch()">Clear</button>
+    </div>
+    <div>
+      <% if (emailN == null) { %>
+      <a href="/login" class="loginBtn">Sign In / Up</a>
+      <% } %>
+    </div>
+  </div>
 </nav>

@@ -49,3 +49,59 @@ const navbarNav = document.querySelector('.navbar-nav');
 document.querySelector('#hamburger-menu').onclick = () => {
   navbarNav.classList.toggle('active');
 };
+
+const userPopup = document.querySelector('.userPopup');
+const iconUserContainer = document.querySelector('.iconUserContainer');
+const closeBtnDown = document.querySelector('.closeBtnDown');
+
+iconUserContainer.onclick = () => {
+  userPopup.classList.toggle('displayBlock');
+  userPopup.style.animation = 'slideInFromBottom 0.5s ease-in-out forwards';
+  iconUserContainer.style.animation = 'fadeOut 0.5s ease-in forwards';
+};
+
+closeBtnDown.addEventListener('click', function () {
+  userPopup.style.animation = 'slideInFromTop 0.5s ease-in-out forwards';
+  iconUserContainer.style.animation = 'fadeIn 0.5s ease-in forwards';
+
+  // Setelah 0.5 detik (durasi animasi), hilangkan kelas displayBlock
+  setTimeout(() => {
+    userPopup.classList.remove('displayBlock');
+  }, 500);
+});
+
+function selectButton(button, type) {
+  // Mencari semua tombol dalam elemen <ul>
+  let buttons = document.querySelectorAll('.sort-container ul li button');
+
+  // Menghapus kelas 'selected' dari semua tombol
+  buttons.forEach(function (btn) {
+    btn.classList.remove('selected');
+  });
+
+  // Menambahkan kelas 'selected' pada tombol yang diklik
+  button.classList.add('selected');
+  console.log('ini tombol yang diklik:', button);
+
+  // Lakukan sesuatu berdasarkan jenis (type) tombol yang diklik
+  switch (type) {
+    case 'price':
+      // Lakukan sesuatu jika tombol Price (Descending) diklik
+      sortBy_Desc('price');
+      break;
+    case 'rating':
+      // Lakukan sesuatu jika tombol Rating (Ascending) diklik
+      sortBy_Asc('rating');
+      break;
+    case 'ratingRange':
+      // Lakukan sesuatu jika tombol Rating 2 - 3 diklik
+      sortByRange('rating', 2, 3);
+      break;
+    case 'sold':
+      // Lakukan sesuatu jika tombol Sold (Descending) diklik
+      sortBy_Desc('sold');
+      break;
+    default:
+    // Lakukan sesuatu jika tombol lainnya diklik
+  }
+}
