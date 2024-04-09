@@ -9,8 +9,9 @@ verify.get('/', isRegister, (req, res) => {
 });
 
 verify.post('/verify', isRegister, (req, res) => {
-    const code = req.body.code.trim(); // Menghilangkan spasi dari kode
-    if (code === req.session.vCode) {
+    const code = req.body.code.trim();
+    const forgotPassword = req.session.forgotPassword; 
+    if (code === req.session.vCode && !forgotPassword) {
         const account = new Account({
             email: req.session.emailStore,
             firstName: req.session.firstNameStore,
@@ -24,10 +25,24 @@ verify.post('/verify', isRegister, (req, res) => {
         req.session.passwordStore = '';
         req.session.vCode = '';
         return res.redirect('/login');
-    } else {
+    } else if (forgotPassword){
+        console.log('else if forgotPassword')
+        console.log(req.session.vCode)
+        if (code === req.session.vCode){
+            const token = 'abcdefg'; // Misalnya, Anda memiliki token yang sudah ada atau Anda dapat membuatnya
+            return res.redirect(`/forgotPassword?token=${token}`);
+        }
+        else {
+            console.log(forgotPassword)
+            return res.render('verificationPage', { info: "Invalid verification code" });
+        }
+    } 
+    else {
+        console.log(forgotPassword)
         return res.render('verificationPage', { info: "Invalid verification code" });
     }
 });
+
 
 
 function isRegister(req, res, next) {
