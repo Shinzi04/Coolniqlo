@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/Verify.css" />
+
+    <!-- font poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+    <title>COOLNIQLO - Verification</title>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-logo">
+        <p>COOLNIQLO</p>
+      </div>
+    </nav>
+    <!----------------------------- Form box ----------------------------------->
+    <div class="container">
+      <div class="form-box">
+        <span>
+            <div id="error-message" class="error-message"><%= info %></div>
+          </span>
+        <form class="register-container" id="verification" action="/forgotPassword/saveUsername" method="POST">
+          <div class="top">
+            <header>Edit Account </header>
+          </div>
+
+          <div class="input-box">
+            <input type="text" class="input-field" placeholder="First Name" name="firstName" id="firstName" value="<%= firstName %>" />
+            <i class="bx bx-user"></i>
+        </div>
+            <div class="input-box">
+              <input type="text" class="input-field" placeholder="Lastname" name="lastName" id="lastName" value="<%= lastName %>" />
+              <i class="bx bx-user"></i>
+            </div>
+
+          <div class="input-box">
+            <button type="submit" class="submit" name="save" id="save" value="0">Save</button>
+          </div>
+          <span class="bottom">Forgot your password? <a href="/forgotPassword?token=abc123" id = "forgotPassword">Change Password</a></span>
+        </form>
+      </div>
+    </div>
+    <script>
+function forgot() {
+    window.location.href = '/change-password'; // Ubah '/change-password' dengan rute yang sesuai
+}
+    </script>
+  </body>
+</html>
