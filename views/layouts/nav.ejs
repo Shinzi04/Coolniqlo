@@ -22,9 +22,9 @@
       <input type="text" class="search" id="searchInput" name="q" placeholder="Search..." oninput="searchProducts(this.value)" />
       <button type="submit" class="submitBtn" onclick="clearSearch()">Clear</button>
     </div>
-    <div>
+    <div class="loginBtnBox">
       <% if (emailN == null) { %>
-      <a href="/login" class="loginBtn">Sign In / Up</a>
+      <a href="/login" class="loginBtn">Sign In</a>
       <% } %>
     </div>
   </div>
