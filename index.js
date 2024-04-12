@@ -63,7 +63,8 @@ app.use(methodOverride("_method"));
 app.use("/admin/dashboard", require("./routes/api/productListRoutes"));
 app.use("/login", require("./routes/api/accountsRoutes"));
 app.use('/verificationPage',require('./routes/api/verficationRouter'))
-
+app.use('/editAccount',require('./routes/api/editRouter'))
+app.use('/forgotPassword',require('./routes/api/forgotRouter'))
 app.set("view engine", "ejs");
 
 // hapus trailing slash

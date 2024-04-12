@@ -23,59 +23,64 @@ accRouter.get('/', isLogin,async (req, res) => {  try {
 
 //method post
 accRouter.post('/register', isLogin, async (req, res) => {
-  try {
-      const existingAcc = await Account.findOne({ email: req.body.email });
-      if (existingAcc) {
-          return res.render('login', { info: "Account with this Email already exists" });
-      } else {
-          const pw = req.body.password.trim(); // Trim kata sandi
-          if (pw.length >= 8 && /\d/.test(pw)) { // Memeriksa panjang kata sandi dan keberadaan angka
-              req.session.emailStore = req.body.email;
-              req.session.firstNameStore = req.body.firstName;
-              req.session.lastNameStore = req.body.lastName;
-              req.session.passwordStore = pw;
-
-              const verificationCode = generateNumericCode(6);
-              req.session.vCode = verificationCode;
-
-              const transporter = nodemailer.createTransport({
-                  service: "gmail",
-                  auth: {
-                      user: process.env.EMAIL,
-                      pass: process.env.PASSWORD,
-                  },
-              });
-              const mailOptions = {
-                  from: "Coolniqlo",
-                  to: req.body.email,
-                  subject: "Coolniqlo - Verification Code",
-                  text: `Your verification code is ${verificationCode}`,
-              };
-              transporter.sendMail(mailOptions, function (error, info) {
-                  if (error) {
-                      console.log(error);
-                  } else {
-                      console.log("Email sent: " + info.response);
-                  }
-              });
-              res.redirect('/verificationPage');
-          } else {
-              res.render("login", { // Perbaikan path render
-                  title: "Account - Coolniqlo",
-                  info: 'Password must be at least 8 characters long and contain at least one number',
-              });
-          }
-      }
-  } catch (error) {
-      console.log(error);
-      res.status(500).send('Internal Server Error');
-  }
-});
+    try {
+        // Mengubah email menjadi lowercase
+        const email = req.body.email.toLowerCase();
+        
+        const existingAcc = await Account.findOne({ email: email });
+        if (existingAcc) {
+            return res.render('login', { info: "Account with this Email already exists" });
+        } else {
+            const pw = req.body.password.trim(); // Trim kata sandi
+            if (pw.length >= 8 && /\d/.test(pw)) { // Memeriksa panjang kata sandi dan keberadaan angka
+                req.session.emailStore = email; // Simpan email dalam lowercase
+                req.session.firstNameStore = req.body.firstName;
+                req.session.lastNameStore = req.body.lastName;
+                req.session.passwordStore = pw;
+  
+                const verificationCode = generateNumericCode(6);
+                req.session.vCode = verificationCode;
+  
+                const transporter = nodemailer.createTransport({
+                    service: "gmail",
+                    auth: {
+                        user: process.env.EMAIL,
+                        pass: process.env.PASSWORD,
+                    },
+                });
+                const mailOptions = {
+                    from: "Coolniqlo",
+                    to: email, // Gunakan email dalam lowercase untuk mengirim email
+                    subject: "Coolniqlo - Verification Code",
+                    text: `Your verification code is ${verificationCode}`,
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log("Email sent: " + info.response);
+                    }
+                });
+                res.redirect('/verificationPage');
+            } else {
+                res.render("login", { // Perbaikan path render
+                    title: "Account - Coolniqlo",
+                    info: 'Password must be at least 8 characters long and contain at least one number',
+                });
+            }
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Internal Server Error');
+    }
+  });
+  
 
 
 accRouter.post('/enter',isLogin, async (req,res) =>{
     try {
-        const check = await Account.findOne({ email: req.body.email });
+        const check_email = req.body.email.toLowerCase();
+        const check = await Account.findOne({ email: check_email });
         if(!check){
             return res.render('login', { info: "Email or Password is incorrect" });
         }
