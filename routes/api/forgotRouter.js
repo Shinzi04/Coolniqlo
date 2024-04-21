@@ -12,7 +12,6 @@ forgot.get('/', (req, res) => {
         return res.redirect('/notFound')
     }
     else if(token === 'abc123'){
-        console.log('masuk else')
         const verificationCode = generateNumericCode(6);
         req.session.vCode = verificationCode;
 
@@ -47,14 +46,16 @@ forgot.get('/', (req, res) => {
 
 forgot.post('/savePassword', async (req, res) => {
     const email = req.session.email;
+    console.log('email',email)
     const newPassword = req.body.newPassword.trim();
+    console.log('PW',newPassword)
     if (newPassword.length >= 8 && /\d/.test(newPassword)){
         const account = await Account.findOne({ email: email });
         account.password = newPassword;
         await account.save();
+        req.session.email = '';
         return res.redirect('/login');
     }else {
-        console.log(forgotPassword)
         return res.render('forgotPassword', { info: "Password must be at least 8 characters long and contain at least one number" });
     }
     

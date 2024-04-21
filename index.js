@@ -65,6 +65,8 @@ app.use("/login", require("./routes/api/accountsRoutes"));
 app.use('/verificationPage',require('./routes/api/verficationRouter'))
 app.use('/editAccount',require('./routes/api/editRouter'))
 app.use('/forgotPassword',require('./routes/api/forgotRouter'))
+app.use('/sendForgotPassword',require('./routes/api/sendForgotPasswordRouter'))
+app.use('/sendEmail',require('./routes/api/sendEmailRouter'))
 app.set("view engine", "ejs");
 
 // hapus trailing slash

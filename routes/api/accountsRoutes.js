@@ -56,7 +56,7 @@ accRouter.post('/register', isLogin, async (req, res) => {
                 };
                 transporter.sendMail(mailOptions, function (error, info) {
                     if (error) {
-                        console.log(error);
+                        console.log(error)
                     } else {
                         console.log("Email sent: " + info.response);
                     }
@@ -102,7 +102,7 @@ accRouter.post('/enter',isLogin, async (req,res) =>{
 });
 
 function isLogin(req, res, next) {
-    const user = req.session.email;
+    const user = req.session.firstName;
     if (user != null) {
     res.redirect('/');
     }

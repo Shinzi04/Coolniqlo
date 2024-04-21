@@ -11,7 +11,8 @@ verify.get('/', isRegister, (req, res) => {
 verify.post('/verify', isRegister, (req, res) => {
     const code = req.body.code.trim();
     const forgotPassword = req.session.forgotPassword; 
-    if (code === req.session.vCode && !forgotPassword) {
+    const sendEmailToken = req.session.sendEmailToken;
+    if (code === req.session.vCode && !forgotPassword && !sendEmailToken) {
         const account = new Account({
             email: req.session.emailStore,
             firstName: req.session.firstNameStore,
@@ -33,12 +34,17 @@ verify.post('/verify', isRegister, (req, res) => {
             return res.redirect(`/forgotPassword?token=${token}`);
         }
         else {
-            console.log(forgotPassword)
             return res.render('verificationPage', { info: "Invalid verification code" });
         }
-    } 
+    } else if (sendEmailToken){
+        if(code === req.session.vCode){
+            return res.render('forgotPassword', { info: "" });
+        }
+        else{
+            return res.render('verificationPage', { info: "Invalid verification code" });
+        }
+    }
     else {
-        console.log(forgotPassword)
         return res.render('verificationPage', { info: "Invalid verification code" });
     }
 });
