@@ -46,6 +46,7 @@ initializePassport(
 );
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -88,6 +89,7 @@ app.get("/", async (req, res) => {
       email: req.session.email,
       firstName: req.session.firstName,
       lastName: req.session.lastName,
+      userID: req.session._id,
       products,
       title: "Coolniqlo",
       style: "css/style.css",
@@ -98,31 +100,6 @@ app.get("/", async (req, res) => {
   }
 });
 
-// route untuk query search
-app.get("/search", async (req, res) => {
-  req.session.emailStore = '';
-  try {
-    let query = req.query.q || "";
-    // menghilangkan karakter khusus
-    query = query.replace(/[^\w\s]/gi, "");
-    let filteredItems = [];
-    if (!query) {
-      filteredItems = await Product.find();
-    } else {
-      filteredItems = await Product.find({
-        name: { $regex: query, $options: "i" },
-      });
-    }
-    res.render("index", {
-      products: filteredItems,
-      query,
-      title: "Coolniqlo",
-      style: "style.css",
-    });
-  } catch (error) {
-    res.status(500).send("Internal Server Error");
-  }
-});
 app.get("/items", async (req, res) => {
   req.session.emailStore = '';
   try {
@@ -185,6 +162,8 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 
+// add to cart (testing)
+app.use('/cart', require('./routes/api/cartRoutes'));
 // route untuk pindah ke page notFound bila url tidak ditemukan
 app.get("*", (req, res) => {
   req.session.emailStore = '';

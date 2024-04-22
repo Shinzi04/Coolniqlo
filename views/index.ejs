@@ -2,8 +2,9 @@
 <html lang="en">
   <!-- head -->
   <%- include('layouts/header.ejs') %>
-
+  
   <body>
+    <%- include('layouts/floatingButton.ejs') %>
     <!-- Hero Section start-->
     <section class="hero" id="home">
       <main class="content">
@@ -31,6 +32,7 @@
 
     <!-- user Section Button -->
     <% if (email != null) { %>
+      
     <div class="userSection">
       <div class="iconUserContainer">
         <i data-feather="user" class="iconUser"></i>
@@ -55,6 +57,7 @@
       </div>
     </div>
     <% } %>
+    
     <!--  footer -->
     <%- include('layouts/footer.ejs') %>
     <script>
@@ -62,5 +65,6 @@
     </script>
     <script src="../script/script.js"></script>
     <script src="../script/searchAndSort.js"></script>
+    <script src="../script/cartLoaded.js"></script>
   </body>
 </html>
