@@ -86,6 +86,22 @@ forgot.post('/saveUserName', async (req, res) => {
     }
 });
 
+forgot.post('/deleteUser', async (req, res) => {
+    const email = req.session.email;
+    const account = await Account.findOne({ email: email});
+    console.log("Account:", account); // Cek apakah account ditemukan
+
+    if (account) {
+        await Account.deleteOne({ email: email });
+        req.session.email = '';
+        req.session.emailStore = '';
+        req.session.firstName = '';
+        req.session.lastName = '';
+        console.log("Account deleted:", account); // Cek apakah akun dihapus
+        return res.redirect('/');
+    } 
+});
+
 function generateNumericCode(length) {
     let result = '';
     const characters = '0123456789';

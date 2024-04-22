@@ -103,7 +103,7 @@ accRouter.post('/enter',isLogin, async (req,res) =>{
 
 function isLogin(req, res, next) {
     const user = req.session.firstName;
-    if (user != null) {
+    if (user != null && user != '') {
     res.redirect('/');
     }
     return next();

@@ -83,9 +83,7 @@ app.use((req, res, next) => {
 app.get("/", async (req, res) => {
   try {
     req.session.emailStore = '';
-
     let products = await Product.find();
-    // console.log("bisa")
     res.render("index", {
       email: req.session.email,
       firstName: req.session.firstName,

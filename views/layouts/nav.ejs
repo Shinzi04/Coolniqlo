@@ -23,7 +23,7 @@
       <button type="submit" class="submitBtn" onclick="clearSearch()">Clear</button>
     </div>
     <div>
-      <% if (firstName == null) { %>
+      <% if (firstName == '' || firstName == null) { %>
       <a href="/login" class="loginBtn">Sign In / Up</a>
       <% } %>
     </div>
