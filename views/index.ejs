@@ -41,12 +41,11 @@
           <p>Welcome, <%= firstName %> <%= lastName %></p>
         </div>
         <div class="signInContainer">
-          <% if (email != null) { %>
-            <% if (email != "admin@gmail.com" && email != "tester@gmail.com") { %>
-              <form action="/editAccount/editing" method="POST" class="userBtnBot">
-                <button type="submit" class="editBtn"><i data-feather="edit" class="edit"></i>Edit</button>
-              </form> 
-            <% } %>
+          <% if (email != null) { %> <% if (email != "admin@gmail.com" && email != "tester@gmail.com") { %>
+          <form action="/editAccount/editing" method="POST" class="userBtnBot">
+            <button type="submit" class="editBtn"><i data-feather="edit" class="edit"></i>Edit</button>
+          </form>
+          <% } %>
           <form action="/logout?_method=DELETE" method="POST" class="userBtnBot">
             <button type="submit"><i data-feather="log-out" class="log-out"></i>Logout</button>
           </form>
@@ -57,10 +56,11 @@
     <% } %>
     <!--  footer -->
     <%- include('layouts/footer.ejs') %>
+
+    <script src="../script/script.js"></script>
+    <script src="../script/searchAndSort.js"></script>
     <script>
       feather.replace();
     </script>
-    <script src="../script/script.js"></script>
-    <script src="../script/searchAndSort.js"></script>
   </body>
 </html>
