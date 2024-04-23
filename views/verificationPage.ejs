@@ -31,14 +31,23 @@
             <header>Verification Code</header>
           </div>
           <div class="input-box">
-            <input type="text" class="input-field" placeholder="Verification Code" name="code" id="code" required />
+            <input type="text" class="input-field" placeholder="Verification Code" name="code" id="code" required onclick="clearErrorMessage()"/>
             <i class="bx bx-lock-alt"></i>
           </div>
           <div class="input-box">
-            <button type="submit" class="submit" name="signUp" id="signUp" value="0">Verify</button>
+            <button type="submit" class="submit" name="signUp" id="signUp" value="0" onclick="clearErrorMessage()">Verify</button>
           </div>
         </form>
+        <span class="bottom"><a href="/" id = "forgotPassword">Back to Home</a></span>
       </div>
     </div>
   </body>
+  <script>
+        function clearErrorMessage() {
+        var errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+          errorMessage.innerHTML = '';
+        }
+      }
+  </script>
 </html>

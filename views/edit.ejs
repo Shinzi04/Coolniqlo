@@ -45,11 +45,22 @@
           </div>
           <span class="bottom">Forgot your password? <a href="/forgotPassword?token=abc123" id = "forgotPassword">Change Password</a></span>
         </form>
+        <form id="verification" action="/forgotPassword/deleteUser" method="POST">
+          <span class="bottom">Want to delete your account? <button id = "deleteAccount" onclick="areYourSure()">Delete Account</button></span>
+        </form>
       </div>
     </div>
     <script>
 function forgot() {
     window.location.href = '/change-password'; // Ubah '/change-password' dengan rute yang sesuai
+}
+
+function areYourSure() {
+    var result = confirm('Are Your Sure?');
+    if (result ===false){
+      event.preventDefault();
+    }
+    
 }
     </script>
   </body>
