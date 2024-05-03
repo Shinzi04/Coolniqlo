@@ -24,33 +24,45 @@
     <div class="container">
       <div class="form-box">
         <span>
-            <div id="error-message" class="error-message"><%= info %></div>
-          </span>
+          <div id="error-message" class="error-message"><%= info %></div>
+        </span>
         <form class="register-container" id="verification" action="/forgotPassword/saveUsername" method="POST">
           <div class="top">
-            <header>Edit Account </header>
+            <header>Edit Account</header>
           </div>
-
           <div class="input-box">
             <input type="text" class="input-field" placeholder="First Name" name="firstName" id="firstName" value="<%= firstName %>" />
             <i class="bx bx-user"></i>
-        </div>
-            <div class="input-box">
-              <input type="text" class="input-field" placeholder="Lastname" name="lastName" id="lastName" value="<%= lastName %>" />
-              <i class="bx bx-user"></i>
-            </div>
+          </div>
+          <div class="input-box">
+            <input type="text" class="input-field" placeholder="Lastname" name="lastName" id="lastName" value="<%= lastName %>" />
+            <i class="bx bx-user"></i>
+          </div>
 
           <div class="input-box">
             <button type="submit" class="submit" name="save" id="save" value="0">Save</button>
           </div>
-          <span class="bottom">Forgot your password? <a href="/forgotPassword?token=abc123" id = "forgotPassword">Change Password</a></span>
         </form>
+
+        <div class="btnBottomContainer">
+          <a href="/forgotPassword?token=abc123" id="forgotPassword " class="bottom bottom1">Change Password</a>
+          <form id="verification" action="/forgotPassword/deleteUser" method="POST">
+            <button id="deleteAccount" class="bottom bottom2" onclick="areYourSure()">Delete Account</button>
+          </form>
+        </div>
       </div>
     </div>
     <script>
-function forgot() {
-    window.location.href = '/change-password'; // Ubah '/change-password' dengan rute yang sesuai
-}
+      function forgot() {
+        window.location.href = '/change-password'; // Ubah '/change-password' dengan rute yang sesuai
+      }
+
+      function areYourSure() {
+        var result = confirm('Are Your Sure?');
+        if (result === false) {
+          event.preventDefault();
+        }
+      }
     </script>
   </body>
 </html>

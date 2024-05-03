@@ -217,6 +217,7 @@ body {
 
 .signInContainer {
   display: flex;
+  justify-content: center;
 }
 
 .userBtnBot button {

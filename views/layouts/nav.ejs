@@ -13,7 +13,7 @@
   <div class="navbar-extra">
     <div class="xSearch">
       <a href="javascript:void(0)" id="searchToggle">
-        <i data-feather="x" id="searchIcon" style="display: none" href="javascript:void(0)"></i>
+        <i data-feather="x" id="searchIcon" href="javascript:void(0)" style="display: none"></i>
         <i data-feather="search" id="closeIcon"></i>
       </a>
     </div>
@@ -22,8 +22,8 @@
       <input type="text" class="search" id="searchInput" name="q" placeholder="Search..." oninput="searchProducts(this.value)" />
       <button type="submit" class="submitBtn" onclick="clearSearch()">Clear</button>
     </div>
-    <div class="loginBtnBox">
-      <% if (emailN == null) { %>
+    <div>
+      <% if (firstName == '' || firstName == null) { %>
       <a href="/login" class="loginBtn">Sign In</a>
       <% } %>
     </div>

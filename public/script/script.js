@@ -70,8 +70,8 @@ closeBtnDown.addEventListener('click', function () {
   }, 500);
 });
 
-const buttons = document.querySelectorAll('.sort-container ul li button');
 function selectButton(button, type) {
+  const buttons = document.querySelectorAll('.sort-container ul li button');
   // Mencari semua tombol dalam elemen <ul>
 
   // Menghapus kelas 'selected' dari semua tombol
@@ -103,12 +103,11 @@ function selectButton(button, type) {
     default:
     // Lakukan sesuatu jika tombol lainnya diklik
   }
-}
+  clearBtn = document.querySelector('.submitBtn');
 
-clearBtn = document.querySelector('.submitBtn');
-
-clearBtn.addEventListener('click', function () {
-  buttons.forEach(function (btn) {
-    btn.classList.remove('selected');
+  clearBtn.addEventListener('click', function () {
+    buttons.forEach(function (btn) {
+      btn.classList.remove('selected');
+    });
   });
-});
+}
