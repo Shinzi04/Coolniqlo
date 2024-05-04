@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('layouts/header.ejs') %>
+    <head>
+        <link rel="stylesheet" href="../css/checkout.css">
+    </head>
+    
+<body>
+    <div class="checkout-all-container">
+        <div class="checkout-container">
+            <div class="checkout-item-container">
+                <div class="checkout-item-title">Shopping Cart</div>
+                <div class="checkout-table-container">
+                    <table class="checkout-item-table">
+                        <thead>
+                          <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <th>AYAMAYAMMA</th>
+                            <th>AYAMAYAMMA</th>
+                            <th>AYAMAYAMMA</th>
+                        </tbody>
+                        <tbody>
+                            <th>AYAMAYAMMA</th>
+                            <th>AYAMAYAMMA</th>
+                            <th>AYAMAYAMMA</th>
+                        </tbody>
+                      </table>
+                </div>
+                
+            </div>
+            <div class="checkout-form">
+                <div class="form-background">
+                <div class="checkout-item-title">Payment Info</div>
+                <div class="checkout-detail-container">
+                    <form id="checkout-form">         
+                            <div class="form-group">
+                                <label for="card-holder">Address</label>
+                                <input type="text" id="" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="card-holder">Postal Code</label>
+                                <input type="text" id="" required>
+                            </div>
+                            <button type="submit">Checkout</button>
+                        </div>
+                              
+                     
+                    </form>
+                </div>
+            </div>
+        </div>  
+    </div>
+        
+    <!-- <form id="checkout-form">
+        <div class="form-group">
+            <label for="card-holder"></label>
+            <input type="text" id="card-holder" required>
+        </div>
+      <button type="submit">Checkout</button>
+    </form> -->
+        </div>
+    </div>
+    
+    <!-- <div class="container">
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="card-holder">Nama Pemegang Kartu</label>
+            <input type="text" id="card-holder" required>
+          </div>
+          <div class="form-group">
+            <label for="card-number">Nomor Kartu</label>
+            <input type="text" id="card-number" required>
+          </div>
+          <div class="form-group">
+            <label for="expiry-date">Tanggal Kadaluarsa</label>
+            <input type="text" id="expiry-date" placeholder="MM/YY" required>
+          </div>
+          <div class="form-group">
+            <label for="cvv">Kode Keamanan (CVV)</label>
+            <input type="text" id="cvv" required>
+          </div>
+          <button type="submit">Bayar</button>
+        </form>
+      </div> -->
+    <%- include('layouts/footer.ejs') %>
+</body>
+    <script src="../public/script"></script>
+</html>
