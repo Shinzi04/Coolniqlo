@@ -97,8 +97,19 @@ body {
   position: absolute;
   left: 0;
   right: -70rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s ease-in-out;
+}
+.forgotPass-container {
+  position: absolute;
+  right: 0;
+  left: -70rem;
+  margin: 0 auto;
   top: 50%;
   transform: translateY(-50%);
   width: 30rem;
@@ -199,7 +210,8 @@ header {
     height: 500px;
   }
   .register-container,
-  .login-container {
+  .login-container,
+  .forgotPass-container {
     width: 100%;
     padding: 0 20px;
   }

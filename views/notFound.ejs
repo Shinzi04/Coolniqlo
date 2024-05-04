@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- head -->
-<%- include('layouts/header.ejs') %>
+  <!-- head -->
+  <%- include('layouts/header.ejs') %>
 
-<body>
-  <div class="notFoundContainer">
-    <div class="notFoundTop">
-      <h1 class="notFoundTitle">OOPS!</h1>
+  <body>
+    <div class="notFoundContainer">
+      <div class="notFoundTop">
+        <h1 class="notFoundTitle">OOPS!</h1>
+      </div>
+
+      <div class="notFoundText">
+        <h2 class="notFoundCode">404 - THE PAGE CAN'T BE FOUND</h2>
+        <button class="notFoundButton" onclick="goToHomePage()">GO TO HOME PAGE</button>
+      </div>
     </div>
-
-    <div class="notFoundText">
-      <h2 class=notFoundCode>404 - THE PAGE CAN'T BE FOUND</h2>
-      <button class="notFoundButton" onclick="goToHomePage()">GO TO HOME PAGE</button>
-    </div>
-
-  </div>
-  <script src="/../script/notFound.js"></script>
-</body>
-
+    <script src="/../script/notFound.js"></script>
+  </body>
 </html>

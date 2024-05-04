@@ -64,9 +64,11 @@ app.use(morgan("dev"));
 app.use(methodOverride("_method"));
 app.use("/admin/dashboard", require("./routes/api/productListRoutes"));
 app.use("/login", require("./routes/api/accountsRoutes"));
-app.use("/verificationPage", require("./routes/api/verficationRouter"));
-app.use("/editAccount", require("./routes/api/editRouter"));
-app.use("/forgotPassword", require("./routes/api/forgotRouter"));
+app.use('/verificationPage',require('./routes/api/verficationRouter'))
+app.use('/editAccount',require('./routes/api/editRouter'))
+app.use('/forgotPassword',require('./routes/api/forgotRouter'))
+app.use('/sendForgotPassword',require('./routes/api/sendForgotPasswordRouter'))
+app.use('/sendEmail',require('./routes/api/sendEmailRouter'))
 app.set("view engine", "ejs");
 
 // hapus trailing slash
@@ -82,10 +84,8 @@ app.use((req, res, next) => {
 // route untuk homepage awal
 app.get("/", async (req, res) => {
   try {
-    req.session.emailStore = "";
-
+    req.session.emailStore = '';
     let products = await Product.find();
-    // console.log("bisa")
     res.render("index", {
       email: req.session.email,
       firstName: req.session.firstName,

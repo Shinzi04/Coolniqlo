@@ -1,14 +1,15 @@
 const products = []; // Declare the products array in the global scope
 let searchedProducts = [];
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // Fetch all products from the backend
   try {
-    const response = await fetch("/items");
+    const response = await fetch('/items');
     products.push(...(await response.json())); // Populate the products array
     searchedProducts = products;
     displayProducts(products);
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error('Error fetching products:', error);
   }
 });
 
@@ -49,15 +50,15 @@ function sortByRange(property, min_value, max_value) {
 
 //clear search
 function clearSearch() {
-  const searchInput = document.getElementById("searchInput");
-  searchInput.value = "";
-  searchProducts("");
+  const searchInput = document.getElementById('searchInput');
+  searchInput.value = '';
+  searchProducts('');
 }
 
 //Generate item sesuai sama produk
 function displayProducts(products) {
-  const productContainer = document.getElementById("grid-container");
-  productContainer.innerHTML = "";
+  const productContainer = document.getElementById('grid-container');
+  productContainer.innerHTML = '';
 
   products.forEach((product) => {
     const itemHTML = `

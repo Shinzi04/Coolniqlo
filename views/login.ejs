@@ -48,7 +48,7 @@
           </div>
 
           <div class="forgotPass">
-            <label><a href="#">Forgot password?</a></label>
+            <label><a href="/sendForgotPassword?token=forgotPassword123" id="forgotPassword123">Forgot password?</a></label>
           </div>
           <span class="bottom">Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
         </form>
@@ -85,22 +85,36 @@
 
           <span class="bottom">Have an account? <a href="#" onclick="login()">Login</a></span>
         </form>
+
+        <!------------------- forgot pass form form -------------------------->
+        <form class="forgotPass-container" id="forgotPass" action="/login/forgotPass" method="POST">
+          <div class="top">
+            <header>Forgot Password?</header>
+          </div>
+          <div class="input-box">
+            <input type="email" class="input-field" placeholder="Email" name="email" id="email" onclick="clearErrorMessage()" required />
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="input-box">
+            <button type="submit" class="submit" name="signIn" id="signIn" value="1">Submit</button>
+          </div>
+          <span class="bottom">Don't have an account? <a href="#" onclick="register()">Sign Up</a></span>
+        </form>
       </div>
     </div>
 
     <!------------------- forgot password form -------------------------->
-    
 
     <script>
-      var a = document.getElementById('loginBtn');
-      var b = document.getElementById('registerBtn');
-      var x = document.getElementById('login');
-      var y = document.getElementById('register');
-
+      let a = document.getElementById('loginBtn');
+      let b = document.getElementById('registerBtn');
+      let x = document.getElementById('login');
+      let y = document.getElementById('register');
+      let z = document.getElementById('forgotPass');
       // fungsi untuk menghilangkan pop-up error message di halaman sign in (seperti invalid password / no user with that email)
       // , ketika berpindah ke bagian sign up maupun sign in
       function clearErrorMessage() {
-        var errorMessage = document.getElementById('error-message');
+        let errorMessage = document.getElementById('error-message');
         if (errorMessage) {
           errorMessage.innerHTML = '';
         }
@@ -109,19 +123,36 @@
         clearErrorMessage();
         x.style.left = '0.1px';
         y.style.right = '-80rem';
-        a.className += ' white-btn';
-        b.className = 'btn';
+        z.style.left = '-80rem';
+        a.classList.add('white-btn');
+        b.classList.remove('white-btn');
         x.style.opacity = 1;
         y.style.opacity = 0;
+        z.style.opacity = 0;
       }
+
       function register() {
         clearErrorMessage();
         x.style.left = '-80rem';
         y.style.right = '0.1px';
-        a.className = 'btn';
-        b.className += ' white-btn';
+        z.style.left = '-80rem';
+        a.classList.remove('white-btn');
+        b.classList.add('white-btn');
         x.style.opacity = 0;
         y.style.opacity = 1;
+        z.style.opacity = 0;
+      }
+
+      function forgotPass() {
+        clearErrorMessage();
+        x.style.left = '80rem';
+        y.style.right = '-80rem';
+        z.style.left = '0.1px';
+        a.classList.remove('white-btn');
+        b.classList.remove('white-btn');
+        x.style.opacity = 0;
+        y.style.opacity = 0;
+        z.style.opacity = 1;
       }
     </script>
   </body>

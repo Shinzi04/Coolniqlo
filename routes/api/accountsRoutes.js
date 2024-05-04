@@ -4,7 +4,6 @@ const Account = require("../../models/account");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const Product = require("../../models/productList");
-
 const nodemailer = require("nodemailer");
 
 //method get
@@ -112,14 +111,16 @@ accRouter.post("/enter", isLogin, async (req, res) => {
   } catch (error) {}
 });
 
+// Fungsi untuk mengecek apakah user sudah login
 function isLogin(req, res, next) {
-  const user = req.session.email;
-  if (user != null) {
-    res.redirect("/");
+    const user = req.session.firstName;
+    if (user != null && user != '') {
+    res.redirect('/');
+    }
+    return next();
   }
-  return next();
-}
 
+  // Fungsi untuk membuat 6 angka random yang akan dipakai sebagai kode verifikasi
 function generateNumericCode(length) {
   let result = "";
   const characters = "0123456789";

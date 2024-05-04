@@ -9,9 +9,10 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #0e1111;
   background-color: #f4f4f2;
+  margin-top: 2rem;
 }
 
 nav {
@@ -218,7 +219,8 @@ tr:nth-child(4n + 1) {
 }
 
 .backBtn {
-  padding: 0 1rem; 
+  padding: 0.5rem 1rem;
+  margin-top: 3rem;
   margin-left: 3rem;
   font-size: 1.2rem;
   color: white;
