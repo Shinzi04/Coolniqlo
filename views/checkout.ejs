@@ -19,19 +19,21 @@
                             <th>Total Price</th>
                           </tr>
                         </thead>
-                        <tbody>
-                            <th>AYAMAYAMMA</th>
-                            <th>AYAMAYAMMA</th>
-                            <th>AYAMAYAMMA</th>
-                        </tbody>
-                        <tbody>
-                            <th>AYAMAYAMMA</th>
-                            <th>AYAMAYAMMA</th>
-                            <th>AYAMAYAMMA</th>
-                        </tbody>
+                        <tbody id ="fetched-table" class="fetched-table"></tbody>                      
                       </table>
                 </div>
-                
+                <div class="checkout-item-bottompart">
+                    <div class="continue-shopping">
+                        <a href="/"> << Continue Shopping</a>
+                    </div>
+                    
+                    <div class="bottompart">
+                        <div class="checkout-subtotal">Total : </div>
+                        <div class="totalPrice" id="totalPrice"></div>
+                    </div>
+                        
+                    
+                </div>
             </div>
             <div class="checkout-form">
                 <div class="form-background">
@@ -47,47 +49,19 @@
                                 <input type="text" id="" required>
                             </div>
                             <button type="submit">Checkout</button>
-                        </div>
-                              
-                     
+                        </div>  
                     </form>
                 </div>
             </div>
         </div>  
     </div>
         
-    <!-- <form id="checkout-form">
-        <div class="form-group">
-            <label for="card-holder"></label>
-            <input type="text" id="card-holder" required>
-        </div>
-      <button type="submit">Checkout</button>
-    </form> -->
         </div>
     </div>
     
-    <!-- <div class="container">
-        <form id="payment-form">
-          <div class="form-group">
-            <label for="card-holder">Nama Pemegang Kartu</label>
-            <input type="text" id="card-holder" required>
-          </div>
-          <div class="form-group">
-            <label for="card-number">Nomor Kartu</label>
-            <input type="text" id="card-number" required>
-          </div>
-          <div class="form-group">
-            <label for="expiry-date">Tanggal Kadaluarsa</label>
-            <input type="text" id="expiry-date" placeholder="MM/YY" required>
-          </div>
-          <div class="form-group">
-            <label for="cvv">Kode Keamanan (CVV)</label>
-            <input type="text" id="cvv" required>
-          </div>
-          <button type="submit">Bayar</button>
-        </form>
-      </div> -->
+
     <%- include('layouts/footer.ejs') %>
 </body>
-    <script src="../public/script"></script>
+    <script src="../script/shoppingCart.js"></script>
+    <script>userID = "<%= userID %>"</script>
 </html>

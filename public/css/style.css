@@ -712,10 +712,6 @@ footer .credit a {
   flex-direction: column;
 }
 
-.item-title {
-  /* background-color: red; */
-}
-
 .item-quantity {
   display: flex;
   align-items: center;
@@ -788,6 +784,11 @@ footer .credit a {
   cursor: pointer;
   border-radius: 50rem;
   transition: 0.5s;
+}
+
+.checkoutBtn a{
+  text-decoration: none;
+  color: white;
 }
 
 .plusItem:hover,

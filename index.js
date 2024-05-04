@@ -151,11 +151,13 @@ app.get("/detail/:productID", async (req, res) => {
 });
 
 app.get("/checkout", (req,res) =>{
-    res.render("checkout", {
-      title:"Checkout",
-      style:"/../css/buy.css",
-      email: req.session.email,
-    })
+  userID = req.session._id;
+  res.render("checkout", {
+    title:"Checkout",
+    style:"/../css/buy.css",
+    email: req.session.email,
+    userID: userID
+  })
 })
 
 // route untuk logout
