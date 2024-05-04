@@ -8,11 +8,13 @@
             <i class="fa fa-times " aria-hidden="true"></i>
         </div>
         <div class="cartMenuTitle">
-            <h1>Item Selected <%= userID %></h1>
+            <h1>Item Selected</h1>
         </div>
     </div>
+    
+    <div class="cart-items" id ="cart-items">
 
-    <div class="cart-items" id ="cart-items"></div>
+    </div>
    
 </div>
 <style>
@@ -42,7 +44,7 @@
         right: 0;
         width: 25rem;
         height: 100vh;
-        background-color: white;
+        background-color: green;
         z-index: 1001;
         scroll-behavior: smooth;
     }
@@ -77,19 +79,46 @@
     .cart-item{
         display: flex;
         height: 5rem;
+        width: 100%;
         background-color: yellow;
         margin-bottom: 0.5rem;
+        flex-direction: row;
     }
+
+    .cart-item-image{
+        flex:1;
+
+    }
+
 
     .cart-item img{
         height: 100%;
     }
 
     .cart-item-details{
+        flex: 4;
+        background-color: purple;
         display: flex;
         flex-direction: column;
     }
+
+    .item-title{
+        background-color: red;
+    }
+    .item-quantity{
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        width: 5rem;
+        height: 2rem;
+        background-color: blue;
+        flex-direction: row;
+        
+    }
+
+
 </style>
+<script src="../../public/script/cartLoaded.js"></script>
 <script>
     const cartMenu = document.getElementById("cartMenu");
     const floatingButton = document.getElementById("floating-button")
@@ -100,4 +129,9 @@
     }
 
     const userID = "<%= userID %>";
+
+    //if(userID == ""){
+    //    floatingButton.style.visibility = floatingButton.style.visibility === "hidden" ? "visible" : "hidden";
+    //} 
+    
 </script>

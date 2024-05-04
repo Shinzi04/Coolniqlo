@@ -25,6 +25,7 @@ mongoose.connect(process.env.MONGO_URL).then(
 );
 const Product = require("./models/productList");
 const Password = require("./models/account");
+const cart = require("./models/cart");
 // initializePassport (
 //   passport,
 //   (email) => users.find((user) => user.email === email),
@@ -111,15 +112,31 @@ app.get("/items", async (req, res) => {
   }
 });
 
+app.get("/userItems", async (req,res) =>{
+  const {itemId} = req.query;
+  try{
+    const product = await Product.findOne({_id:itemId});
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+    res.json(product);
+  }catch{
+    console.error(`Error fetching specific product:`, error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 // route untuk masing-masing detail product
 app.get("/detail/:productID", async (req, res) => {
   req.session.emailStore = '';
+  userID = req.session._id;
   try {
     let productID = req.params.productID;
     let productData = await Product.findOne({ id: productID });
     if (productData) {
       res.render("product-details", {
         productData,
+        userID:userID,
         title: productData.name + " - Coolniqlo",
         style: "../css/buy.css",
       });
@@ -163,7 +180,7 @@ function checkNotAuthenticated(req, res, next) {
 
 
 // add to cart (testing)
-app.use('/cart', require('./routes/api/cartRoutes'));
+app.use('/cart', require('./routes/api/cartRoutes'), Product);
 // route untuk pindah ke page notFound bila url tidak ditemukan
 app.get("*", (req, res) => {
   req.session.emailStore = '';

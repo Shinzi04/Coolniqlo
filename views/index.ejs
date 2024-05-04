@@ -5,6 +5,7 @@
   
   <body>
     <%- include('layouts/floatingButton.ejs') %>
+    
     <!-- Hero Section start-->
     <section class="hero" id="home">
       <main class="content">
@@ -60,11 +61,13 @@
     
     <!--  footer -->
     <%- include('layouts/footer.ejs') %>
-    <script>
-      feather.replace();
-    </script>
+    <script>feather.replace();</script>
     <script src="../script/script.js"></script>
     <script src="../script/searchAndSort.js"></script>
-    <script src="../script/cartLoaded.js"></script>
+    <% if (email != null) { %>
+      <script src="../script/cartLoaded.js"></script>
+      <% } else { %>
+        <script>function addToCart(){}</script>
+      <% } %>
   </body>
 </html>
