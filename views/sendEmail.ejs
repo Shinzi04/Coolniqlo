@@ -22,6 +22,9 @@
     </nav>
     <!----------------------------- Form box ----------------------------------->
     <div class="container">
+      <span>
+        <div id="error-message" class="error-message"><%= info %></div>
+      </span>
       <div class="form-box">
         <!-- <span>
             <div id="error-message" class="error-message"><%= info %></div>
@@ -33,11 +36,11 @@
           </div>
 
           <div class="input-box">
-            <input type="text" class="input-field" placeholder="Email" name="email" id="email" required/>
+            <input type="text" class="input-field" placeholder="Email" name="email" id="email" onclick="clearErrorMessage()" required/>
             <i class="bx bx-user"></i>
         </div>
           <div class="input-box">
-            <button type="submit" class="submit" name="save" id="save" value="0">Send Verification Code</button>
+            <button type="submit" class="submit" name="save" id="save" value="0" onclick="">Send Verification Code</button>
           </div>
           <span class="bottom"><a href="/login" id = "forgotPassword">Back to Login</a></span>
         </form>
@@ -47,6 +50,14 @@
 function forgot() {
     window.location.href = '/change-password'; // Ubah '/change-password' dengan rute yang sesuai
 }
+
+function clearErrorMessage() {
+        let errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+          errorMessage.innerHTML = '';
+        }
+      }
+
     </script>
   </body>
 </html>

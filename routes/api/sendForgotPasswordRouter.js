@@ -2,6 +2,7 @@ const { Router } = require("express");
 const sendForgotPassword = Router();
 const Account = require("../../models/account");
 
+
 sendForgotPassword.get('/', async (req, res) => {
     const token = req.query.token;
     try {
