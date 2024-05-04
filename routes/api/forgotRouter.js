@@ -48,7 +48,7 @@ forgot.get('/', (req, res) => {
 // Method POST /savepassword, dipakai oleh forgotPassword.js
 forgot.post('/savePassword', async (req, res) => {
     const email = req.session.email;
-    const newPassword = req.body.newPassword.trim();
+    const newPassword = req.body.newPassword.trim(); // Menghapus spasi di awal dan akhir
 
     // akan menyimpan kata sandi baru, jika panjang kata sandi minimal 8 dan terdapat angka
     if (newPassword.length >= 8 && /\d/.test(newPassword)){
@@ -65,8 +65,8 @@ forgot.post('/savePassword', async (req, res) => {
 // Method POST /saveUsername dan /deleteUser dipakai edit.js
 forgot.post('/saveUserName', async (req, res) => {
     const email = req.session.email;
-    const firstName = req.body.firstName.trim();
-    const lastName = req.body.lastName.trim();
+    const firstName = req.body.firstName.trim(); // Menghapus spasi di awal dan akhir
+    const lastName = req.body.lastName.trim(); // Menghapus spasi di awal dan akhir
 
     const account = await Account.findOne({ email: email});
     console.log("Account:", account); // Cek apakah account ditemukan

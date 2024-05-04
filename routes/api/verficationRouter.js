@@ -25,6 +25,8 @@ verify.post('/verify', isRegister, (req, res) => {
             password: req.session.passwordStore,
         });
         account.save();
+
+        // menghapus session
         req.session.emailStore = '';
         req.session.firstNameStore = '';
         req.session.lastNameStore = '';

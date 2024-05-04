@@ -23,9 +23,11 @@ accRouter.get('/', isLogin,async (req, res) => {  try {
 accRouter.post('/register', isLogin, async (req, res) => {
     try {
         // Mengubah email menjadi lowercase
-        const email = req.body.email.toLowerCase();
+        const email = req.body.email.toLowerCase(); // Mengubah email menjadi lowercase
         
         const existingAcc = await Account.findOne({ email: email });
+
+        // menampilkan "Account with this Email already exists" jika akun sudah ada
         if (existingAcc) {
             return res.render('login', { info: "Account with this Email already exists" });
         } else {
@@ -36,7 +38,7 @@ accRouter.post('/register', isLogin, async (req, res) => {
                 req.session.lastNameStore = req.body.lastName;
                 req.session.passwordStore = pw;
   
-                const verificationCode = generateNumericCode(6);
+                const verificationCode = generateNumericCode(6); // memanggil fungsi untuk membuat 6 angka random
                 req.session.vCode = verificationCode;
   
                 const transporter = nodemailer.createTransport({
