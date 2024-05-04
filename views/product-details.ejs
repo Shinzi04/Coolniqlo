@@ -4,6 +4,7 @@
   <%- include('layouts/header.ejs') %>
 
   <body>
+    <%- include('layouts/floatingButton.ejs')%>
     <nav class="navbar">
       <a href="/" class="navbar-logo">COOLNIQLO</a>
     </nav>
@@ -33,7 +34,7 @@
         <p class="itemDescription"><%= productData.description %></p>
         <!-- tombol -->
         <div class="buttonBox">
-          <button class="cartButton">+ Masukan Keranjang</button>
+          <button class="cartButton" onclick="addToCart(userID, productDataDetail)">+ Masukan Keranjang</button>
           <button class="buyButton">Beli Langsung</button>
         </div>
       </div>
@@ -45,5 +46,9 @@
     </script>
     <script src="../script/buy.js"></script>
     <script src="../script/script.js"></script>
+    <script src="../script/cartLoaded.js"></script>
+    <script>
+      const productDataDetail = '<%= productData._id %>';
+    </script>
   </body>
 </html>

@@ -1,0 +1,41 @@
+<div class="floating-button" id="floating-button">
+  <i class="fa fa-shopping-cart"></i>
+</div>
+
+<div class="cartMenu" id="cartMenu" style="display: none">
+  <div class="cartMenuHeader">
+    <div class="closeButton">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <div class="cartMenuTitle">
+      <h1>Item Selected</h1>
+    </div>
+  </div>
+
+  <div class="cart-items" id="cart-items"></div>
+
+  <div class="bottomCheckout">
+    <div class="checkoutBtn">Checkout</div>
+  </div>
+</div>
+
+<script src="../../public/script/cartLoaded.js"></script>
+<script>
+  const cartMenu = document.getElementById('cartMenu');
+  const floatingButton = document.getElementById('floating-button');
+  const xBtn = document.querySelector('.closeButton');
+
+  floatingButton.addEventListener('click', function () {
+    cartMenu.style.display = 'block';
+  });
+
+  xBtn.addEventListener('click', function () {
+    cartMenu.style.display = 'none';
+  });
+
+  const userID = '<%= userID %>';
+
+  if (userID == '') {
+    floatingButton.style.visibility = floatingButton.style.visibility === 'hidden' ? 'visible' : 'hidden';
+  }
+</script>

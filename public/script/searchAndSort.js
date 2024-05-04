@@ -58,14 +58,20 @@ function displayProducts(products) {
           <a href="/detail/${product.id}">
             <img src="${product.bigImage}" alt="${product.name}" />
           </a>
-        </div>
+            <a class ="cartButton" onclick="addToCart('${userID}','${product._id}')"><i class="fa fa-shopping-cart"></i></a>
+          </div>   
         <div class="item-desc">
           <div class="item-property">
-            <div class="item-name">${product.name}</div>
-            <div class="item-price">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price)}</div>
+          <div class="item-name">${product.name}</div>
+          <div class="item-price">
+              ${new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+              }).format(product.price)}
+            </div>
           </div>
           <div class="item-rating">
-            <a href="/detail/${product.id}" class="btnBeli">Beli</a>
+            <a href="/detail/${product.id}" class="btnBeli">Beli</a>      
             <ul class="star-rating">
               <li>${product.rating}</li>
               <li><i class="fa fa-star"></i></li>

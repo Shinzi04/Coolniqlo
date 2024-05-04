@@ -53,10 +53,7 @@
       </div>
     </div>
     <script>
-      function forgot() {
-        window.location.href = '/change-password'; // Ubah '/change-password' dengan rute yang sesuai
-      }
-
+      //fungsi yang akan menampilkan 'Are Your Sure?' ketika user menekan 'delete account'. Jika tetap yes, maka akun akan terhapus
       function areYourSure() {
         var result = confirm('Are Your Sure?');
         if (result === false) {
