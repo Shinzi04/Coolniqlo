@@ -3,47 +3,48 @@
   <!-- head -->
   <%- include('layouts/header.ejs') %>
 
-  <body>
-    <nav class="navbar">
-      <a href="/" class="navbar-logo">COOLNIQLO</a>
-    </nav>
-    <div class="bigContainer">
-      <!-- gambar -->
-      <div class="imageBox">
-        <img src="<%= productData.bigImage %>" alt="" class="displayImage" />
-        <div class="boxGambarKecil">
-          <% productData.smallImages.forEach(function(image) { %>
-          <img src="<%= image %>" alt="" class="miniImage" />
-          <% }); %>
-        </div>
-      </div>
-      <div class="textBox">
-        <!-- nama -->
-        <p class="itemName"><%= productData.name %></p>
-        <!-- rating -->
-        <div class="rating" ng-app="olshop" ng-controller="Controller">
-          <span class="purchaseHistory">Terjual <%= productData.sold %></span>
-          <% for (let n = 1; n <= 5; n++) { %><span class="penengah-bintang" style="font-size: 0.9rem"><% if (n <= productData.rating) { %><i class="fa fa-star"></i><% } else { %><i class="fa fa-star-o"></i><% } %></span><% } %>
-        </div>
-        <!-- harga -->
-        <div>
-          <p class="priceTag"><%= 'IDR ' + productData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></p>
-        </div>
-        <!-- deskripsi -->
-        <p class="itemDescription"><%= productData.description %></p>
-        <!-- tombol -->
-        <div class="buttonBox">
-          <button class="cartButton">+ Masukan Keranjang</button>
-          <button class="buyButton">Beli Langsung</button>
-        </div>
+<body>
+  <%- include('layouts/floatingButton.ejs')%>
+  <nav class="navbar">
+    <a href="/" class="navbar-logo">COOLNIQLO</a>
+  </nav>
+  <div class="bigContainer">
+    <!-- gambar -->
+    <div class="imageBox">
+      <img src="<%= productData.bigImage %>" alt="" class="displayImage" />
+      <div class="boxGambarKecil">
+        <% productData.smallImages.forEach(function(image) { %>
+        <img src="<%= image %>" alt="" class="miniImage" />
+        <% }); %>
       </div>
     </div>
-    <!-- footer -->
-    <%- include('layouts/footer.ejs') %>
-    <script>
-      feather.replace();
-    </script>
-    <script src="../script/buy.js"></script>
-    <script src="../script/script.js"></script>
-  </body>
+    <div class="textBox">
+      <!-- nama -->
+      <p class="itemName"><%= productData.name %></p>
+      <!-- rating -->
+      <div class="rating" ng-app="olshop" ng-controller="Controller">
+        <span class="purchaseHistory">Terjual <%= productData.sold %></span>
+        <% for (let n = 1; n <= 5; n++) { %><span class="penengah-bintang" style="font-size: 0.9rem"><% if (n <= productData.rating) { %><i class="fa fa-star"></i><% } else { %><i class="fa fa-star-o"></i><% } %></span><% } %>
+      </div>
+      <!-- harga -->
+      <div>
+        <p class="priceTag"><%= 'IDR ' + productData.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") %></p>
+      </div>
+      <!-- deskripsi -->
+      <p class="itemDescription"><%= productData.description %></p>
+      <!-- tombol -->
+      <div class="buttonBox">
+        <button class="cartButton">+ Masukan Keranjang</button>
+        <button class="buyButton">Beli Langsung</button>
+      </div>
+    </div>
+  </div>
+  <!-- footer -->
+  <%- include('layouts/footer.ejs') %>
+  <script>feather.replace()</script>
+  <script src="../script/buy.js"></script>
+  <script src="../script/script.js"></script>
+  <script src="../script/cartLoaded.js"></script>
+</body>
+
 </html>

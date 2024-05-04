@@ -2,8 +2,10 @@
 <html lang="en">
   <!-- head -->
   <%- include('layouts/header.ejs') %>
-
+  
   <body>
+    <%- include('layouts/floatingButton.ejs') %>
+    
     <!-- Hero Section start-->
     <section class="hero" id="home">
       <main class="content">
@@ -54,13 +56,16 @@
       </div>
     </div>
     <% } %>
+    
     <!--  footer -->
     <%- include('layouts/footer.ejs') %>
-
+    <script>feather.replace();</script>
     <script src="../script/script.js"></script>
     <script src="../script/searchAndSort.js"></script>
-    <script>
-      feather.replace();
-    </script>
+    <% if (email != null) { %>
+      <script src="../script/cartLoaded.js"></script>
+      <% } else { %>
+        <script>function addToCart(){}</script>
+      <% } %>
   </body>
 </html>

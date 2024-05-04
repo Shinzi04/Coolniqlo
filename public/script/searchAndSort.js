@@ -16,26 +16,35 @@ document.addEventListener('DOMContentLoaded', async () => {
 //Munculin barang sesuai search
 function searchProducts(query) {
   const searchQuery = query.trim().toLowerCase();
-  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(searchQuery));
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery)
+  );
   searchedProducts = filteredProducts;
   displayProducts(filteredProducts);
 }
 //Munculin barang urutan turun sesuai properti
 function sortBy_Desc(property) {
-  console.log('sorting item by', property);
-  const sortedProducts = searchedProducts.slice().sort((a, b) => a[property] - b[property]);
+  console.log("sorting item by", property);
+  const sortedProducts = searchedProducts
+    .slice()
+    .sort((a, b) => a[property] - b[property]);
   displayProducts(sortedProducts);
 }
 //Munculin barang urutan naik sesuai properti
 function sortBy_Asc(property) {
-  console.log('sorting item by', property);
-  const sortedProducts = searchedProducts.slice().sort((a, b) => b[property] - a[property]);
+  console.log("sorting item by", property);
+  const sortedProducts = searchedProducts
+    .slice()
+    .sort((a, b) => b[property] - a[property]);
   displayProducts(sortedProducts);
 }
 
 //Munculin barang dalam range tertentu
 function sortByRange(property, min_value, max_value) {
-  const productsInRange = searchedProducts.filter((product) => product[property] >= min_value && product[property] <= max_value);
+  const productsInRange = searchedProducts.filter(
+    (product) =>
+      product[property] >= min_value && product[property] <= max_value
+  );
   displayProducts(productsInRange);
 }
 
@@ -58,14 +67,22 @@ function displayProducts(products) {
           <a href="/detail/${product.id}">
             <img src="${product.bigImage}" alt="${product.name}" />
           </a>
-        </div>
+            <a class ="cartButton" onclick="addToCart('${userID}','${
+      product._id
+    }')"><i class="fa fa-shopping-cart"></i></a>
+          </div>   
         <div class="item-desc">
           <div class="item-property">
-            <div class="item-name">${product.name}</div>
-            <div class="item-price">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price)}</div>
+          <div class="item-name">${product.name}</div>
+          <div class="item-price">
+              ${new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              }).format(product.price)}
+            </div>
           </div>
           <div class="item-rating">
-            <a href="/detail/${product.id}" class="btnBeli">Beli</a>
+            <a href="/detail/${product.id}" class="btnBeli">Beli</a>      
             <ul class="star-rating">
               <li>${product.rating}</li>
               <li><i class="fa fa-star"></i></li>

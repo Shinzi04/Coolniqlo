@@ -410,6 +410,7 @@ body {
 }
 
 .item-image-container {
+  position:relative;
   flex: 3;
   display: flex;
   flex-wrap: wrap;
@@ -484,6 +485,45 @@ body {
   color: rgb(0, 0, 0);
   border: 1px solid #0e1111;
 }
+
+.cartButton{
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  background-color: transparent;
+  height: 2.5rem;
+  width: 2.5rem;
+  border: 1px solid grey;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.cartButton:hover{
+  height: 3rem;
+  width: 3rem;
+  color: white;
+  animation: cartColorChange 2s infinite;
+}
+
+@keyframes cartColorChange {
+  0% {
+    color: black;
+    border-color: black;
+  }
+  50% {
+    border-color: white;
+    color: white;
+  }
+  100% {
+    color: black;
+    border-color: black;
+  }
+}
+
 
 .star-rating li {
   margin-top: 1rem;

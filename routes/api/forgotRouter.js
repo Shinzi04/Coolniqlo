@@ -37,12 +37,12 @@ forgot.get('/', (req, res) => {
             }
         });
 
-        return res.redirect('/verificationPage');
-    } else{
-        res.render('forgotPassword', { 
-            info: "", 
-        });
-    }
+    return res.redirect("/verificationPage");
+  } else {
+    res.render("forgotPassword", {
+      info: "",
+    });
+  }
 });
 
 // Method POST /savepassword, dipakai oleh forgotPassword.js
@@ -68,8 +68,8 @@ forgot.post('/saveUserName', async (req, res) => {
     const firstName = req.body.firstName.trim(); // Menghapus spasi di awal dan akhir
     const lastName = req.body.lastName.trim(); // Menghapus spasi di awal dan akhir
 
-    const account = await Account.findOne({ email: email});
-    console.log("Account:", account); // Cek apakah account ditemukan
+  const account = await Account.findOne({ email: email });
+  console.log("Account:", account); // Cek apakah account ditemukan
 
     // Akan memperbarui username jika akun ditemukan
     if (account) {
@@ -103,13 +103,13 @@ forgot.post('/deleteUser', async (req, res) => {
 
 // Fungsi untuk membuat 6 angka random untuk kode verifikasi
 function generateNumericCode(length) {
-    let result = '';
-    const characters = '0123456789';
-    const charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  }  
+  let result = "";
+  const characters = "0123456789";
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
 
 module.exports = forgot;
