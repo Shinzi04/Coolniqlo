@@ -64,9 +64,9 @@ app.use(morgan("dev"));
 app.use(methodOverride("_method"));
 app.use("/admin/dashboard", require("./routes/api/productListRoutes"));
 app.use("/login", require("./routes/api/accountsRoutes"));
-app.use('/verificationPage',require('./routes/api/verficationRouter'))
-app.use('/editAccount',require('./routes/api/editRouter'))
-app.use('/forgotPassword',require('./routes/api/forgotRouter'))
+app.use("/verificationPage", require("./routes/api/verficationRouter"));
+app.use("/editAccount", require("./routes/api/editRouter"));
+app.use("/forgotPassword", require("./routes/api/forgotRouter"));
 app.set("view engine", "ejs");
 
 // hapus trailing slash
@@ -82,7 +82,7 @@ app.use((req, res, next) => {
 // route untuk homepage awal
 app.get("/", async (req, res) => {
   try {
-    req.session.emailStore = '';
+    req.session.emailStore = "";
 
     let products = await Product.find();
     // console.log("bisa")
@@ -95,14 +95,13 @@ app.get("/", async (req, res) => {
       title: "Coolniqlo",
       style: "css/style.css",
     });
-    
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }
 });
 
 app.get("/items", async (req, res) => {
-  req.session.emailStore = '';
+  req.session.emailStore = "";
   try {
     const products = await Product.find();
     res.json(products);
@@ -112,15 +111,15 @@ app.get("/items", async (req, res) => {
   }
 });
 
-app.get("/userItems", async (req,res) =>{
-  const {itemId} = req.query;
-  try{
-    const product = await Product.findOne({_id:itemId});
+app.get("/userItems", async (req, res) => {
+  const { itemId } = req.query;
+  try {
+    const product = await Product.findOne({ _id: itemId });
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
     res.json(product);
-  }catch{
+  } catch {
     console.error(`Error fetching specific product:`, error);
     res.status(500).send("Internal Server Error");
   }
@@ -128,7 +127,7 @@ app.get("/userItems", async (req,res) =>{
 
 // route untuk masing-masing detail product
 app.get("/detail/:productID", async (req, res) => {
-  req.session.emailStore = '';
+  req.session.emailStore = "";
   userID = req.session._id;
   try {
     let productID = req.params.productID;
@@ -136,7 +135,7 @@ app.get("/detail/:productID", async (req, res) => {
     if (productData) {
       res.render("product-details", {
         productData,
-        userID:userID,
+        userID: userID,
         title: productData.name + " - Coolniqlo",
         style: "../css/buy.css",
       });
@@ -153,7 +152,7 @@ app.get("/detail/:productID", async (req, res) => {
 
 // route untuk logout
 app.delete("/logout", (req, res, next) => {
-  req.session.emailStore = '';
+  req.session.emailStore = "";
   req.logOut(function (err) {
     if (err) {
       return next(err);
@@ -178,12 +177,11 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 
-
 // add to cart (testing)
-app.use('/cart', require('./routes/api/cartRoutes'), Product);
+app.use("/cart", require("./routes/api/cartRoutes"), Product);
 // route untuk pindah ke page notFound bila url tidak ditemukan
 app.get("*", (req, res) => {
-  req.session.emailStore = '';
+  req.session.emailStore = "";
   res.status(404).render("notFound", {
     title: "404 Not Found - Coolniqlo",
     style: "/../css/notFound.css",

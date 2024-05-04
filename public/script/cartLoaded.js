@@ -1,108 +1,106 @@
 // // Variable to track whether a fetch operation is in progress
 let isFetchingCartItems = false;
 function addToCart(userID, productId) {
-    if (isFetchingCartItems) {
-        console.log('Another fetch operation is already in progress.');
-        return;
-    }
+  if (isFetchingCartItems) {
+    console.log("Another fetch operation is already in progress.");
+    return;
+  }
 
-    isFetchingCartItems = true;
+  isFetchingCartItems = true;
 
-    fetch(`/cart/add`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userID: userID, productID: productId }),
+  fetch(`/cart/add`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userID: userID, productID: productId }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to add product to cart");
+      }
+      console.log("Product added to cart");
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to add product to cart');
-        }
-        console.log('Product added to cart');
-    })
-    .catch(error => {
-        console.error('Error adding product to cart:', error);
+    .catch((error) => {
+      console.error("Error adding product to cart:", error);
     })
     .finally(() => {
-        isFetchingCartItems = false;
-        // Fetch cart items and render them after addition (or failure)
-        fetchAndRenderCartItems(userID);
+      isFetchingCartItems = false;
+      // Fetch cart items and render them after addition (or failure)
+      fetchAndRenderCartItems(userID);
     });
 }
 
 function reduceCartItem(userID, productID) {
-    if (isFetchingCartItems) {
-        console.log('Another fetch operation is already in progress.');
-        return;
-    }
+  if (isFetchingCartItems) {
+    console.log("Another fetch operation is already in progress.");
+    return;
+  }
 
-    isFetchingCartItems = true;
+  isFetchingCartItems = true;
 
-    fetch(`/cart/reduce`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userID: userID, productID: productID }),
+  fetch(`/cart/reduce`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userID: userID, productID: productID }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to reduce quantity of the item in cart");
+      }
+      console.log("Quantity reduced for the item in cart");
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to reduce quantity of the item in cart');
-            
-        }
-        console.log('Quantity reduced for the item in cart');
-    })
-    .catch(error => {
-        console.error('Error reducing quantity of item in cart:', error);
+    .catch((error) => {
+      console.error("Error reducing quantity of item in cart:", error);
     })
     .finally(() => {
-        isFetchingCartItems = false;
-        // Fetch cart items and render them after reduction (or failure)
-        fetchAndRenderCartItems(userID);
+      isFetchingCartItems = false;
+      // Fetch cart items and render them after reduction (or failure)
+      fetchAndRenderCartItems(userID);
     });
 }
 
 function fetchAndRenderCartItems(userID) {
-    fetchCartItems(userID)
-        .then(cartItems => {
-            renderCartItemsOnPage(cartItems);
-        })
-        .catch(error => {
-            console.error('Error fetching cart items:', error.message);
-        });
+  fetchCartItems(userID)
+    .then((cartItems) => {
+      renderCartItemsOnPage(cartItems);
+    })
+    .catch((error) => {
+      console.error("Error fetching cart items:", error.message);
+    });
 }
 
 // Call fetchAndRenderCartItems once after DOMContentLoaded event
 document.addEventListener("DOMContentLoaded", async () => {
-    try {
-        await fetchAndRenderCartItems(userID);
-    } catch (error) {
-        console.error('Error rendering cart items:', error.message);
-    }
+  try {
+    await fetchAndRenderCartItems(userID);
+  } catch (error) {
+    console.error("Error rendering cart items:", error.message);
+  }
 });
 
 async function fetchCartItems(userID) {
-    try {
-        const response = await fetch(`/cart/get?userID=${userID}`);
-        if (response.ok) {
-            return await response.json();
-        }
-        throw new Error('Failed to fetch cart items');
-    } catch (error) {
-        console.error('Error fetching cart items:', error.message);
-        throw error;
+  try {
+    const response = await fetch(`/cart/get?userID=${userID}`);
+    if (response.ok) {
+      return await response.json();
     }
+    throw new Error("Failed to fetch cart items");
+  } catch (error) {
+    console.error("Error fetching cart items:", error.message);
+    throw error;
+  }
 }
-    
-function renderCartItemsOnPage(cartItems) {
-    const cartContainer = document.getElementById("cart-items");
-    cartContainer.innerHTML = "";
 
-    cartItems.forEach(async(item)=> {
-        let userSpecificItem = await fetchSpecificItem(item.product);
-        const userItem = 
-        `
+function renderCartItemsOnPage(cartItems) {
+  const cartContainer = document.getElementById("cart-items");
+  cartContainer.innerHTML = "";
+
+  cartItems.forEach(async (item) => {
+    let userSpecificItem = await fetchSpecificItem(item.product);
+    const userItem = `
         <div class="cart-item">
             <div class="cart-item-image">
                 <img src="../${userSpecificItem.bigImage}" alt="">
@@ -117,24 +115,22 @@ function renderCartItemsOnPage(cartItems) {
             </div>
         </div>
         `;
-        cartContainer.innerHTML += userItem;
-    })
-}   
-
+    cartContainer.innerHTML += userItem;
+  });
+}
 
 async function fetchSpecificItem(productId) {
-    try {
-      // Make a GET request to your server endpoint
-      const response = await fetch(`/userItems?itemId=${productId}`);
-      const data = await response.json();
-  
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to fetch item');
-      }
-      return data;
-    } catch (error) {
-      console.error('Error fetching specific item:', error.message);
-      throw error;
+  try {
+    // Make a GET request to your server endpoint
+    const response = await fetch(`/userItems?itemId=${productId}`);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to fetch item");
     }
+    return data;
+  } catch (error) {
+    console.error("Error fetching specific item:", error.message);
+    throw error;
   }
-  
+}

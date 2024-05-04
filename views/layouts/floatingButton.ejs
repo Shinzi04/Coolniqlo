@@ -1,137 +1,128 @@
-<div class="floating-button" id ="floating-button" onclick="showCart()">
-    <i class="fa fa-shopping-cart"></i>
+<div class="floating-button" id="floating-button" onclick="showCart()">
+  <i class="fa fa-shopping-cart"></i>
 </div>
 
 <div class="cartMenu" id="cartMenu">
-    <div class="cartMenuHeader">
-        <div class="closeButton" onclick="showCart()">
-            <i class="fa fa-times " aria-hidden="true"></i>
-        </div>
-        <div class="cartMenuTitle">
-            <h1>Item Selected</h1>
-        </div>
+  <div class="cartMenuHeader">
+    <div class="closeButton" onclick="showCart()">
+      <i class="fa fa-times" aria-hidden="true"></i>
     </div>
-    
-    <div class="cart-items" id ="cart-items">
+    <div class="cartMenuTitle">
+      <h1>Item Selected</h1>
+    </div>
+  </div>
 
-    </div>
-   
+  <div class="cart-items" id="cart-items"></div>
 </div>
 <style>
-    *{  
-        margin: 0;
-        padding:0;
-    }
-    .floating-button{
-        cursor: pointer;
-        z-index: 1000;
-        height: 4rem;
-        width: 4rem;
-        background-color: red;
-        position: fixed;
-        bottom: 10%;
-        right: 5%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 1.5rem;
-    
-    }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  .floating-button {
+    cursor: pointer;
+    z-index: 1000;
+    height: 4rem;
+    width: 4rem;
+    background-color: red;
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+  }
 
-    .cartMenu{
-        overflow: scroll;
-        position: fixed;
-        right: 0;
-        width: 25rem;
-        height: 100vh;
-        background-color: green;
-        z-index: 1001;
-        scroll-behavior: smooth;
-    }
+  .cartMenu {
+    overflow: scroll;
+    position: fixed;
+    right: 0;
+    width: 25rem;
+    height: 100vh;
+    background-color: green;
+    z-index: 1001;
+    scroll-behavior: smooth;
+  }
 
-    .cartMenuHeader{
-        display: flex;
-        margin: 1rem 0 0 1rem;
-        align-items: center;
-    }
+  .cartMenuHeader {
+    display: flex;
+    margin: 1rem 0 0 1rem;
+    align-items: center;
+  }
 
-    .cartMenuTitle{
-        flex: 1;
-        display: flex;
-        justify-content: start;
-    }
-    .closeButton{
-        width: 2.5rem;
-        height: 2.5rem;
-        margin-right: 2.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: blue;
-        border-radius: 1.5rem;
-    }
-    .cart-items{
-        padding: 0.5rem;
-        display: flex;
-        flex-direction: column;
-    }
+  .cartMenuTitle {
+    flex: 1;
+    display: flex;
+    justify-content: start;
+  }
+  .closeButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    border-radius: 1.5rem;
+  }
+  .cart-items {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .cart-item{
-        display: flex;
-        height: 5rem;
-        width: 100%;
-        background-color: yellow;
-        margin-bottom: 0.5rem;
-        flex-direction: row;
-    }
+  .cart-item {
+    display: flex;
+    height: 5rem;
+    width: 100%;
+    background-color: yellow;
+    margin-bottom: 0.5rem;
+    flex-direction: row;
+  }
 
-    .cart-item-image{
-        flex:1;
+  .cart-item-image {
+    flex: 1;
+  }
 
-    }
+  .cart-item img {
+    height: 100%;
+  }
 
+  .cart-item-details {
+    flex: 4;
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .cart-item img{
-        height: 100%;
-    }
-
-    .cart-item-details{
-        flex: 4;
-        background-color: purple;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .item-title{
-        background-color: red;
-    }
-    .item-quantity{
-        display: flex;
-        justify-content:space-evenly;
-        align-items: center;
-        width: 5rem;
-        height: 2rem;
-        background-color: blue;
-        flex-direction: row;
-        
-    }
-
-
+  .item-title {
+    background-color: red;
+  }
+  .item-quantity {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 5rem;
+    height: 2rem;
+    background-color: blue;
+    flex-direction: row;
+  }
 </style>
 <script src="../../public/script/cartLoaded.js"></script>
 <script>
-    const cartMenu = document.getElementById("cartMenu");
-    const floatingButton = document.getElementById("floating-button")
-    
-    function showCart(){
-        cartMenu.style.width = cartMenu.style.width === "25rem" ? "0rem" : "25rem";
-        floatingButton.style.visibility = floatingButton.style.visibility === "hidden" ? "visible" : "hidden";
-    }
+  const cartMenu = document.getElementById("cartMenu");
+  const floatingButton = document.getElementById("floating-button");
 
-    const userID = "<%= userID %>";
+  function showCart() {
+    cartMenu.style.width = cartMenu.style.width === "25rem" ? "0rem" : "25rem";
+    floatingButton.style.visibility =
+      floatingButton.style.visibility === "hidden" ? "visible" : "hidden";
+  }
 
-    //if(userID == ""){
-    //    floatingButton.style.visibility = floatingButton.style.visibility === "hidden" ? "visible" : "hidden";
-    //} 
-    
+  const userID = "<%= userID %>";
+
+  //if(userID == ""){
+  //    floatingButton.style.visibility = floatingButton.style.visibility === "hidden" ? "visible" : "hidden";
+  //}
 </script>
