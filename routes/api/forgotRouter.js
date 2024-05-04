@@ -3,6 +3,7 @@ const forgot = Router();
 const Account = require("../../models/account");
 const nodemailer = require("nodemailer");
 
+// Router ini dipakai oleh edit.js, di mana ketika sudah login dan menekan tombol edit di pojok kiri bawah
 forgot.get('/', (req, res) => {
     const token = req.query.token;
     const email = req.session.email;
@@ -24,7 +25,7 @@ forgot.get('/', (req, res) => {
         });
         const mailOptions = {
             from: "Coolniqlo",
-            to: email, // Gunakan email dalam lowercase untuk mengirim email
+            to: email, 
             subject: "Coolniqlo - Verification Code",
             text: `Your verification code is ${verificationCode}`,
         };
@@ -44,16 +45,16 @@ forgot.get('/', (req, res) => {
     }
 });
 
+// Method POST /savepassword, dipakai oleh forgotPassword.js
 forgot.post('/savePassword', async (req, res) => {
     const email = req.session.email;
-    console.log('email',email)
-    const newPassword = req.body.newPassword.trim();
-    console.log('PW',newPassword)
+    const newPassword = req.body.newPassword.trim(); // Menghapus spasi di awal dan akhir
+
+    // akan menyimpan kata sandi baru, jika panjang kata sandi minimal 8 dan terdapat angka
     if (newPassword.length >= 8 && /\d/.test(newPassword)){
         const account = await Account.findOne({ email: email });
         account.password = newPassword;
         await account.save();
-        req.session.email = '';
         return res.redirect('/login');
     }else {
         return res.render('forgotPassword', { info: "Password must be at least 8 characters long and contain at least one number" });
@@ -61,24 +62,22 @@ forgot.post('/savePassword', async (req, res) => {
     
 });
 
+// Method POST /saveUsername dan /deleteUser dipakai edit.js
 forgot.post('/saveUserName', async (req, res) => {
     const email = req.session.email;
-    const firstName = req.body.firstName.trim();
-    const lastName = req.body.lastName.trim();
-
-    console.log("First Name:", firstName);
-    console.log("Last Name:", lastName);
+    const firstName = req.body.firstName.trim(); // Menghapus spasi di awal dan akhir
+    const lastName = req.body.lastName.trim(); // Menghapus spasi di awal dan akhir
 
     const account = await Account.findOne({ email: email});
     console.log("Account:", account); // Cek apakah account ditemukan
 
+    // Akan memperbarui username jika akun ditemukan
     if (account) {
         account.firstName = firstName;
         account.lastName = lastName;
         req.session.firstName = firstName;
         req.session.lastName = lastName;
         await account.save();
-        console.log("Account updated:", account); // Cek apakah perubahan disimpan dengan benar
         return res.redirect('/');
     } else {
         console.log("Account not found for email:", req.session.emailStore);
@@ -89,8 +88,8 @@ forgot.post('/saveUserName', async (req, res) => {
 forgot.post('/deleteUser', async (req, res) => {
     const email = req.session.email;
     const account = await Account.findOne({ email: email});
-    console.log("Account:", account); // Cek apakah account ditemukan
 
+    // Akan mendelete akun jika akun ditemukan
     if (account) {
         await Account.deleteOne({ email: email });
         req.session.email = '';
@@ -102,6 +101,7 @@ forgot.post('/deleteUser', async (req, res) => {
     } 
 });
 
+// Fungsi untuk membuat 6 angka random untuk kode verifikasi
 function generateNumericCode(length) {
     let result = '';
     const characters = '0123456789';

@@ -4,10 +4,8 @@ const Account = require("../../models/account");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 const Product = require("../../models/productList");
-
 const nodemailer = require("nodemailer");
 
-//method get
 accRouter.get('/', isLogin,async (req, res) => {  try {
     req.session.emailStore = '';
     const account = await Account.find();
@@ -21,13 +19,15 @@ accRouter.get('/', isLogin,async (req, res) => {  try {
   }
 })
 
-//method post
+// Method POST untuk membuat akun
 accRouter.post('/register', isLogin, async (req, res) => {
     try {
         // Mengubah email menjadi lowercase
-        const email = req.body.email.toLowerCase();
+        const email = req.body.email.toLowerCase(); // Mengubah email menjadi lowercase
         
         const existingAcc = await Account.findOne({ email: email });
+
+        // menampilkan "Account with this Email already exists" jika akun sudah ada
         if (existingAcc) {
             return res.render('login', { info: "Account with this Email already exists" });
         } else {
@@ -38,7 +38,7 @@ accRouter.post('/register', isLogin, async (req, res) => {
                 req.session.lastNameStore = req.body.lastName;
                 req.session.passwordStore = pw;
   
-                const verificationCode = generateNumericCode(6);
+                const verificationCode = generateNumericCode(6); // memanggil fungsi untuk membuat 6 angka random
                 req.session.vCode = verificationCode;
   
                 const transporter = nodemailer.createTransport({
@@ -50,7 +50,7 @@ accRouter.post('/register', isLogin, async (req, res) => {
                 });
                 const mailOptions = {
                     from: "Coolniqlo",
-                    to: email, // Gunakan email dalam lowercase untuk mengirim email
+                    to: email, 
                     subject: "Coolniqlo - Verification Code",
                     text: `Your verification code is ${verificationCode}`,
                 };
@@ -63,7 +63,7 @@ accRouter.post('/register', isLogin, async (req, res) => {
                 });
                 res.redirect('/verificationPage');
             } else {
-                res.render("login", { // Perbaikan path render
+                res.render("login", { 
                     title: "Account - Coolniqlo",
                     info: 'Password must be at least 8 characters long and contain at least one number',
                 });
@@ -75,8 +75,7 @@ accRouter.post('/register', isLogin, async (req, res) => {
     }
   });
   
-
-
+// Method POST untuk login
 accRouter.post('/enter',isLogin, async (req,res) =>{
     try {
         const check_email = req.body.email.toLowerCase();
@@ -101,6 +100,7 @@ accRouter.post('/enter',isLogin, async (req,res) =>{
     }
 });
 
+// Fungsi untuk mengecek apakah user sudah login
 function isLogin(req, res, next) {
     const user = req.session.firstName;
     if (user != null && user != '') {
@@ -109,6 +109,7 @@ function isLogin(req, res, next) {
     return next();
   }
 
+  // Fungsi untuk membuat 6 angka random yang akan dipakai sebagai kode verifikasi
 function generateNumericCode(length) {
     let result = '';
     const characters = '0123456789';
