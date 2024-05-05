@@ -20,6 +20,10 @@ const accountSchema = new Schema({
         type: String,
         default: '',
     },
+    profilePicture: {
+        type: String,
+        default: '',
+    },
 });
 
 accountSchema.pre('save', async function(next) {

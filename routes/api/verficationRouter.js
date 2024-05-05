@@ -18,11 +18,13 @@ verify.post('/verify', isRegister, (req, res) => {
 
     // if untuk pembuatan akun (register)
     if (code === req.session.vCode && !forgotPassword && !sendEmailToken) {
+        console.log('bikin akun nih')
         const account = new Account({
             email: req.session.emailStore,
             firstName: req.session.firstNameStore,
             lastName: req.session.lastNameStore,
             password: req.session.passwordStore,
+            profilePicture: "/../assets/account_profile_pictures/defaultProfilePicture.png",
         });
         account.save();
 
