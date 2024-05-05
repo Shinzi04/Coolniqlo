@@ -24,6 +24,7 @@ mongoose.connect(process.env.MONGO_URL).then(
   (err) => console.log(err)
 );
 const Product = require("./models/productList");
+const isUser = require("./middlewares/isUser");
 
 initializePassport(
   passport,
@@ -58,6 +59,7 @@ app.use(methodOverride("_method"));
 app.use("/admin/dashboard", require("./routes/dashboard/manageRoutes")); // route manage products
 app.use("/admin/dashboard", require("./routes/dashboard/orderRoutes")); // route order products
 app.use("/admin/dashboard", require("./routes/dashboard/salesRoutes")); // route sales products
+app.use("/customer/dashboard", require("./routes/dashboard/customerRoutes")); // route sales products
 app.use("/login", require("./routes/api/accountsRoutes"));
 app.use("/verificationPage", require("./routes/api/verficationRouter"));
 app.use("/editAccount", require("./routes/api/editRouter"));
@@ -154,7 +156,7 @@ app.get("/detail/:productID", async (req, res) => {
 });
 
 // route untuk checkout
-app.get("/checkout", (req, res) => {
+app.get("/checkout", isUser, (req, res) => {
   userID = req.session._id;
   userName = req.session_name;
   res.render("checkout", {
@@ -174,7 +176,7 @@ app.delete("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("/login");
+    res.redirect("/");
   });
 });
 

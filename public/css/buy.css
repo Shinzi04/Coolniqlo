@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -41,7 +41,6 @@ body {
   transition: opacity 0.15s ease-in-out;
   height: 25rem;
 }
-
 
 .hide {
   opacity: 0;
@@ -133,7 +132,8 @@ body {
 
 .miniImage:hover {
   cursor: pointer;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 
 .boxGambarKecil {
@@ -401,6 +401,17 @@ footer .credit a {
 .minesItem:hover,
 .checkoutBtn:hover {
   background-color: rgba(14, 17, 17, 0.8);
+}
+
+.averageRating {
+  display: inline-block;
+  font-size: 18px;
+  color: #000000;
+}
+
+.averageRating i {
+  margin-left: 5px;
+  color: #000000; 
 }
 
 /* Media Query */

@@ -27,6 +27,9 @@ npm start run
 - Penambahan produk pada saat add dan edit akan **menghapus** foto yang sebelumnya dipakai
 - Order list adalah daftar order yang dilakukan oleh customer dan diurutkan berdasarkan waktu dan tanggal beli
 - Sales adalah daftar banyaknya produk yang terjual
+## Dashboard Customer
+- Di dasboard, customer dapat rate produk yang telah dibeli
+- Customer tidak bisa rate lebih dari 1 untuk 1 transaksi
 ## Running
 - Gunakan **localhost:3000** pada browser untuk menjalankan aplikasi
 ## Contributor

@@ -39,7 +39,7 @@ const fileFilter = async (req, file, cb) => {
 const upload = multer({ storage, fileFilter });
 
 // redirect ke manage
-router.get("/", (req, res) => {
+router.get("/", isAdmin, (req, res) => {
   res.redirect("/admin/dashboard/manage");
 });
 
@@ -69,6 +69,7 @@ router.get("/manage", isAdmin, async (req, res) => {
 // method post (CREATE) untuk menambahkan produk
 router.post(
   "/manage/add",
+  isAdmin,
   upload.fields([
     { name: "bigImage", maxCount: 1 },
     { name: "smallImages", maxCount: 8 },
@@ -113,6 +114,7 @@ router.post(
 // method put (UPDATE) untuk perbarui produk
 router.put(
   "/manage/edit/:id",
+  isAdmin,
   upload.fields([
     { name: "bigImage", maxCount: 1 },
     { name: "smallImages", maxCount: 8 },
@@ -175,7 +177,7 @@ router.put(
 );
 
 // method delete (DELETE)
-router.delete("/manage/delete/:id", async (req, res) => {
+router.delete("/manage/delete/:id", isAdmin, async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     await Product.findByIdAndDelete(req.params.id);
