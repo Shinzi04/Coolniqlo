@@ -1,11 +1,11 @@
-const router = require("express").Router();
-const Product = require("../../models/productList");
-const PurchaseHistory = require("../../models/purchaseHistory"); // Corrected import
-const isUser = require("../../middlewares/isUser");
+const router = require('express').Router();
+const Product = require('../../models/productList');
+const PurchaseHistory = require('../../models/purchaseHistory'); // Corrected import
+const isUser = require('../../middlewares/isUser');
 
-router.get("/", isUser, async (req, res) => {
+router.get('/', isUser, async (req, res) => {
   try {
-    const userID = req.session._id; 
+    const userID = req.session._id;
     const purchaseHistories = await PurchaseHistory.find({
       userID,
       isRated: false,
@@ -15,15 +15,15 @@ router.get("/", isUser, async (req, res) => {
     // cari produk berdasarkan id dari produk id purchase history
     const products = await Product.find({ _id: { $in: productIDs } });
 
-    res.render("customer-dashboard", { products });
+    res.render('customer-dashboard', { products });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send('Internal Server Error');
   }
 });
 
 // Handle rating submissions
-router.post("/rate/:id", isUser, async (req, res) => {
+router.post('/rate/:id', isUser, async (req, res) => {
   const productId = req.params.id;
   const { rating } = req.body;
   const userID = req.session._id;
@@ -37,7 +37,7 @@ router.post("/rate/:id", isUser, async (req, res) => {
 
     const product = await Product.findById(productId);
     if (!product) {
-      return res.status(404).send("Product not found");
+      return res.status(404).send('Product not found');
     }
 
     // push rating ke array
@@ -48,10 +48,10 @@ router.post("/rate/:id", isUser, async (req, res) => {
     purchaseHistory.isRated = true;
     await purchaseHistory.save();
 
-    res.redirect("/customer/dashboard");
+    res.redirect('/customer/dashboard');
   } catch (error) {
     console.log(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send('Internal Server Error');
   }
 });
 
