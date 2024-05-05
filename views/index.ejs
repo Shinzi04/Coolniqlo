@@ -40,9 +40,11 @@
       <div class="userPopup">
         <span class="closeBtnDown"><i data-feather="chevron-down"></i></span>
         <div class="headerUserPopUp">
-          <div class="profileImgContainer">
-            <img src="<%= profilePicture %>" alt="" class="profileImage" />
-          </div>
+          <% if (email != "admin@gmail.com" && email != "tester@gmail.com") { %>
+            <div class="profileImgContainer">
+              <img src="<%= profilePicture %>" alt="" class="profileImage" />
+            </div>
+            <% } %>
           <div class="userName">
             <p>Welcome, <%= firstName %> <%= lastName %></p>
           </div>
