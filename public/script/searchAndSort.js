@@ -39,13 +39,12 @@ function sortBy_Asc(property) {
   displayProducts(sortedProducts);
 }
 
-//Munculin barang dalam range tertentu
-function sortByRange(property, min_value, max_value) {
-  const productsInRange = searchedProducts.filter(
-    (product) =>
-      product[property] >= min_value && product[property] <= max_value
+//Munculin barang rating barang lebih dari 4
+function sortByRatingGreaterThanFour() {
+  const productsWithRatingGreaterThanFour = searchedProducts.filter(
+    (product) => parseFloat(product.rating) > 4
   );
-  displayProducts(productsInRange);
+  displayProducts(productsWithRatingGreaterThanFour);
 }
 
 //clear search
