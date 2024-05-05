@@ -150,6 +150,16 @@ app.get("/detail/:productID", async (req, res) => {
   }
 });
 
+app.get("/checkout", (req,res) =>{
+  userID = req.session._id;
+  res.render("checkout", {
+    title:"Checkout",
+    style:"/../css/buy.css",
+    email: req.session.email,
+    userID: userID
+  })
+})
+
 // route untuk logout
 app.delete("/logout", (req, res, next) => {
   req.session.emailStore = "";
@@ -177,9 +187,8 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 
-// add to cart (testing)
-app.use("/cart", require("./routes/api/cartRoutes"), Product);
-// route untuk pindah ke page notFound bila url tidak ditemukan
+app.use("/cart", require("./routes/api/cartRoutes"));
+
 app.get("*", (req, res) => {
   req.session.emailStore = "";
   res.status(404).render("notFound", {

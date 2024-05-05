@@ -74,7 +74,7 @@ cartRouter.get('/get', async (req, res) => {
         return {
           _id: item._id,
           userID: item.userID,
-          product: item.productID, // Include product details here
+          product: item.productID,
           quantity: item.quantity,
         };
       })
