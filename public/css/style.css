@@ -686,6 +686,7 @@ footer .credit a {
   display: flex;
   flex-direction: column;
   margin-top: 4.6rem;
+  margin-bottom: 4.6rem;
 }
 
 .cart-item {
@@ -786,7 +787,7 @@ footer .credit a {
   transition: 0.5s;
 }
 
-.checkoutBtn a{
+.checkoutBtn a {
   text-decoration: none;
   color: white;
 }
