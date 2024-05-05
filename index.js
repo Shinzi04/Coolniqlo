@@ -69,6 +69,8 @@ app.use('/editAccount',require('./routes/api/editRouter'))
 app.use('/forgotPassword',require('./routes/api/forgotRouter'))
 app.use('/sendForgotPassword',require('./routes/api/sendForgotPasswordRouter'))
 app.use('/sendEmail',require('./routes/api/sendEmailRouter'))
+app.use("/cart", require("./routes/api/cartRoutes"));
+app.use("/purchaseHistory", require("./routes/api/purchaseHistoryRoutes"));
 app.set("view engine", "ejs");
 
 // hapus trailing slash
@@ -186,8 +188,6 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
-
-app.use("/cart", require("./routes/api/cartRoutes"));
 
 app.get("*", (req, res) => {
   req.session.emailStore = "";

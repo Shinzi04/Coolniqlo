@@ -1,14 +1,11 @@
 const { Router } = require('express');
 const cartRouter = Router();
 const Cart = require('../../models/cart');
-const mongoose = require('mongoose');
 
 // Route to add an item to the cart
 cartRouter.post('/add', async (req, res) => {
   try {
     const { userID, productID } = req.body;
-
-    // Search existed product in database
     let cartItem = await Cart.findOne({ userID: userID, productID: productID });
 
     if (cartItem) {
@@ -21,6 +18,7 @@ cartRouter.post('/add', async (req, res) => {
       });
     }
     await cartItem.save();
+
     res.send('Item added to cart');
   } catch (error) {
     console.error('Error adding item to cart:', error);
