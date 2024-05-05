@@ -2,10 +2,10 @@
 <html lang="en">
   <!-- head -->
   <%- include('layouts/header.ejs') %>
-  
+
   <body>
     <%- include('layouts/floatingButton.ejs') %>
-    
+
     <!-- Hero Section start-->
     <section class="hero" id="home">
       <main class="content">
@@ -32,7 +32,7 @@
     </div>
 
     <!-- user Section Button -->
-    <% if (email != '' && firstName  != '' && firstName != null) { %>
+    <% if (email != '' && firstName != '' && firstName != null) { %>
     <div class="userSection">
       <div class="iconUserContainer">
         <i data-feather="user" class="iconUser"></i>
@@ -61,16 +61,21 @@
       </div>
     </div>
     <% } %>
-    
+
     <!--  footer -->
     <%- include('layouts/footer.ejs') %>
-    <script>feather.replace();</script>
+
+    <script>
+      feather.replace();
+    </script>
     <script src="../script/script.js"></script>
     <script src="../script/searchAndSort.js"></script>
     <% if (email != null) { %>
-      <script src="../script/cartLoaded.js"></script>
-      <% } else { %>
-        <script>function addToCart(){}</script>
-      <% } %>
+    <script src="../script/cartLoaded.js"></script>
+    <% } else { %>
+    <script>
+      function addToCart() {}
+    </script>
+    <% } %>
   </body>
 </html>

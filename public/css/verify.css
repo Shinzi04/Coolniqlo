@@ -115,19 +115,34 @@ header {
 }
 
 
-.forgotPasswordVerif {
+.profileImage{
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+}
+
+
+.forgotPasswordVerif,
+.backToLoginBtn {
   font-size: small;
   cursor: pointer;
   text-align: center;
   margin-top: 0.8rem;
 }
 
-.forgotPasswordVerif a {
+.forgotPasswordVerif a,
+.backToLoginBtn a {
   color: rgb(255, 255, 255);
   font-weight: bold;
 }
-.forgotPasswordVerif a:hover {
+.forgotPasswordVerif a:hover,
+.backToLoginBtn a:hover {
   text-decoration: underline;
+}
+
+.titleLogin {
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .bottom {
