@@ -9,7 +9,7 @@
     <div class="checkout-all-container">
       <div class="checkout-container">
         <div class="checkout-item-container">
-          <div class="checkout-item-title">Shopping Cart</div>
+          <div class="checkout-item-title"><i class="fa-solid fa-cart-shopping"></i>Shopping Cart</div>
           <div class="checkout-table-container">
             <table class="checkout-item-table">
               <thead>
@@ -25,7 +25,7 @@
 
           <div class="checkout-item-bottompart">
             <div class="continue-shopping">
-              <a href="/"> << Continue Shopping</a>
+              <a href="/"> <i class="fa-solid fa-angles-left"></i> Continue Shopping</a>
             </div>
             <div class="bottompart">
               <div class="checkout-subtotal">Total :</div>
@@ -36,26 +36,45 @@
 
         <div class="checkout-form">
           <div class="form-background">
-            <div class="checkout-item-title">Payment Info</div>
+            <div class="payment-info-title">Payment Info</div>
             <div class="checkout-detail-container">
+              <div class="userData">
+                <div class="name">Name : <%= userName %></div>
+                <div class="email">Email : <%= userEmail %></div>
+                <div class="paymentMethod">
+                  <p>Payment Method :</p>
+                  <div class="paymentRow">
+                    <select class="paymentDropdown">
+                      <option value="m_bca">M-BCA</option>
+                      <option value="dana">DANA</option>
+                      <option value="mandiri">MANDIRI</option>
+                      <option value="gopay">GOPAY</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <form id="checkout-form">
-                <div class="form-group">
+                <div class="form-group group1">
                   <label for="card-holder">Address</label>
                   <input type="text" id="" required />
                 </div>
-                <div class="form-group">
-                  <label for="card-holder">Postal Code</label>
-                  <input type="text" id="" required />
+                <div class="form-group group2">
+                  <div class="postalCode">
+                    <label for="card-holder">Postal Code</label>
+                    <input type="text" id="" required />
+                  </div>
+                  <div class="city">
+                    <label for="card-holder">city</label>
+                    <input type="text" id="" required />
+                  </div>
                 </div>
-                <button type="submit" onclick="">Checkout</button>
+                <button type="submit" class="checkoutBtn" onclick="checkout(userID)">Checkout</button>
               </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <%- include('layouts/footer.ejs') %>
   </body>
   <script src="../script/shoppingCart.js"></script>
   <script src="../script/checkout.js"></script>

@@ -109,11 +109,11 @@ function renderCartItemsOnPage(cartItems) {
                 <div class="item-title">${userSpecificItem.name}</div>
                 <div class="item-quantity">
                   <div class="plusMinesItem">
-                    <a class ="plusItem" onclick="addToCart('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-plus"></i></a>
-                    <p>${item.quantity}</p>
-                    <a class ="minesItem" onclick="reduceCartItem('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-minus"></i></a>
+                  <a class ="minesItem" onclick="reduceCartItem('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-minus"></i></a>
+                  <p>${item.quantity}</p>
+                  <a class ="plusItem" onclick="addToCart('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-plus"></i></a>
                   </div>
-                    <div class="deleteCart" onclick="deleteAllCartItem('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-trash-can"></i></div>
+                    <div class="deleteCart" onclick="deleteCartItem('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-trash-can"></i></div>
                 </div>
             </div>
         </div>
@@ -138,7 +138,7 @@ async function fetchSpecificItem(productId) {
   }
 }
 
-function deleteAllCartItem(userID, productID) {
+function deleteCartItem(userID, productID) {
   if (isFetchingCartItems) {
     console.log('Another fetch operation is already in progress.');
     return;

@@ -15,7 +15,7 @@ const purchaseHistorySchema = new Schema({
        type: Date, 
        default: Date.now,
     },
-    productID:{
+    quantity:{
         type: Number,
         required: true
     }

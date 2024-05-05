@@ -95,6 +95,16 @@ cartRouter.delete('/delete', async (req, res) => {
   }
 });
 
-// Adds a new item to the
+
+cartRouter.delete('/deleteAll', async (req, res) => {
+  try {
+    const { userID } = req.body;
+    await Cart.deleteMany({ userID: userID });
+    res.send('All items deleted from cart');
+  } catch (error) {
+    console.error('Error deleting all items from cart:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 module.exports = cartRouter;

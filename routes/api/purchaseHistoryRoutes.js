@@ -14,6 +14,7 @@ purchaseHistoryRouter.post('/add', async (req, res) => {
         res.send('Item added to purchase history')
     } catch (error) {
         res.status(500).send(error.message)
+        console.log("Error 80 adding item to purchase history:", error);
     }
 })
 

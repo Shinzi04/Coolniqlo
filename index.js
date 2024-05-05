@@ -154,11 +154,14 @@ app.get("/detail/:productID", async (req, res) => {
 
 app.get("/checkout", (req,res) =>{
   userID = req.session._id;
+  userName = req.session_name;
   res.render("checkout", {
     title:"Checkout",
     style:"/../css/buy.css",
     email: req.session.email,
-    userID: userID
+    userID: userID,
+    userName: req.session.firstName + " " + req.session.lastName,
+    userEmail: req.session.email,
   })
 })
 
