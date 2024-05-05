@@ -1,215 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <%- include('layouts/header.ejs') %>
 
 <body>
-  <a href="/" class="backBtn">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="javascript:void(0)" class="sidebarBtn" id="manageLink" class="active" onclick="loadPage('manage')"><i class="fas fa-tag"></i> Products</a>
+    <a href="javascript:void(0)" class="sidebarBtn" id="ordersLink" onclick="loadPage('orders')"><i class="fas fa-shopping-cart"></i> Orders</a>
+    <a href="javascript:void(0)" class="sidebarBtn" id="salesLink" onclick="loadPage('sales')"><i class="fas fa-box"></i> Sales</a>
+    <a href="/" class="sidebarBtn"><i class="fas fa-home"></i> Home</a>
+  </div>
 
-    < Back to Homepage</a>
-      <div class="container">
-        <nav>
-          <h1 class="title"><%= title %></h1>
-          <!-- untuk add product -->
-          <button onclick="toggleAddForm()" class="addProduct">Add Product +</button>
-        </nav>
-        <div id="addForm" style="display: none">
-          <h2>Add Product</h2>
-          <form action="/admin/dashboard/add" method="post" onsubmit="return cleanUpId('productID', 'post')" enctype="multipart/form-data">
-            <input type="hidden" name="currentPage" value="<%= currentPage %>" />
-            <div>
-              <label for="productID">ID</label>
-              <input type="text" id="productID" name="id" required />
-            </div>
-            <div>
-              <label for="productName">Name</label>
-              <input type="text" id="productName" name="name" required />
-            </div>
-            <div>
-              <label for="productPrice">Price</label>
-              <input type="number" id="productPrice" name="price" required />
-            </div>
-            <div>
-              <label for="productDescription">Description</label>
-              <textarea id="productDescription" name="description" required></textarea>
-            </div>
-            <div>
-              <label for="productBigImage">Big Image</label>
-              <input type="file" id="productBigImage" name="bigImage" required />
-            </div>
-            <div>
-              <label for="productSmallImages">Small Images</label>
-              <input type="file" id="productSmallImages" name="smallImages" multiple required accept="image/*" />
-            </div>
-            <div class="buttonBottom">
-              <button type="submit">Add</button>
-              <button type="button" class="cancelAdd">Cancel</button>
-            </div>
-          </form>
-        </div>
-        <% if (products.length === 0) { %>
-        <p>No products found.</p>
-        <% } else { %>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Description</th>
-              <th>Big Image</th>
-              <th>Small Images</th>
-              <th>Action</th>
-              <th>Link</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% products.forEach(product => { %>
-            <tr class="items">
-              <td><%= product.id %></td>
-              <td><%= product.name %></td>
-              <td>IDR<%= product.price %></td>
-              <td><%= product.description %></td>
-              <td><%= product.bigImage %></td>
-              <td>
-                <% product.smallImages.forEach(image => { %> <%= image %><br />
-                <% }); %>
-              </td>
-              <td class="tdBtn">
-                <button onclick="toggleEditForm('<%= product.id %>')">Edit</button>
-                <button onclick="deleteProduct('<%= product._id %>')" class="deleteBtn">Delete</button>
-              </td>
-              <td><a href="/detail/<%= product.id %>" target="_blank" class="linkProduct"><%= product.name %></a></td>
-            </tr>
+  <!-- Content -->
+  <div class="content" id="manageContent" style="display:none;">
+    <%- include('dashboard/manage-products.ejs') %>
+  </div>
 
-            <!-- form edit dengan toggle -->
-            <tr id="editForm<%= product.id %>" class="editForm" style="display: none">
-              <td colspan="6">
-                <div class="editFormContainer">
-                  <h2>Edit Product</h2>
-                  <form id="editForm<%= product.id %>" action="/admin/dashboard/edit/<%= product._id %>?_method=put" method="post" onsubmit="return cleanUpId('editID', 'put')" enctype="multipart/form-data">
-                    <input type="hidden" name="currentPage" value="<%= currentPage %>" />
-                    <div>
-                      <label for="editID">ID</label>
-                      <input type="text" id="editID" name="id" value="<%= product.id %>" required />
-                    </div>
-                    <div>
-                      <label for="editName">Name</label>
-                      <input type="text" id="editName" name="name" value="<%= product.name %>" required />
-                    </div>
-                    <div>
-                      <label for="editPrice">Price</label>
-                      <input type="number" id="editPrice" name="price" value="<%= product.price %>" required />
-                    </div>
-                    <div>
-                      <label for="editDescription">Description</label>
-                      <textarea id="editDescription" name="description" required><%= product.description %></textarea>
-                    </div>
-                    <div>
-                      <label for="editBigImage">Big Image:</label>
-                      <input type="file" id="editBigImage" name="bigImage"><br>
-                    </div>
-                    <div>
-                      <label for="editSmallImages">Small Images:</label>
-                      <input type="file" id="editSmallImages" name="smallImages" multiple accept="image/*"><br>
-                    </div>
-                    <div class="buttonBottom">
-                      <button type="submit" class="saveBtn">Save</button>
-                      <button type="button" class="cancelEdit">Cancel</button>
-                    </div>
-                  </form>
-                </div>
-              </td>
-            </tr>
+  <div class="content" id="ordersContent" style="display:none;">
 
-            <% }); %>
-          </tbody>
-        </table>
-        <% } %>
-      </div>
+  </div>
+  <div class="content" id="salesContent" style="display:none;">
 
-      <!-- pagination -->
-      <div class="pagination">
-        <% for(let i = 1; i <= totalPages; i++) { %>
-        <a href="/admin/dashboard?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
-        <% } %>
-      </div>
+  </div>
 
-      <script>
-        let openFormId = null;
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // load manage-products default
+      loadPage('manage');
+    });
 
-        // toggle edit form dan hanya 1 edit form yang terbuka
-        function toggleEditForm(productId) {
-          const editFormContainer = document.querySelector('.editForm');
-          const editForm = document.getElementById(`editForm${productId}`);
-          if (openFormId && openFormId !== productId) {
-            const previousForm = document.getElementById(`editForm${openFormId}`);
-            if (previousForm) {
-              previousForm.style.display = 'none';
-            }
-          }
+    function loadPage(page) {
+      document.querySelectorAll('.sidebar a').forEach(link => {
+        link.classList.remove('active');
+      });
 
-          if (editForm.style.display === 'none') {
-            editForm.style.display = 'table-row';
-            openFormId = productId;
-          } else {
-            editForm.style.display = 'none';
-            openFormId = null;
-          }
+      document.querySelectorAll('.content').forEach(content => {
+        content.style.display = 'none';
+      });
 
-          const cancelBtn = document.querySelector('.cancelEdit');
-          cancelBtn.addEventListener('click', function() {
-            editFormContainer.style.display = 'none';
-          });
-        }
-
-        // toggle untuk add form
-        function toggleAddForm() {
-          const addForm = document.getElementById('addForm');
-          if (addForm.style.display === 'none') {
-            addForm.style.display = 'block';
-          } else {
-            addForm.style.display = 'none';
-          }
-
-          const cancelAdd = document.querySelector('.cancelAdd');
-          cancelAdd.addEventListener('click', function() {
-            addForm.style.display = 'none';
-          });
-        }
-
-        // clean id produk dari karakter khusus dan spasi kecuali - dan _
-        function cleanUpId(id, method) {
-          const productIdInput = document.getElementById(id);
-          productIdInput.value = productIdInput.value
-            .toLowerCase()
-            .replace(/\s/g, '')
-            .replace(/[^a-zA-Z0-9-_]/g, '');
-          if (method === 'post') {
-            return confirm('Are you sure you want to add this product?');
-          } else if (method === 'put') {
-            return confirm('Are you sure you want to save changes?');
-          }
-        }
-
-        // delete produk sesuai _id
-        function deleteProduct(productId) {
-          if (confirm('Are you sure you want to delete this product?')) {
-            fetch(`/admin/dashboard/delete/${productId}`, {
-                method: 'DELETE',
-              })
-              .then((response) => {
-                if (response.ok) {
-                  window.location.reload();
-                } else {
-                  throw new Error('Failed to delete product');
-                }
-              })
-              .catch((error) => {
-                alert('Failed to delete product. Please try again.');
-              });
-          }
-        }
-      </script>
+      switch (page) {
+        case 'manage':
+          document.getElementById('manageLink').classList.add('active');
+          document.getElementById('manageContent').style.display = 'block';
+          break;
+        case 'orders':
+          document.getElementById('ordersLink').classList.add('active');
+          document.getElementById('ordersContent').style.display = 'block';
+          break;
+        case 'sales':
+          document.getElementById('salesLink').classList.add('active');
+          document.getElementById('salesContent').style.display = 'block';
+          break;
+      }
+    }
+  </script>
 </body>
 
 </html>

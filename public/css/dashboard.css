@@ -217,16 +217,40 @@ tr:nth-child(4n + 1) {
   cursor: pointer;
 }
 
-.backBtn {
-  padding: 0 1rem; 
-  margin-left: 3rem;
-  font-size: 1.2rem;
-  color: white;
+/* sidebar */
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-color: #0e1111;
-  border-radius: 50px;
-  cursor: pointer;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.backBtn:hover {
-  opacity: 0.8;
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar a.active {
+  background-color: #ddd;
+  color: black;
+}
+
+.sidebarBtn:hover {
+  opacity: 0.5;
+}
+
+.content {
+  margin-left: 200px;
+  padding: 20px;
 }

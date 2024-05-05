@@ -25,10 +25,26 @@ const storage = multer.diskStorage({
     cb(null, `${originalName}-${Date.now()}${extension}`);
   },
 });
-const upload = multer({ storage });
+
+// middleware mencegah upload file jika product ID sudah ada
+const fileFilter = async (req, file, cb) => {
+  const productId = req.body.id;
+  const existingProduct = await Product.findOne({ id: productId });
+  if (existingProduct) {
+    return cb(new Error("Product with this ID already exists"), false);
+  }
+  cb(null, true);
+};
+
+const upload = multer({ storage, fileFilter });
+
+// redirect ke manage-products
+router.get("/", (req, res) => {
+  res.redirect("/admin/dashboard/manage-products");
+});
 
 // method get (READ) untuk mendapatkan list produk
-router.get("/", isAdmin, async (req, res) => {
+router.get("/manage-products", async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 5;
@@ -38,7 +54,7 @@ router.get("/", isAdmin, async (req, res) => {
     res.render("dashboard", {
       products,
       email: req.session.email,
-      title: "Manage Products - Coolniqlo",
+      title: "Dashboard - Coolniqlo",
       style: "../../css/dashboard.css",
       currentPage: page,
       totalPages: Math.ceil(totalProducts / limit),
@@ -51,20 +67,14 @@ router.get("/", isAdmin, async (req, res) => {
 
 // method post (CREATE) untuk menambahkan produk
 router.post(
-  "/add",
+  "/manage-products/add",
   upload.fields([
     { name: "bigImage", maxCount: 1 },
     { name: "smallImages", maxCount: 8 },
   ]),
   async (req, res) => {
     try {
-      const productId = req.body.id;
-
-      // product ID harus unik
-      if (await Product.findOne({ id: productId })) {
-        return res.status(400).send("Product with this ID already exists");
-      }
-
+      // inisialisasi variabel untuk gambar yang di upload
       const bigImage = req.files["bigImage"][0];
       const smallImages = req.files["smallImages"];
 
@@ -80,7 +90,7 @@ router.post(
 
       // menyimpan data produk
       const product = new Product({
-        id: productId,
+        id: req.body.id,
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
@@ -91,7 +101,7 @@ router.post(
 
       // redirect ke halaman dashboard setelah create
       const currentPage = req.body.currentPage || 1;
-      res.redirect(`/admin/dashboard?page=${currentPage}`);
+      res.redirect(`/admin/dashboard/manage-products?page=${currentPage}`);
     } catch (error) {
       console.log(error);
       res.status(500).send("Internal Server Error");
@@ -101,7 +111,7 @@ router.post(
 
 // method put (UPDATE) untuk perbarui produk
 router.put(
-  "/edit/:id",
+  "/manage-products/edit/:id",
   upload.fields([
     { name: "bigImage", maxCount: 1 },
     { name: "smallImages", maxCount: 8 },
@@ -155,7 +165,7 @@ router.put(
 
       // redirect ke halaman dashboard setelah edit/update
       const currentPage = req.body.currentPage || 1;
-      res.redirect(`/admin/dashboard?page=${currentPage}`);
+      res.redirect(`/admin/dashboard/manage-products?page=${currentPage}`);
     } catch (error) {
       console.log(error);
       res.status(500).send("Internal Server Error");
@@ -164,7 +174,7 @@ router.put(
 );
 
 // method delete (DELETE)
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/manage-products/delete/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     await Product.findByIdAndDelete(req.params.id);
