@@ -108,6 +108,20 @@ header {
   box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
 }
 
+.profileImage{
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+}
+
+
+.profileImage{
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+}
+
+
 .forgotPasswordVerif,
 .backToLoginBtn {
   font-size: small;

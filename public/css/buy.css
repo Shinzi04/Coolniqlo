@@ -42,6 +42,7 @@ body {
   height: 25rem;
 }
 
+
 .hide {
   opacity: 0;
 }
@@ -189,6 +190,7 @@ footer .credit a {
   color: #e3e3e3;
   font-weight: 700;
 }
+
 .floating-button {
   cursor: pointer;
   z-index: 100;
