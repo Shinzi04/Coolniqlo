@@ -109,9 +109,9 @@ function renderCartItemsOnPage(cartItems) {
                 <div class="item-title">${userSpecificItem.name}</div>
                 <div class="item-quantity">
                   <div class="plusMinesItem">
-                    <a class ="plusItem" onclick="addToCart('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-plus"></i></a>
-                    <p>${item.quantity}</p>
-                    <a class ="minesItem" onclick="reduceCartItem('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-minus"></i></a>
+                  <a class ="minesItem" onclick="reduceCartItem('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-minus"></i></a>
+                  <p>${item.quantity}</p>
+                  <a class ="plusItem" onclick="addToCart('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-plus"></i></a>
                   </div>
                     <div class="deleteCart" onclick="deleteAllCartItem('${userID}','${userSpecificItem._id}')"><i class="fa-solid fa-trash-can"></i></div>
                 </div>
