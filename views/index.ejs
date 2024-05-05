@@ -36,14 +36,19 @@
     <div class="userSection">
       <div class="iconUserContainer">
         <i data-feather="user" class="iconUser"></i>
-      </div>
+      </div><!-- jk -->
       <div class="userPopup">
         <span class="closeBtnDown"><i data-feather="chevron-down"></i></span>
         <div class="userName">
           <p>Welcome, <%= firstName %> <%= lastName %></p>
+          <div>
+          </div>
         </div>
         <div class="signInContainer">
           <% if (email != null) { %> <% if (email != "admin@gmail.com" && email != "tester@gmail.com") { %>
+            <div> 
+              <img src="<%= profilePicture %>" alt="" class="profileImage" />
+            </div>
           <form action="/editAccount/editing" method="POST" class="userBtnBot">
             <button type="submit" class="editBtn"><i data-feather="edit" class="edit"></i>Edit</button>
           </form>

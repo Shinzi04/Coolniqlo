@@ -69,6 +69,7 @@ app.use('/editAccount',require('./routes/api/editRouter'))
 app.use('/forgotPassword',require('./routes/api/forgotRouter'))
 app.use('/sendForgotPassword',require('./routes/api/sendForgotPasswordRouter'))
 app.use('/sendEmail',require('./routes/api/sendEmailRouter'))
+app.use('/changePicture',require('./routes/api/changePictureRouter'))
 app.set("view engine", "ejs");
 
 // hapus trailing slash
@@ -86,11 +87,13 @@ app.get("/", async (req, res) => {
   try {
     req.session.emailStore = '';
     let products = await Product.find();
+    console.log('profile picture (reload): ', req.session.profilePicture)
     res.render("index", {
       email: req.session.email,
       firstName: req.session.firstName,
       lastName: req.session.lastName,
       userID: req.session._id,
+      profilePicture: req.session.profilePicture,
       products,
       title: "Coolniqlo",
       style: "css/style.css",
