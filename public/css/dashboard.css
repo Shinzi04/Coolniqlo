@@ -9,9 +9,10 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #0e1111;
   background-color: #f4f4f2;
+  margin-top: 2rem;
 }
 
 nav {

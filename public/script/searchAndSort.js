@@ -1,22 +1,22 @@
 const products = []; // Declare the products array in the global scope
 let searchedProducts = [];
 
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Fetch all products from the backend
   try {
-    const response = await fetch("/items");
-    products.push(...await response.json()); // Populate the products array
+    const response = await fetch('/items');
+    products.push(...(await response.json())); // Populate the products array
     searchedProducts = products;
     displayProducts(products);
   } catch (error) {
-    console.error("Error fetching products:", error);
+    console.error('Error fetching products:', error);
   }
 });
 
 //Munculin barang sesuai search
 function searchProducts(query) {
   const searchQuery = query.trim().toLowerCase();
-  const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchQuery));
+  const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(searchQuery));
   searchedProducts = filteredProducts;
   displayProducts(filteredProducts);
 }
@@ -34,22 +34,22 @@ function sortBy_Asc(property) {
 }
 
 //Munculin barang dalam range tertentu
-function sortByRange(property, min_value,max_value){
-  const productsInRange = searchedProducts.filter(product => product[property] >= min_value && product[property] <= max_value)
-  displayProducts(productsInRange)
+function sortByRange(property, min_value, max_value) {
+  const productsInRange = searchedProducts.filter((product) => product[property] >= min_value && product[property] <= max_value);
+  displayProducts(productsInRange);
 }
 
 //clear search
-function clearSearch(){
+function clearSearch() {
   const searchInput = document.getElementById('searchInput');
-  searchInput.value = "";
-  searchProducts("");
+  searchInput.value = '';
+  searchProducts('');
 }
 
 //Generate item sesuai sama produk
 function displayProducts(products) {
-  const productContainer = document.getElementById("grid-container");
-  productContainer.innerHTML = "";
+  const productContainer = document.getElementById('grid-container');
+  productContainer.innerHTML = '';
 
   products.forEach((product) => {
     const itemHTML = `
@@ -58,14 +58,20 @@ function displayProducts(products) {
           <a href="/detail/${product.id}">
             <img src="${product.bigImage}" alt="${product.name}" />
           </a>
-        </div>
+            <a class ="cartButton" onclick="addToCart('${userID}','${product._id}')"><i class="fa fa-shopping-cart"></i></a>
+          </div>   
         <div class="item-desc">
           <div class="item-property">
-            <div class="item-name">${product.name}</div>
-            <div class="item-price">${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(product.price)}</div>
+          <div class="item-name">${product.name}</div>
+          <div class="item-price">
+              ${new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+              }).format(product.price)}
+            </div>
           </div>
           <div class="item-rating">
-            <a href="/detail/${product.id}" class="btnBeli">Beli</a>
+            <a href="/detail/${product.id}" class="btnBeli">Beli</a>      
             <ul class="star-rating">
               <li>${product.rating}</li>
               <li><i class="fa fa-star"></i></li>
