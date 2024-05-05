@@ -8,7 +8,7 @@ const purchaseHistorySchema = new Schema({
     },
     productID: {
         type: Schema.Types.ObjectId,
-        ref: 'ProductList',
+        ref: 'products',
         required: true,
     },
     date: {

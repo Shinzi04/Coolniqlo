@@ -4,7 +4,7 @@ const Product = require("../../models/productList");
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
-const Account = require("../../models/account");
+const isAdmin = require("../../middlewares/isAdmin");
 
 // konfigurasi multer untuk handling file yang di upload
 const storage = multer.diskStorage({
@@ -43,17 +43,17 @@ router.get("/", (req, res) => {
   res.redirect("/admin/dashboard/manage");
 });
 
-// method get (READ) untuk mendapatkan list produk
 router.get("/manage", isAdmin, async (req, res) => {
   try {
+    // pagination limit 5 dokumen / data per halaman
     const page = parseInt(req.query.page) || 1;
     const limit = 5;
     const skip = (page - 1) * limit;
     const products = await Product.find().skip(skip).limit(limit);
     const totalProducts = await Product.countDocuments();
+
     res.render("dashboard/manage", {
       products,
-      email: req.session.email,
       title: "Manage Products - Coolniqlo",
       style: "../../css/dashboard.css",
       currentPage: page,
@@ -207,13 +207,5 @@ router.delete("/manage/delete/:id", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
-function isAdmin(req, res, next) {
-  const user = req.session.email;
-  if (user === "admin@gmail.com") {
-    return next();
-  }
-  res.redirect("/notFound");
-}
 
 module.exports = router;

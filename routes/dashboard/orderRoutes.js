@@ -1,23 +1,30 @@
 const { Router } = require("express");
 const router = Router();
-const Product = require("../../models/productList");
-const Account = require("../../models/account");
+const purchaseHistory = require("../../models/purchaseHistory");
+const isAdmin = require("../../middlewares/isAdmin");
 
-// method get (READ) untuk mendapatkan list produk
 router.get("/orders", isAdmin, async (req, res) => {
   try {
-    // const page = parseInt(req.query.page) || 1;
-    // const limit = 5;
-    // const skip = (page - 1) * limit;
-    // const products = await Product.find().skip(skip).limit(limit);
-    // const totalProducts = await Product.countDocuments();
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+    const skip = (page - 1) * limit;
+    const totalPurchaseHistories = await purchaseHistory.countDocuments();
+
+    // query untuk purchaseHistory dengan referensi ke userID dan productID
+    const purchaseHistories = await purchaseHistory
+      .find()
+      .populate("userID")
+      .populate("productID")
+      .sort({ date: -1 })
+      .skip(skip)
+      .limit(limit);
+
     res.render("dashboard/orders", {
-      // products,
-      email: req.session.email,
+      purchaseHistories,
       title: "Order List - Coolniqlo",
       style: "../../css/dashboard.css",
-      // currentPage: page,
-      // totalPages: Math.ceil(totalProducts / limit),
+      currentPage: page,
+      totalPages: Math.ceil(totalPurchaseHistories / limit),
       activePage: "orders",
     });
   } catch (error) {
@@ -25,13 +32,5 @@ router.get("/orders", isAdmin, async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
-function isAdmin(req, res, next) {
-  const user = req.session.email;
-  if (user === "admin@gmail.com") {
-    return next();
-  }
-  res.redirect("/notFound");
-}
 
 module.exports = router;

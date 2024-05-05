@@ -8,28 +8,30 @@
     <nav>
       <h1 class="title">Sales</h1>
     </nav>
+    <% if (products.length > 0) { %>
     <table>
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
+          <th>Product ID</th>
+          <th>Product Name</th>
           <th>Price</th>
           <th>Sold</th>
-          <th>Link</th>
         </tr>
       </thead>
       <tbody>
         <% products.forEach(product => { %>
         <tr class="items">
-          <td><%= product.id %></td>
+          <td><a href="/detail/<%= product.id %>" target="_blank" class="linkProduct" style="color: blue;"><%= product.id %></a></td>
           <td><%= product.name %></td>
           <td>IDR<%= product.price %></td>
-          <td>SOLD PLACEHOLDER</td>
-          <td><a href="/detail/<%= product.id %>" target="_blank" class="linkProduct"><%= product.name %></a></td>
+          <td><%= product.totalQuantity %></td>
         </tr>
         <% }); %>
       </tbody>
     </table>
+    <% } else { %>
+    <p>No sales found.</p>
+    <% } %>
   </div>
 
   <!-- pagination -->

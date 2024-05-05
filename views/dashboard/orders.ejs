@@ -8,28 +8,41 @@
     <nav>
       <h1 class="title">Order List</h1>
     </nav>
+    <% if (purchaseHistories.length > 0) { %>
     <table>
       <thead>
         <tr>
-          <th>Order No</th>
-          <th>Product</th>
-          <th>Quantity</th>
+          <th>Order by</th>
+          <th>Product ID</th>
+          <th>Product Name</th>
           <th>Date</th>
+          <th>Quantity</th>
         </tr>
       </thead>
       <tbody>
+        <% purchaseHistories.forEach(history => { %>
         <tr class="items">
-          <td>Number</td>
-          <td>Product Name</td>
-          <td>Quantity</td>
-          <td>Date</td>
+          <td><%= history.userID.firstName %> <%= history.userID.lastName %></td>
+          <td><a href="/detail/<%= history.productID.id %>" target="_blank" class="linkProduct" style="color: blue;"><%= history.productID.id %></a></td>
+          <td><%= history.productID.name %></td>
+          <td><%= history.date %></td>
+          <td><%= history.quantity %></td>
         </tr>
+        <% }); %>
       </tbody>
     </table>
+    <% } else { %>
+    <p>No orders found.</p>
+    <% } %>
+
   </div>
 
   <!-- pagination -->
-
+  <div class="pagination">
+    <% for(let i = 1; i <= totalPages; i++) { %>
+    <a href="/admin/dashboard/sales?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+    <% } %>
+  </div>
   <script>
 
   </script>
