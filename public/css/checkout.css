@@ -90,11 +90,18 @@ body {
   margin-bottom: 0.3rem;
 }
 
-/* .paymentRow {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  place-items: center;
-} */
+.paymentMethod {
+  display: flex;
+  align-items: center;
+}
+
+.paymentDropdown {
+  font-size: 1rem;
+  border: 1px solid #0e1111;
+  border-radius: 6px;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
 
 .bca,
 .mandiri,
@@ -236,14 +243,15 @@ body {
   border-radius: 3rem;
   margin: 0.3rem 2rem;
   cursor: pointer;
+  color: #0e1111;
 }
 
 .continue-shopping:hover {
   background-color: #e4e4e4;
 }
 
-.continue-shopping a {
-  color: #0e1111;
+.continue-shopping i {
+  margin-right: 0.3rem;
 }
 
 .checkout-subtotal {
@@ -261,4 +269,56 @@ body {
 .fetched-image-container img {
   height: 100%;
   width: auto;
+}
+
+/* Disable tombol checkout secara default */
+.checkoutBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Aktifkan tombol checkout jika semua input telah diisi */
+input:valid ~ .checkoutBtn {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.popupRecieve {
+  position: fixed;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(14, 17, 17, 0.7);
+  width: 35rem;
+  padding: 2rem 2rem 1rem;
+  border: 1px solid #0e1111;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.checklist {
+  text-align: center;
+}
+
+.checklist i {
+  font-size: 9rem;
+}
+
+.paragraf {
+  text-align: center;
+}
+
+.paragraf .tyParagraf {
+  margin: 2rem 0 0.3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.paragraf .tyParagraf2 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-weight: 200;
 }
