@@ -30,19 +30,21 @@
         <div class="top">
           <header>Edit Account</header>
         </div>
-        <div> 
+
+        <div class="changeImg">
           <img src="<%= profilePicture %>" alt="" class="profileImage" />
-          <form id="uploadForm" action="/changePicture/upload" method="POST" enctype="multipart/form-data" style="display: none">
-            <input type="file" name="profilePicture" id="profilePicture" required/>
-            <button type="submit" id="submitButton">Save Profile Picture</button>
-        </form>
-        <a href="#" id="toggleButton" onclick="toggleUploadForm()">Change Picture</a>
-        
-        
-      </div>
+          <div class="changeImgBtn">
+            <form id="uploadForm" action="/changePicture/upload" method="POST" enctype="multipart/form-data" style="display: none" class="formChangeImg">
+              <input type="file" name="profilePicture" id="profilePicture" required accept="image/jpeg, image/png" class="inputChangeImg" />
+              <button type="submit" id="submitButton">Save</button>
+            </form>
+          </div>
+          <a href="#" id="toggleButton" onclick="toggleUploadForm()">Change Picture</a>
+        </div>
+
         <form class="register-container" id="verification" action="/forgotPassword/saveUsername" method="POST">
           <div class="input-box">
-            <input type="text" class="input-field" placeholder="First Name" name="firstName" id="firstName" value="<%= firstName %>" required/>
+            <input type="text" class="input-field" placeholder="First Name" name="firstName" id="firstName" value="<%= firstName %>" required />
             <i class="bx bx-user"></i>
           </div>
           <div class="input-box">
@@ -72,37 +74,34 @@
         }
       }
 
-    function toggleUploadForm() {
-    const uploadForm = document.getElementById("uploadForm");
-    const toggleButton = document.getElementById("toggleButton");
-    
-    if (uploadForm.style.display === "none") {
-        uploadForm.style.display = "block";
-        toggleButton.textContent = "Back";
-    } else {
-        uploadForm.style.display = "none";
-        toggleButton.textContent = "Change Picture";
-    }
-}
+      function toggleUploadForm() {
+        const uploadForm = document.getElementById('uploadForm');
+        const toggleButton = document.getElementById('toggleButton');
 
+        if (uploadForm.style.display === 'none') {
+          uploadForm.style.display = 'block';
+          toggleButton.textContent = 'Back';
+        } else {
+          uploadForm.style.display = 'none';
+          toggleButton.textContent = 'Change Picture';
+        }
+      }
 
-      document.addEventListener("DOMContentLoaded", function() {
-        console.log('plis bisa =-dfansdfjsdf')
-    const changePictureParagraph = document.getElementById("changePicture");
-    const fileInput = document.getElementById("fileInput");
+      document.addEventListener('DOMContentLoaded', function () {
+        console.log('plis bisa =-dfansdfjsdf');
+        const changePictureParagraph = document.getElementById('changePicture');
+        const fileInput = document.getElementById('fileInput');
 
-    changePictureParagraph.addEventListener("click", function() {
-        fileInput.click(); // Klik inputan berkas saat paragraf diklik
-    });
+        changePictureParagraph.addEventListener('click', function () {
+          fileInput.click(); // Klik inputan berkas saat paragraf diklik
+        });
 
-    fileInput.addEventListener("change", function() {
-        // Tindakan yang akan dijalankan saat berkas dipilih
-        // Misalnya, mengunggah berkas ke server atau menampilkan pratinjau gambar
-        console.log("Berkas dipilih:", fileInput.files[0]);
-    });
-});
-
-      
+        fileInput.addEventListener('change', function () {
+          // Tindakan yang akan dijalankan saat berkas dipilih
+          // Misalnya, mengunggah berkas ke server atau menampilkan pratinjau gambar
+          console.log('Berkas dipilih:', fileInput.files[0]);
+        });
+      });
     </script>
   </body>
 </html>

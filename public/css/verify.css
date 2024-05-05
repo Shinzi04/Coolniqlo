@@ -39,7 +39,8 @@ body {
   flex-direction: column;
   margin: 7rem auto 0;
   width: 33rem;
-  height: 30rem;
+  height: 33rem;
+  padding-bottom: 1rem;
   background: rgba(14, 17, 17, 0.3);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
@@ -55,7 +56,8 @@ header {
   color: #fff;
   font-size: 30px;
   text-align: center;
-  padding: 1rem 0;
+  margin: 1.3rem 0 0;
+  padding-bottom: 0.7rem;
 }
 .subHeader {
   font-size: small;
@@ -108,19 +110,77 @@ header {
   box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
 }
 
-.profileImage{
-  display: flex;
-  height: 5rem;
-  width: 5rem;
+.changeImg {
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
 }
 
-
-.profileImage{
-  display: flex;
+.profileImage {
   height: 5rem;
   width: 5rem;
+  border-radius: 50%;
 }
 
+.profileImage {
+  display: flex;
+  height: 6rem;
+  width: 6rem;
+  border: 1px solid #0e1111;
+  margin-bottom: 0.5rem;
+}
+
+.inputChangeImg {
+  border: 1px solid #ffffff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 13rem;
+}
+
+#submitButton {
+  cursor: pointer;
+  padding: 0.2rem 1.5rem;
+  border-radius: 5px;
+}
+
+#submitButton:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.changeImgBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.changeImg a {
+  color: #0e1111;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+}
+
+.changeImg a:hover {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.formChangeImg {
+  display: flex;
+  align-items: center;
+}
+
+.formChangeImg input {
+  /* background-color: #0e1111;
+  color: white; */
+  cursor: pointer;
+}
+
+.profilePicture {
+  background-color: #f9b0b0;
+}
 
 .forgotPasswordVerif,
 .backToLoginBtn {
@@ -192,6 +252,7 @@ header {
 .btnBottomContainer {
   display: flex;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 /* Media Query */
@@ -199,7 +260,7 @@ header {
 @media (max-width: 540px) {
   .container {
     width: 100%;
-    height: 500px;
+    height: 35rem;
   }
 
   .register-container,
@@ -210,7 +271,12 @@ header {
 
   .btnBottomContainer {
     flex-direction: column;
-    margin-top: 1rem;
+    margin-top: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .changeImg {
+    margin-bottom: 2.2rem;
   }
 
   .bottom {

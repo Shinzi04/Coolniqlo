@@ -212,12 +212,25 @@ body {
 .userName {
   font-size: 1.3rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.headerUserPopUp {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
 .signInContainer {
   display: flex;
   justify-content: center;
+}
+
+.profileImage {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  border: 1px solid white;
 }
 
 .userBtnBot button {
@@ -543,13 +556,6 @@ body {
   height: 2;
 }
 /* Item container and items styles */
-
-.profileImage{
-  display: flex;
-  height: 5rem;
-  width: 5rem;
-}
-
 
 footer {
   background-color: white;
