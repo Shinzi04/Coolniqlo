@@ -142,7 +142,7 @@ async function fetchSpecificItem(productId) {
   }
 }
 
-function deleteAllCartItem(userID, productID) {
+function deleteCartItem(userID, productID) {
   if (isFetchingCartItems) {
     console.log("Another fetch operation is already in progress.");
     return;
@@ -175,4 +175,56 @@ function deleteAllCartItem(userID, productID) {
       // Fetch cart items and render them after deletion (or failure)
       fetchAndRenderCartItems(userID);
     });
+}
+
+function deleteAllCartItem(userID) {
+  fetch("/cart/deleteAll", {
+    method: "DELETE", 
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ userID: userID }),
+  })
+}
+
+async function checkout(userID) {
+  try {
+    const userCartItems = await fetchCartItems(userID);
+    console.log(userCartItems);
+
+    for (const item of userCartItems) {
+      await addItemToPurchaseHistory(userID, item.product, item.quantity);
+    }
+
+    await deleteAllCartItem(userID);
+    await fetchAndRenderCartItems(userID)
+    console.log("Checkout completed successfully.");
+  } catch (error) {
+    console.error("Error during checkout:", error.message);
+    throw error; // Rethrow the error for further handling
+  }
+}
+
+async function addItemToPurchaseHistory(userID, productID, quantity) {
+  try {
+    const response = await fetch('/purchaseHistory/add', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 
+        userID: userID, 
+        productID: productID, 
+        quantity: quantity,
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to add history');
+    }
+
+    console.log("Item added to purchase history");
+  } catch (error) {
+    console.error('Error adding item to purchase history:', error);
+  }
 }

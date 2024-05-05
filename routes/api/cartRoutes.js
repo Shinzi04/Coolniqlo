@@ -1,14 +1,11 @@
 const { Router } = require('express');
 const cartRouter = Router();
 const Cart = require('../../models/cart');
-const mongoose = require('mongoose');
 
 // Route to add an item to the cart
 cartRouter.post('/add', async (req, res) => {
   try {
     const { userID, productID } = req.body;
-
-    // Search existed product in database
     let cartItem = await Cart.findOne({ userID: userID, productID: productID });
 
     if (cartItem) {
@@ -21,6 +18,7 @@ cartRouter.post('/add', async (req, res) => {
       });
     }
     await cartItem.save();
+
     res.send('Item added to cart');
   } catch (error) {
     console.error('Error adding item to cart:', error);
@@ -97,6 +95,16 @@ cartRouter.delete('/delete', async (req, res) => {
   }
 });
 
-// Adds a new item to the
+
+cartRouter.delete('/deleteAll', async (req, res) => {
+  try {
+    const { userID } = req.body;
+    await Cart.deleteMany({ userID: userID });
+    res.send('All items deleted from cart');
+  } catch (error) {
+    console.error('Error deleting all items from cart:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 module.exports = cartRouter;
