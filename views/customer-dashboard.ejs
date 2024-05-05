@@ -1,0 +1,12 @@
+<h1>Products</h1>
+<ul>
+  <% products.forEach(product => { %>
+  <li>
+    <%= product.name %>
+    <form action="/customer/dashboard/rate/<%= product._id %>" method="POST">
+      <input type="number" name="rating" min="1" max="5" required>
+      <button type="submit">Rate</button>
+    </form>
+  </li>
+  <% }); %>
+</ul>

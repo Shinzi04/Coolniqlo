@@ -2,8 +2,10 @@
   {
     "id": "celana-panjang-hitam",
     "name": "Celana Panjang Hitam",
-    "sold": 130,
-    "rating": 4,
+    "sold": 18,
+  "ratings": [
+4,4,5,5,4,5,4,4,5,4,3,4,4,4
+  ],
     "price": 150000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/celana-panjang-hitam/1.jpg",
@@ -18,8 +20,10 @@
   {
     "id": "sepatu-pantofel",
     "name": "Sepatu Pantofel",
-    "sold": 30,
-    "rating": 5,
+    "sold": 21,
+  "ratings": [
+5,4,5,4,5,5,5,5,4,2,3,4,4,4,5,4,4
+  ],
     "price": 250000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/sepatu-pantofel/1.jpg",
@@ -33,8 +37,10 @@
   {
     "id": "kemeja-putih-lengan-pendek",
     "name": "Kemeja Putih Lengan Pendek",
-    "sold": 432,
-    "rating": 5,
+    "sold": 10,
+  "ratings": [
+4,5,3,5,4,5,3,5
+  ],
     "price": 125000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/kemeja-putih-lengan-pendek/1.jpg",
@@ -49,8 +55,10 @@
   {
     "id": "kemeja-flanel-motif-kotak",
     "name": "Kemeja Flanel Motif Kotak",
-    "sold": 9,
-    "rating": 3,
+    "sold": 5,
+  "ratings": [
+1,5,5
+  ],
     "price": 150000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/kemeja-flanel-motif-kotak/1.jpg",
@@ -64,8 +72,10 @@
   {
     "id": "kaus-putih-polos",
     "name": "Kaus Putih Polos",
-    "sold": 130,
-    "rating": 3,
+    "sold": 2,
+  "ratings": [
+5,5
+  ],
     "price": 88000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/kaus-putih-polos/1.jpg",
@@ -80,8 +90,10 @@
   {
     "id": "celana-pendek-hitam",
     "name": "Celana Pendek Hitam",
-    "sold": 3,
-    "rating": 3,
+    "sold": 33,
+  "ratings": [
+5,4,4,4,4,5,4,2,5,4,5,5,5,4,4,3,5,4,5,5,4,5,5,4,4
+  ],
     "price": 45000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/celana-pendek-hitam/1.jpg",
@@ -95,8 +107,10 @@
   {
     "id": "celana-jeans-denim",
     "name": "Celana Jeans Denim",
-    "sold": 146,
-    "rating": 5,
+    "sold": 5,
+  "ratings": [
+5,3,5
+  ],
     "price": 200000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/celana-jeans-denim/1.jpg",
@@ -110,8 +124,10 @@
   {
     "id": "dasi-hitam-polos",
     "name": "Dasi Hitam Polos",
-    "sold": 34,
-    "rating": 4,
+    "sold": 44,
+  "ratings": [
+4,4,4,4,5,5,5,4,2,5,5,4,4,4,5,5,2,5,5,4,4,4,4,3,5,4,4,5,4,5,5,5,5,4
+  ],
     "price": 30000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/dasi-hitam-polos/1.jpg",
@@ -125,8 +141,10 @@
   {
     "id": "kaus-kaki-hitam-pendek",
     "name": "Kaus Kaki Hitam Pendek",
-    "sold": 534,
-    "rating": 5,
+    "sold": 78,
+  "ratings": [
+4,3,3,5,5,3,4,5,2,5,5,4,3,3,2,5,1,3,4,5,4,4,5,5,5,3,4,5,5,3,5,4,3,3,5,4,3,5,5,5,4,4,3,4,4,5,4,5,4,5,4,5,5,4,4
+  ],
     "price": 18000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/kaus-kaki-hitam-pendek/1.jpg",
@@ -139,8 +157,10 @@
   {
     "id": "kacamata-hitam",
     "name": "Kacamata Hitam",
-    "sold": 76,
-    "rating": 5,
+    "sold": 23,
+  "ratings": [
+3,3,5,4,5,3,5,3,3,3,5,3,3,5
+  ],
     "price": 64000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/kacamata-hitam/1.jpg",
@@ -154,8 +174,10 @@
   {
     "id": "mantel-berkerah",
     "name": "Mantel Berkerah",
-    "sold": 3,
-    "rating": 5,
+    "sold": 2,
+  "ratings": [
+5,4
+  ],
     "price": 400000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/mantel-berkerah/1.jpg",
@@ -169,8 +191,10 @@
   {
     "id": "tas-bahu",
     "name": "Tas Bahu",
-    "sold": 12,
-    "rating": 4,
+    "sold": 5,
+  "ratings": [
+4,4,5
+  ],
     "price": 140000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/tas-bahu/1.jpg",
@@ -184,7 +208,9 @@
     "id": "kemeja-pastel",
     "name": "Kemeja Pastel",
     "sold": 8,
-    "rating": 4,
+  "ratings": [
+5,5,4,5,4,4
+  ],
     "price": 145000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/kemeja-pastel/1.jpg",
@@ -199,7 +225,9 @@
     "id": "rok-panjang",
     "name": "Rok Panjang",
     "sold": 80,
-    "rating": 5,
+  "ratings": [
+5,4,5,5,3,3,3,5,3,4,4,5,5,4,5,4,3,3,4,3,4,5,4,5,5,5,5,3,5,5,4,3,3,4,4,3,5,3,5,5,5,3,3,3,3,5,3,5,5,5,4,5,4,5,5,5,4,4,3,4,5,4,3,4
+  ],
     "price": 200000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/rok-panjang/1.jpg",
@@ -213,7 +241,9 @@
     "id": "kardigan",
     "name": "Kardigan",
     "sold": 21,
-    "rating": 5,
+  "ratings": [
+4,4,4,4,5,5,4,5,5,4,5,3,5
+  ],
     "price": 250000,
     "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro incidunt reiciendis dicta, cupiditate alias saepe dolores quidem voluptate sunt quo doloribus! Nemo accusamus animi explicabo quae corrupti deleniti dolores! Deserunt, labore et porro, quis aliquid magni ea officiis rem molestias atque velit recusandae cupiditate ab aliquam obcaecati eum consequuntur error!",
     "bigImage": "/../assets/items/kardigan/1.jpg",
