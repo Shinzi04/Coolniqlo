@@ -62,7 +62,9 @@ app.use(methodOverride("_method_logout"));
 app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(methodOverride("_method"));
-app.use("/admin/dashboard", require("./routes/api/productListRoutes"));
+app.use("/admin/dashboard", require("./routes/dashboard/manageRoutes")); // route manage products
+app.use("/admin/dashboard", require("./routes/dashboard/orderRoutes")); // route order products
+app.use("/admin/dashboard", require("./routes/dashboard/salesRoutes")); // route sales products
 app.use("/login", require("./routes/api/accountsRoutes"));
 app.use('/verificationPage',require('./routes/api/verficationRouter'))
 app.use('/editAccount',require('./routes/api/editRouter'))

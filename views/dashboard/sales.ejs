@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../layouts/header.ejs') %>
+
+<body>
+  <%- include('../layouts/dashboard.ejs') %>
+  <div class="dashboard-content">
+    <nav>
+      <h1 class="title">Sales</h1>
+    </nav>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Sold</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% products.forEach(product => { %>
+        <tr class="items">
+          <td><%= product.id %></td>
+          <td><%= product.name %></td>
+          <td>IDR<%= product.price %></td>
+          <td>SOLD PLACEHOLDER</td>
+          <td><a href="/detail/<%= product.id %>" target="_blank" class="linkProduct"><%= product.name %></a></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- pagination -->
+  <div class="pagination">
+    <% for(let i = 1; i <= totalPages; i++) { %>
+    <a href="/admin/dashboard/sales?page=<%= i %>" class="<%= currentPage === i ? 'active' : '' %>"><%= i %></a>
+    <% } %>
+  </div>
+
+  <script>
+
+  </script>
+
+</body>
+
+
+</html>
