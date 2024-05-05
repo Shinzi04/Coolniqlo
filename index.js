@@ -69,6 +69,8 @@ app.use('/editAccount',require('./routes/api/editRouter'))
 app.use('/forgotPassword',require('./routes/api/forgotRouter'))
 app.use('/sendForgotPassword',require('./routes/api/sendForgotPasswordRouter'))
 app.use('/sendEmail',require('./routes/api/sendEmailRouter'))
+app.use("/cart", require("./routes/api/cartRoutes"));
+app.use("/purchaseHistory", require("./routes/api/purchaseHistoryRoutes"));
 app.use('/changePicture',require('./routes/api/changePictureRouter'))
 app.set("view engine", "ejs");
 
@@ -155,11 +157,14 @@ app.get("/detail/:productID", async (req, res) => {
 
 app.get("/checkout", (req,res) =>{
   userID = req.session._id;
+  userName = req.session_name;
   res.render("checkout", {
     title:"Checkout",
     style:"/../css/buy.css",
     email: req.session.email,
-    userID: userID
+    userID: userID,
+    userName: req.session.firstName + " " + req.session.lastName,
+    userEmail: req.session.email,
   })
 })
 
@@ -189,8 +194,6 @@ function checkNotAuthenticated(req, res, next) {
   }
   next();
 }
-
-app.use("/cart", require("./routes/api/cartRoutes"));
 
 app.get("*", (req, res) => {
   req.session.emailStore = "";
