@@ -92,9 +92,9 @@ function selectButton(button, type) {
       // Lakukan sesuatu jika tombol Rating (Ascending) diklik
       sortBy_Asc('rating');
       break;
-    case 'ratingRange':
-      // Lakukan sesuatu jika tombol Rating 2 - 3 diklik
-      sortByRange('rating', 2, 3);
+    case 'greaterThanFour':
+      // Lakukan sesuatu jika tombol rating lebih besar 4 diklik
+      sortByRatingGreaterThanFour('rating');
       break;
     case 'sold':
       // Lakukan sesuatu jika tombol Sold (Descending) diklik
