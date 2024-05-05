@@ -14,9 +14,9 @@ const ProductListSchema = new Schema({
     type: Number,
     default: 0,
   },
-  rating: {
-    type: Number,
-    default: 0,
+  ratings: {
+    type: [Number],
+    default: [],
   },
   price: {
     type: Number,
@@ -34,6 +34,12 @@ const ProductListSchema = new Schema({
     type: [String],
     required: true,
   },
+});
+
+ProductListSchema.virtual("rating").get(function () {
+  if (this.ratings.length === 0) return 0;
+  const sum = this.ratings.reduce((acc, rating) => acc + rating, 0);
+  return sum / this.ratings.length;
 });
 
 module.exports = model("products", ProductListSchema);

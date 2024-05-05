@@ -7,6 +7,8 @@
     <a href="#contact">Contact</a>
     <% if (emailN === "admin@gmail.com") { %>
     <a href="/admin/dashboard">Dashboard</a>
+    <% } else if (emailN) { %>
+    <a href="/customer/dashboard">Dashboard</a>
     <% } %>
   </div>
   <a href="/" class="navbar-logo">COOLNIQLO</a>
