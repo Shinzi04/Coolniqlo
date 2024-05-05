@@ -24,13 +24,7 @@ mongoose.connect(process.env.MONGO_URL).then(
   (err) => console.log(err)
 );
 const Product = require("./models/productList");
-const Password = require("./models/account");
-const cart = require("./models/cart");
-// initializePassport (
-//   passport,
-//   (email) => users.find((user) => user.email === email),
-//   (id) => users.find((user) => user.id === id)
-// );
+const isUser = require("./middlewares/isUser");
 
 initializePassport(
   passport,
@@ -62,16 +56,22 @@ app.use(methodOverride("_method_logout"));
 app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(methodOverride("_method"));
-app.use("/admin/dashboard", require("./routes/api/productListRoutes"));
+app.use("/admin/dashboard", require("./routes/dashboard/manageRoutes")); // route manage products
+app.use("/admin/dashboard", require("./routes/dashboard/orderRoutes")); // route order products
+app.use("/admin/dashboard", require("./routes/dashboard/salesRoutes")); // route sales products
+app.use("/customer/dashboard", require("./routes/dashboard/customerRoutes")); // route sales products
 app.use("/login", require("./routes/api/accountsRoutes"));
-app.use('/verificationPage',require('./routes/api/verficationRouter'))
-app.use('/editAccount',require('./routes/api/editRouter'))
-app.use('/forgotPassword',require('./routes/api/forgotRouter'))
-app.use('/sendForgotPassword',require('./routes/api/sendForgotPasswordRouter'))
-app.use('/sendEmail',require('./routes/api/sendEmailRouter'))
+app.use("/verificationPage", require("./routes/api/verficationRouter"));
+app.use("/editAccount", require("./routes/api/editRouter"));
+app.use("/forgotPassword", require("./routes/api/forgotRouter"));
+app.use(
+  "/sendForgotPassword",
+  require("./routes/api/sendForgotPasswordRouter")
+);
+app.use("/sendEmail", require("./routes/api/sendEmailRouter"));
 app.use("/cart", require("./routes/api/cartRoutes"));
 app.use("/purchaseHistory", require("./routes/api/purchaseHistoryRoutes"));
-app.use('/changePicture',require('./routes/api/changePictureRouter'))
+app.use("/changePicture", require("./routes/api/changePictureRouter"));
 app.set("view engine", "ejs");
 
 // hapus trailing slash
@@ -87,9 +87,9 @@ app.use((req, res, next) => {
 // route untuk homepage awal
 app.get("/", async (req, res) => {
   try {
-    req.session.emailStore = '';
+    req.session.emailStore = "";
     let products = await Product.find();
-    console.log('profile picture (reload): ', req.session.profilePicture)
+    console.log("profile picture (reload): ", req.session.profilePicture);
     res.render("index", {
       email: req.session.email,
       firstName: req.session.firstName,
@@ -155,23 +155,19 @@ app.get("/detail/:productID", async (req, res) => {
   }
 });
 
-app.get("/checkout", (req,res) =>{
+// route untuk checkout
+app.get("/checkout", isUser, (req, res) => {
   userID = req.session._id;
   userName = req.session_name;
-  if (req.session.email == undefined || req.session.email == '') {
-    return res.redirect('/notfound')
-  }
-  else{
-    res.render("checkout", {
-      title:"Checkout",
-      style:"/../css/buy.css",
-      email: req.session.email,
-      userID: userID,
-      userName: req.session.firstName + " " + req.session.lastName,
-      userEmail: req.session.email,
-    })
-  }
-})
+  res.render("checkout", {
+    title: "Checkout",
+    style: "/../css/buy.css",
+    email: req.session.email,
+    userID: userID,
+    userName: req.session.firstName + " " + req.session.lastName,
+    userEmail: req.session.email,
+  });
+});
 
 // route untuk logout
 app.delete("/logout", (req, res, next) => {
@@ -180,7 +176,7 @@ app.delete("/logout", (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("/login");
+    res.redirect("/");
   });
 });
 
@@ -200,6 +196,7 @@ function checkNotAuthenticated(req, res, next) {
   next();
 }
 
+// not found route
 app.get("*", (req, res) => {
   req.session.emailStore = "";
   res.status(404).render("notFound", {

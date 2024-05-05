@@ -4,7 +4,7 @@ const Product = require("../../models/productList");
 const fs = require("fs");
 const path = require("path");
 const multer = require("multer");
-const Account = require("../../models/account");
+const isAdmin = require("../../middlewares/isAdmin");
 
 // konfigurasi multer untuk handling file yang di upload
 const storage = multer.diskStorage({
@@ -25,23 +25,40 @@ const storage = multer.diskStorage({
     cb(null, `${originalName}-${Date.now()}${extension}`);
   },
 });
-const upload = multer({ storage });
 
-// method get (READ) untuk mendapatkan list produk
-router.get("/", isAdmin, async (req, res) => {
+// middleware filter mencegah upload file jika product ID sudah ada
+const fileFilter = async (req, file, cb) => {
+  const productId = req.body.id;
+  const existingProduct = await Product.findOne({ id: productId });
+  if (existingProduct) {
+    return cb(new Error("Product with this ID already exists"), false);
+  }
+  cb(null, true);
+};
+
+const upload = multer({ storage, fileFilter });
+
+// redirect ke manage
+router.get("/", isAdmin, (req, res) => {
+  res.redirect("/admin/dashboard/manage");
+});
+
+router.get("/manage", isAdmin, async (req, res) => {
   try {
+    // pagination limit 5 dokumen / data per halaman
     const page = parseInt(req.query.page) || 1;
     const limit = 5;
     const skip = (page - 1) * limit;
     const products = await Product.find().skip(skip).limit(limit);
     const totalProducts = await Product.countDocuments();
-    res.render("dashboard", {
+
+    res.render("dashboard/manage", {
       products,
-      email: req.session.email,
       title: "Manage Products - Coolniqlo",
       style: "../../css/dashboard.css",
       currentPage: page,
       totalPages: Math.ceil(totalProducts / limit),
+      activePage: "manage",
     });
   } catch (error) {
     console.log(error);
@@ -51,20 +68,15 @@ router.get("/", isAdmin, async (req, res) => {
 
 // method post (CREATE) untuk menambahkan produk
 router.post(
-  "/add",
+  "/manage/add",
+  isAdmin,
   upload.fields([
     { name: "bigImage", maxCount: 1 },
     { name: "smallImages", maxCount: 8 },
   ]),
   async (req, res) => {
     try {
-      const productId = req.body.id;
-
-      // product ID harus unik
-      if (await Product.findOne({ id: productId })) {
-        return res.status(400).send("Product with this ID already exists");
-      }
-
+      // inisialisasi variabel untuk gambar yang di upload
       const bigImage = req.files["bigImage"][0];
       const smallImages = req.files["smallImages"];
 
@@ -80,7 +92,7 @@ router.post(
 
       // menyimpan data produk
       const product = new Product({
-        id: productId,
+        id: req.body.id,
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
@@ -91,7 +103,7 @@ router.post(
 
       // redirect ke halaman dashboard setelah create
       const currentPage = req.body.currentPage || 1;
-      res.redirect(`/admin/dashboard?page=${currentPage}`);
+      res.redirect(`/admin/dashboard/manage?page=${currentPage}`);
     } catch (error) {
       console.log(error);
       res.status(500).send("Internal Server Error");
@@ -101,7 +113,8 @@ router.post(
 
 // method put (UPDATE) untuk perbarui produk
 router.put(
-  "/edit/:id",
+  "/manage/edit/:id",
+  isAdmin,
   upload.fields([
     { name: "bigImage", maxCount: 1 },
     { name: "smallImages", maxCount: 8 },
@@ -155,7 +168,7 @@ router.put(
 
       // redirect ke halaman dashboard setelah edit/update
       const currentPage = req.body.currentPage || 1;
-      res.redirect(`/admin/dashboard?page=${currentPage}`);
+      res.redirect(`/admin/dashboard/manage?page=${currentPage}`);
     } catch (error) {
       console.log(error);
       res.status(500).send("Internal Server Error");
@@ -164,7 +177,7 @@ router.put(
 );
 
 // method delete (DELETE)
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/manage/delete/:id", isAdmin, async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     await Product.findByIdAndDelete(req.params.id);
@@ -196,13 +209,5 @@ router.delete("/delete/:id", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
-function isAdmin(req, res, next) {
-  const user = req.session.email;
-  if (user === "admin@gmail.com") {
-    return next();
-  }
-  res.redirect("/notFound");
-}
 
 module.exports = router;
