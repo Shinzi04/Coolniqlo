@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #0e1111;
   background-color: #f4f4f2;
   margin-top: 2rem;
@@ -18,9 +18,10 @@ body {
 nav {
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 2rem 0;
+  background-color: #f4f4f2;
+  width: 100%;
   border-bottom: 1px solid #0e1111;
-  margin-bottom: 1rem;
 }
 
 .pagination {
@@ -155,6 +156,7 @@ textarea {
 table {
   background-color: #f7f7f4;
   border-collapse: collapse;
+  margin-top: 3.3rem;
 }
 
 thead th {
@@ -166,10 +168,15 @@ thead th {
 
 table th,
 table td {
-  padding: 1rem 0.2rem;
+  padding: 1rem 0.8rem;
 }
 
-tr:nth-child(4n + 1) {
+tr.itemsManage:nth-child(4n + 1) {
+  background-color: #ededeb;
+}
+
+tr.itemsOrders:nth-child(odd),
+tr.itemsSales:nth-child(odd) {
   background-color: #ededeb;
 }
 
@@ -237,6 +244,10 @@ tr:nth-child(4n + 1) {
   border-bottom: 1px solid #ddd;
 }
 
+.sidebar a i {
+  margin-right: 0.5rem;
+}
+
 .sidebar a.active {
   background-color: #ddd;
   color: black;
@@ -248,7 +259,11 @@ tr:nth-child(4n + 1) {
 
 .dashboard-content {
   width: 95%;
-  /* margin: 1rem auto; */
-  margin-left: 200px;
-  padding: 20px;
+  margin-left: 12.5rem;
+  padding: 1.25rem;
+}
+
+.dashboard-content nav {
+  position: fixed;
+  top: 0;
 }
