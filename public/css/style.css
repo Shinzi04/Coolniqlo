@@ -543,6 +543,13 @@ body {
 }
 /* Item container and items styles */
 
+.profileImage{
+  display: flex;
+  height: 5rem;
+  width: 5rem;
+}
+
+
 footer {
   background-color: white;
   text-align: center;

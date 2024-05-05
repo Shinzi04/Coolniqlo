@@ -11,7 +11,8 @@ edit.post('/editing', (req, res) => {
         return res.render('edit', {
             info : '',
             firstName : req.session.firstName,
-            lastName : req.session.lastName
+            lastName : req.session.lastName,
+            profilePicture : req.session.profilePicture
         });
     }
 });

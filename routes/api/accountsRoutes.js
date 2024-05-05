@@ -97,11 +97,14 @@ accRouter.post("/enter", isLogin, async (req, res) => {
       req.session._id = check._id;
       req.session.firstName = check.firstName;
       req.session.lastName = check.lastName;
+      req.session.profilePicture = check.profilePicture;
+      console.log(req.session.profilePicture) 
       return res.render("", {
         email: req.session.email,
         firstName: check.firstName,
         lastName: check.lastName,
         userID: check._id,
+        profilePicture: check.profilePicture,
         title: "Coolniqlo",
         style: "../css/style.css",
       });
