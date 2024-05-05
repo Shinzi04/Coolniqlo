@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  margin: 1rem auto;
+  width: 40%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+nav {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #0e1111;
+  background-color: #0e1111;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.homeBtn {
+  margin-right: 1.7rem;
+}
+
+.homeBtn i:hover {
+  color: rgb(204, 204, 204);
+}
+
+.homeBtn i {
+  font-size: 1.3rem;
+  color: rgb(255, 255, 255);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+}
+
+.row:nth-child(odd) {
+  background-color: #e5e5e5;
+}
+
+.productName {
+  margin-right: 2rem;
+}
+
+.row form input {
+  background-color: rgba(14, 17, 17, 0.8);
+  color: white;
+  margin-right: 0.7rem;
+  border-radius: 3px;
+  width: 3rem;
+  height: 1.5rem;
+  text-align: center;
+}
+
+.row .rateBtn {
+  font-weight: 500;
+  font-size: 0.8rem;
+  border: 1px solid #0e1111;
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  background-color: #0e1111;
+  color: white;
+}
+
+.row .rateBtn:hover {
+  background-color: rgba(14, 17, 17, 0.8);
+}
+
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 62.5%;
+  }
+  .container {
+    width: 100%;
+  }
+}
+/* 
+@media only screen and (max-width: 786px) {
+  .container {
+    width: 100%;
+  }
+} */
