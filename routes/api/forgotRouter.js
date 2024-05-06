@@ -2,7 +2,9 @@ const { Router } = require("express");
 const forgot = Router();
 const Account = require("../../models/account");
 const nodemailer = require("nodemailer");
-
+const path = require("path");
+const multer = require("multer");
+const fs = require('fs');
 // Router ini dipakai oleh edit.js, di mana ketika sudah login dan menekan tombol edit di pojok kiri bawah
 forgot.get('/', (req, res) => {
     const token = req.query.token;
@@ -92,6 +94,18 @@ forgot.post('/deleteUser', async (req, res) => {
     // Akan mendelete akun jika akun ditemukan
     if (account) {
         await Account.deleteOne({ email: email });
+        const oldProfilePicturePath = account.profilePicture;
+        const fullPath = path.join(__dirname, '..', '..', 'public', oldProfilePicturePath);
+
+        if (fullPath) {
+            fs.unlink(fullPath, (err) => {
+            if (err) {
+                console.error('Gagal menghapus gambar lama:', err);
+            } else {
+                console.log('Gambar lama berhasil dihapus');
+            }
+            });
+        }
         req.session.email = '';
         req.session.emailStore = '';
         req.session.firstName = '';
